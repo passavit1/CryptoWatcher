@@ -13,9 +13,8 @@ const StyledCol = styled(Col)`
   color: ${({ color }) => color || 'aqua'};
 `;
 
-const StyledHeader = styled(Header)`
-  // background-color: ${({ bgcolor }) => bgcolor || 'white'};
-  background-color: white;
+const StyledHeader = styled(Layout)`
+  background-color: #ff0000;
 `;
 
 const Page1 = () => {
@@ -23,11 +22,13 @@ const Page1 = () => {
     <>
       <Layout>
         <StyledHeader>
-          <TextMessage fontsize={32}>Hello Header</TextMessage>
+          <TextMessage fontsize={32}>
+            <Nav />
+          </TextMessage>
         </StyledHeader>
         <Content>
           <Row>
-            <StyledCol xs={24} sm={12} bgcolor="red">
+            <StyledCol xs={24} sm={12} bgcolor="green">
               <span>Hello world </span>
             </StyledCol>
             <StyledCol xs={24} sm={12} bgcolor="blue" color="black">
