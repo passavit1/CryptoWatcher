@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { Breadcrumb } from 'antd';
 
+const StyleNav = styled(Breadcrumb)`
+  color: white !important;
+`;
+
 const items = [
   {
     key: '1',
@@ -37,16 +41,18 @@ const items = [
 ];
 
 const Nav = () => {
-  <Breadcrumb>
-    <Breadcrumb.Item>Ant Design</Breadcrumb.Item>
-    <Breadcrumb.Item>
-      <a href="">Component</a>
-    </Breadcrumb.Item>
-    <Breadcrumb.Item menu={{ items }}>
-      <a href="">General</a>
-    </Breadcrumb.Item>
-    <Breadcrumb.Item>Button</Breadcrumb.Item>
-  </Breadcrumb>;
+  return (
+    <StyleNav>
+      <StyleNav.Item>Ant Design</StyleNav.Item>
+      <StyleNav.Item>
+        <a href="">Component</a>
+      </StyleNav.Item>
+      <StyleNav.Item menu={{ items }}>
+        <a href="">General</a>
+      </StyleNav.Item>
+      <StyleNav.Item>Button</StyleNav.Item>
+    </StyleNav>
+  );
 };
 
 export default Nav;
