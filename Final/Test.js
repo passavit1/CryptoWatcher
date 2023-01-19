@@ -13,13 +13,27 @@ const binance = new Binance().options({
 
 const Detail = async (x, y) => {
   const r = await binance.futuresAccount();
-  const r2 = r[x][0]["symbol"];
+  //   console.log(r);
+
+  //Find Key
+
+  const r2 = Object.keys(r);
   console.log(r2);
 
-  // const number = Object.keys(r[x]); // number of items
+  const r3 = r["assets"];
+  console.log(r3);
 
-  //   const symbol = Object.keys(r[x][0]["symbol"]);
-  //   console.log(symbol);
+  //   const r2 = r["positions"][0]["symbol"];
+  //   console.log(r2);
+
+  //Detail in Symbol
+  //   const r2 = r["positions"][0];
+  //   console.log(r2);
+
+  //   number of symbols
+  //   for (let i in r["positions"]) {
+  //     console.log(i + " : " + r["positions"][i]["symbol"]);
+  //   }
 };
 
-Detail("positions", "symbol");
+Detail();
