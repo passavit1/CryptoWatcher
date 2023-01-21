@@ -1,43 +1,54 @@
-import { Row, Col, Layout } from 'antd';
+import { Layout, Button } from 'antd';
 import styled from 'styled-components';
-import { Nav, TextMessage } from '@atomic';
 
-const { Header, Footer, Content } = Layout;
+const { Header, Content, Footer } = Layout;
 
-const StyledCol = styled(Col)`
-  background-color: ${({ bgcolor }) => bgcolor};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 10rem;
-  color: ${({ color }) => color || 'aqua'};
+const StyledLayout = styled(Layout)`
+  .ant-layout-header {
+    text-align: center;
+    color: #fff;
+    height: 64;
+    padding-inline: 50;
+    line-height: 64px;
+    background-color: ${(Bgcolor) => console.log(Bgcolor) || '#7dbcea'};
+  }
+
+  .ant-layout-content {
+    text-align: center;
+    min-height: 80vh;
+    line-height: 120px;
+    color: #fff;
+    background-color: #108ee9;
+  }
+
+  .ant-layout-footer {
+    text-align: center;
+    color: #fff;
+    background-color: #7dbcea;
+  }
 `;
 
-const StyledHeader = styled(Layout)`
-  background-color: #ff0000;
+const StyledHeader = styled.header`
+  background-color: ${({ Bgcolor }) => Bgcolor || 'yellow'};
+`;
+
+const StyledButton = styled(Button)`
+  background-color: ${({ color }) => color || 'Green'};
 `;
 
 const Page1 = () => {
   return (
     <>
-      <Layout>
-        <StyledHeader>
-          <TextMessage fontsize={32}>
-            <Nav />
-          </TextMessage>
-        </StyledHeader>
+      <StyledLayout>
+        <Header>Header</Header>
+        <StyledHeader Bgcolor="green">Header</StyledHeader>
         <Content>
-          <Row>
-            <StyledCol xs={24} sm={12} bgcolor="green">
-              <span>Hello world </span>
-            </StyledCol>
-            <StyledCol xs={24} sm={12} bgcolor="blue" color="black">
-              <span>Hello world 2 </span>
-            </StyledCol>
-          </Row>
+          <div>
+            <StyledButton color="yellow">Click</StyledButton>
+          </div>
         </Content>
         <Footer>Footer</Footer>
-      </Layout>
+      </StyledLayout>
     </>
   );
 };
