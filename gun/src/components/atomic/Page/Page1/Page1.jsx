@@ -1,6 +1,10 @@
 import { Layout } from 'antd';
 import styled from 'styled-components';
-import { TextSlide, MyBoxes } from '@atomic';
+import { TextSlide, ROW, Column } from '@atomic';
+
+const StyledLayout = styled(Layout)`
+  height: 100vh;
+`;
 
 const StyledHeader = styled.header`
   text-align: center;
@@ -14,31 +18,48 @@ const StyledHeader = styled.header`
 const StyledMain = styled.main`
   text-align: center;
   min-height: 80vh;
-  line-height: 120px;
   color: #fff;
   background-color: ${({ Bgcolor }) => Bgcolor || '#7b8a8c'};
+  // display: inline-block;
 `;
 
 const StyledFooter = styled.footer`
   text-align: center;
-  height: 32px;
-  color: #fff;
+  height: 10vh;
+  color: #ff
   background-color: ${({ Bgcolor }) => Bgcolor || '#76b080'};
 `;
 
 const Page1 = () => {
   return (
     <>
-      <Layout>
-        <StyledHeader>Header</StyledHeader>
+      <StyledLayout>
+        <StyledHeader Height="48px">Header</StyledHeader>
         <StyledHeader Bgcolor="green" Height="32px">
           <TextSlide />
         </StyledHeader>
         <StyledMain>
-          <MyBoxes />
+          <ROW>
+            <Column xs={0} sm={4}>
+              <ROW>
+                <Column sm={24}></Column>
+                <Column sm={24}></Column>
+                <Column sm={24}></Column>
+                <Column sm={24}></Column>
+              </ROW>
+            </Column>
+            <Column xs={24}>
+              <ROW>
+                <Column height={70}>hello</Column>
+              </ROW>
+            </Column>
+            <Column xs={0} sm={4}>
+              box3
+            </Column>
+          </ROW>
         </StyledMain>
         <StyledFooter>Footer</StyledFooter>
-      </Layout>
+      </StyledLayout>
     </>
   );
 };

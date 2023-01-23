@@ -6,7 +6,7 @@ const TextSlide = () => {
       effect="scrollx"
       rtl={true}
       autoplay
-      autoplaySpeed={5000}
+      autoplaySpeed={4000}
       speed={2000}
       dots={false}
     >
