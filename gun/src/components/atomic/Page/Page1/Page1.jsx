@@ -1,54 +1,44 @@
-import { Layout, Button } from 'antd';
+import { Layout } from 'antd';
 import styled from 'styled-components';
-
-const { Header, Content, Footer } = Layout;
-
-const StyledLayout = styled(Layout)`
-  .ant-layout-header {
-    text-align: center;
-    color: #fff;
-    height: 64;
-    padding-inline: 50;
-    line-height: 64px;
-    background-color: ${(Bgcolor) => console.log(Bgcolor) || '#7dbcea'};
-  }
-
-  .ant-layout-content {
-    text-align: center;
-    min-height: 80vh;
-    line-height: 120px;
-    color: #fff;
-    background-color: #108ee9;
-  }
-
-  .ant-layout-footer {
-    text-align: center;
-    color: #fff;
-    background-color: #7dbcea;
-  }
-`;
+import { TextSlide, MyBoxes } from '@atomic';
 
 const StyledHeader = styled.header`
-  background-color: ${({ Bgcolor }) => Bgcolor || 'yellow'};
+  text-align: center;
+  color: #fff;
+  height: ${({ Height }) => Height || '64px'};
+  padding-inline: 50px;
+  line-height: ${({ Height }) => Height || '64px'};
+  background-color: ${({ Bgcolor }) => Bgcolor || '#84bcc4'};
 `;
 
-const StyledButton = styled(Button)`
-  background-color: ${({ color }) => color || 'Green'};
+const StyledMain = styled.main`
+  text-align: center;
+  min-height: 80vh;
+  line-height: 120px;
+  color: #fff;
+  background-color: ${({ Bgcolor }) => Bgcolor || '#7b8a8c'};
+`;
+
+const StyledFooter = styled.footer`
+  text-align: center;
+  height: 32px;
+  color: #fff;
+  background-color: ${({ Bgcolor }) => Bgcolor || '#76b080'};
 `;
 
 const Page1 = () => {
   return (
     <>
-      <StyledLayout>
-        <Header>Header</Header>
-        <StyledHeader Bgcolor="green">Header</StyledHeader>
-        <Content>
-          <div>
-            <StyledButton color="yellow">Click</StyledButton>
-          </div>
-        </Content>
-        <Footer>Footer</Footer>
-      </StyledLayout>
+      <Layout>
+        <StyledHeader>Header</StyledHeader>
+        <StyledHeader Bgcolor="green" Height="32px">
+          <TextSlide />
+        </StyledHeader>
+        <StyledMain>
+          <MyBoxes />
+        </StyledMain>
+        <StyledFooter>Footer</StyledFooter>
+      </Layout>
     </>
   );
 };
