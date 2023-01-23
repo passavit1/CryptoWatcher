@@ -6,9 +6,9 @@ const client = Binance({
 });
 
 const run = async (x) => {
-  const r = await client.futuresDailyStats({ symbol: x });
-
-  console.log(r);
+  const r = await client.futuresAllOrders();
+  // const r = Object.keys(await client.futuresAllOrders()).length;
+  console.log(r[Object.keys(r).length - 2]);
 };
 
 run("BTCUSDT");
