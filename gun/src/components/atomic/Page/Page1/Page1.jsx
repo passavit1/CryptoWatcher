@@ -49,8 +49,10 @@ const Page1 = () => {
               </ROW>
             </Column>
             <Column xs={24}>
-              <ROW>
-                <Column height={70}>hello</Column>
+              <ROW align="middle">
+                <Column height={70} offset={4}>
+                  hello
+                </Column>
               </ROW>
             </Column>
             <Column xs={0} sm={4}>

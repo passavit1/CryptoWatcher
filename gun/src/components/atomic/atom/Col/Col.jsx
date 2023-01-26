@@ -7,9 +7,9 @@ const StyledCol = styled(Col)`
   height: ${({ height }) => height}vh;
 `;
 
-const Column = ({ children, xs = 4, sm = 16, Bgcolor, height }) => {
+const Column = ({ children, xs = 4, sm = 16, Bgcolor, height, ...props }) => {
   return (
-    <StyledCol xs={xs} sm={sm} Bgcolor={Bgcolor} height={height}>
+    <StyledCol xs={xs} sm={sm} Bgcolor={Bgcolor} height={height} {...props}>
       {children}
     </StyledCol>
   );
