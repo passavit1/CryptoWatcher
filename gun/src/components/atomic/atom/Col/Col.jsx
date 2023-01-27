@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const StyledCol = styled(Col)`
   background-color: ${({ Bgcolor }) => Bgcolor || 'aqua'};
-  border: 1px solid red;
+  border: ${({ border }) => border || '1px solid red'};
   height: ${({ height }) => height}vh;
 `;
 

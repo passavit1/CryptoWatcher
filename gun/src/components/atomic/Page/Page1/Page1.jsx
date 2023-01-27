@@ -1,6 +1,6 @@
 import { Layout } from 'antd';
 import styled from 'styled-components';
-import { TextSlide, ROW, Column } from '@atomic';
+import { TextSlide, ROW, Column, CardAntd, InputAntd } from '@atomic';
 
 const StyledLayout = styled(Layout)`
   height: 100vh;
@@ -56,7 +56,12 @@ const Page1 = () => {
               </ROW>
             </Column>
             <Column xs={0} sm={4}>
-              box3
+              <ROW gutter={[0, 16]}>
+                <Column sm={24} border={'hidden'} Bgcolor={'gray'}>
+                  <InputAntd />
+                  <CardAntd> card 1 </CardAntd>
+                </Column>
+              </ROW>
             </Column>
           </ROW>
         </StyledMain>
