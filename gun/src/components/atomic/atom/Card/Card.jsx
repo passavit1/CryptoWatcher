@@ -2,16 +2,16 @@ import { Card } from 'antd';
 import styled from 'styled-components';
 
 const StyledCard = styled(Card)`
-  // height: ${({ height }) => height || '100vh'};
+  height: ${({ height }) => height || '80%'};
+  background-color: ${({ Bgcolor }) => Bgcolor || 'white'};
+  border: 1px solid red;
 `;
 
 const CardAntd = ({ children, ...props }) => {
   return (
-    <div style={{ height: 200 }}>
-      <StyledCard {...props}>
-        <h3>{children}</h3>
-      </StyledCard>
-    </div>
+    <StyledCard {...props}>
+      <h3>{children}</h3>
+    </StyledCard>
   );
 };
 

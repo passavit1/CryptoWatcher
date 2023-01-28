@@ -1,6 +1,13 @@
 import { Layout } from 'antd';
 import styled from 'styled-components';
-import { TextSlide, ROW, Column, CardAntd, InputAntd } from '@atomic';
+import {
+  TextSlide,
+  ROW,
+  Column,
+  CardAntd,
+  InputAntd,
+  TextMessage
+} from '@atomic';
 
 const StyledLayout = styled(Layout)`
   height: 100vh;
@@ -57,9 +64,15 @@ const Page1 = () => {
             </Column>
             <Column xs={0} sm={4}>
               <ROW gutter={[0, 16]}>
-                <Column sm={24} border={'hidden'} Bgcolor={'gray'}>
+                <Column sm={24} border={'hidden'}>
                   <InputAntd />
-                  <CardAntd> card 1 </CardAntd>
+                  <CardAntd Bgcolor={'aqua'}>
+                    <TextMessage>BTCUSDT 23000 +1.0%</TextMessage>
+                    <TextMessage>xxxxxxx</TextMessage>
+                    <TextMessage>xxxxxxx</TextMessage>
+                    <TextMessage>xxxxxxx</TextMessage>
+                    <TextMessage>xxxxxxx</TextMessage>
+                  </CardAntd>
                 </Column>
               </ROW>
             </Column>

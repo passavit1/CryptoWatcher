@@ -7,11 +7,7 @@ const StyledText = styled(Text)`
 `;
 
 const TextMessage = ({ children, fontsize }) => {
-  return (
-    <StyledText type="warning" fontsize={fontsize}>
-      {children}
-    </StyledText>
-  );
+  return <StyledText fontsize={fontsize}>{children}</StyledText>;
 };
 
 export default TextMessage;
