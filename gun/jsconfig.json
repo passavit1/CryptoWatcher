@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@atomic": ["./src/components/atomic"]
+      "@atomic": ["./src/components/atomic"],
+      "@data": ["./src/data"]
     }
   }
 }
