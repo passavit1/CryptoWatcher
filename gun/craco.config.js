@@ -4,7 +4,8 @@ module.exports = {
   webpack: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
-      '@atomic': path.resolve(__dirname, 'src/components/atomic')
+      '@atomic': path.resolve(__dirname, 'src/components/atomic'),
+      '@data': path.resolve(__dirname, 'src/data')
     }
   }
 };
