@@ -9,7 +9,7 @@ import {
   TextMessage
 } from '@atomic';
 
-import { Fucker } from '@data';
+import { MyName } from '@data';
 
 const StyledLayout = styled(Layout)`
   height: 100vh;
@@ -52,7 +52,7 @@ const Page1 = () => {
             <Column xs={0} sm={4}>
               <ROW>
                 <Column sm={24}>
-                  <Fucker />
+                  <MyName />
                 </Column>
                 <Column sm={24}></Column>
                 <Column sm={24}></Column>

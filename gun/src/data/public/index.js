@@ -1,3 +1,3 @@
-import Fucker from './test/test.jsx';
+import MyName from './name/name.jsx';
 
-export { Fucker };
+export { MyName };
