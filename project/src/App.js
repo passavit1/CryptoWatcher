@@ -1,11 +1,10 @@
-import React from "react";
+import Price from "./data/price";
 
 function App() {
   return (
-    <>
-      <div style={{ textAlign: "center" }}>Hello Fucking world</div>
-      <div></div>
-    </>
+    <div>
+      <Price />
+    </div>
   );
 }
 
