@@ -1,8 +1,13 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
+import styled from "styled-components";
+
+const StyledNavbar = styled(Navbar)`
+  background-color: #9fd6c6;
+`;
 
 const Header = () => {
   return (
-    <Navbar bg="danger" expand="lg">
+    <StyledNavbar expand="md">
       <Container>
         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -14,7 +19,7 @@ const Header = () => {
           </Nav>
         </Navbar.Collapse>
       </Container>
-    </Navbar>
+    </StyledNavbar>
   );
 };
 
