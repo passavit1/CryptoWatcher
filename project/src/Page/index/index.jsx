@@ -4,8 +4,19 @@ import styled from "styled-components";
 
 const StyledCol = styled(Col)`
   padding: 0 2px 2px;
+
+  @media (max-width: 576px) {
+    height: 100%;
+  }
 `;
 
+const DelCol = styled(Col)`
+  padding: 0 2px 2px;
+
+  @media (max-width: 576px) {
+    display: none;
+  }
+`;
 function IndexPage() {
   return (
     <>
@@ -24,12 +35,12 @@ function IndexPage() {
           <StyledCol xs={6} sm={4} md={2}>
             <CardBST>Test</CardBST>
           </StyledCol>
-          <StyledCol xs={6} sm={4} md={2}>
+          <DelCol sm={4} md={2}>
             <CardBST>Test</CardBST>
-          </StyledCol>
-          <StyledCol xs={6} sm={4} md={2}>
+          </DelCol>
+          <DelCol sm={4} md={2}>
             <CardBST>Test</CardBST>
-          </StyledCol>
+          </DelCol>
         </Row>
       </Container>
 
