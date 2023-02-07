@@ -13,7 +13,7 @@ const StyledCol = styled(Col)`
 const DelCol = styled(Col)`
   padding: 0 2px 2px;
 
-  @media (max-width: 576px) {
+  @media (max-width: 575px) {
     display: none;
   }
 `;
@@ -21,7 +21,14 @@ function IndexPage() {
   return (
     <>
       <Header />
-      <Container fluid style={{ backgroundColor: "aqua" }}>
+      <Container
+        fluid
+        style={{
+          backgroundColor: "aqua",
+          paddingTop: "2px",
+          marginBottom: "2px",
+        }}
+      >
         <Row>
           <StyledCol xs={6} sm={4} md={2}>
             <CardBST>Test</CardBST>
@@ -43,8 +50,7 @@ function IndexPage() {
           </DelCol>
         </Row>
       </Container>
-
-      <TABS />
+      <TABS></TABS>
     </>
   );
 }

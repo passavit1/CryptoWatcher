@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { Tab, Tabs } from "react-bootstrap";
+import styled from "styled-components";
+
+const StyledTabs = styled(Tabs)`
+  margin-top: 5px;
+`;
 
 function TABS() {
   const [key, setKey] = useState("home");
 
   return (
-    <Tabs
+    <StyledTabs
       id="controlled-tab-example"
       activeKey={key}
       onSelect={(k) => setKey(k)}
@@ -21,7 +26,7 @@ function TABS() {
       <Tab eventKey="contact" title="Contact">
         Test Tab 3
       </Tab>
-    </Tabs>
+    </StyledTabs>
   );
 }
 
