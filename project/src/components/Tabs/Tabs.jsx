@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { Tab, Tabs } from "react-bootstrap";
+import { SearchDropDown } from "../../components/index";
 import styled from "styled-components";
+
+const items = ["my", "name", "is", "password", "hello", "world"];
 
 const StyledTabs = styled(Tabs)`
   margin-top: 5px;
 `;
 
 function TABS() {
-  const [key, setKey] = useState("home");
+  const [key, setKey] = useState("Calculator");
 
   return (
     <StyledTabs
@@ -18,7 +21,7 @@ function TABS() {
       fill
     >
       <Tab eventKey="Calculator" title="Calculator">
-        Test Tab 1
+        <SearchDropDown items={items}></SearchDropDown>
       </Tab>
       <Tab eventKey="NEWS" title="NEWS">
         Test Tab 2

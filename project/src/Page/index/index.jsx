@@ -1,15 +1,7 @@
-import { CardBST, Header, TABS, SearchDropDown } from "../../components/index";
+import { CardBST, Header, TABS } from "../../components/index";
 import { GenCard } from "../../Parts/index";
 import { Col, Row, Container } from "react-bootstrap";
 import styled from "styled-components";
-
-const StyledCol = styled(Col)`
-  padding: 0 2px 2px;
-
-  @media (max-width: 576px) {
-    height: 100%;
-  }
-`;
 
 const DelCol = styled(Col)`
   padding: 0 2px 2px;
@@ -44,7 +36,6 @@ function IndexPage() {
         </Row>
       </Container>
       <TABS></TABS>
-      <SearchDropDown items={["name", "my", "gun"]}></SearchDropDown>
     </>
   );
 }
