@@ -17,10 +17,10 @@ function TABS() {
       className="mb-3"
       fill
     >
-      <Tab eventKey="home" title="Home">
+      <Tab eventKey="Calculator" title="Calculator">
         Test Tab 1
       </Tab>
-      <Tab eventKey="profile" title="Profile">
+      <Tab eventKey="NEWS" title="NEWS">
         Test Tab 2
       </Tab>
       <Tab eventKey="contact" title="Contact">

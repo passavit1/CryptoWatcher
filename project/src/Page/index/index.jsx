@@ -1,4 +1,5 @@
-import { CardBST, Header, TABS } from "../../components/index";
+import { CardBST, Header, TABS, SearchDropDown } from "../../components/index";
+import { GenCard } from "../../Parts/index";
 import { Col, Row, Container } from "react-bootstrap";
 import styled from "styled-components";
 
@@ -17,31 +18,23 @@ const DelCol = styled(Col)`
     display: none;
   }
 `;
+
 function IndexPage() {
+  const numOfCols = 4;
+  const columns = GenCard(numOfCols);
+
   return (
     <>
       <Header />
       <Container
         fluid
         style={{
-          backgroundColor: "aqua",
           paddingTop: "2px",
           marginBottom: "2px",
         }}
       >
         <Row>
-          <StyledCol xs={6} sm={4} md={2}>
-            <CardBST>Test</CardBST>
-          </StyledCol>
-          <StyledCol xs={6} sm={4} md={2}>
-            <CardBST>Test</CardBST>
-          </StyledCol>
-          <StyledCol xs={6} sm={4} md={2}>
-            <CardBST>Test</CardBST>
-          </StyledCol>
-          <StyledCol xs={6} sm={4} md={2}>
-            <CardBST>Test</CardBST>
-          </StyledCol>
+          {columns}
           <DelCol sm={4} md={2}>
             <CardBST>Test</CardBST>
           </DelCol>
@@ -51,6 +44,7 @@ function IndexPage() {
         </Row>
       </Container>
       <TABS></TABS>
+      <SearchDropDown items={["name", "my", "gun"]}></SearchDropDown>
     </>
   );
 }
