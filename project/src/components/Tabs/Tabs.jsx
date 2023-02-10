@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Tab, Tabs } from "react-bootstrap";
-import { SearchDropDown } from "../../components/index";
+import { SearchDropDown, SLIDER, BlockButton } from "../../components/index";
 import styled from "styled-components";
 
 const items = ["my", "name", "is", "password", "hello", "world"];
@@ -22,6 +22,8 @@ function TABS() {
     >
       <Tab eventKey="Calculator" title="Calculator">
         <SearchDropDown items={items}></SearchDropDown>
+        <BlockButton />
+        <SLIDER />
       </Tab>
       <Tab eventKey="NEWS" title="NEWS">
         Test Tab 2

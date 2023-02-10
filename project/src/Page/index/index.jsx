@@ -1,4 +1,9 @@
-import { CardBST, Header, TABS } from "../../components/index";
+import {
+  CardBST,
+  Header,
+  TABS,
+
+} from "../../components/index";
 import { GenCard } from "../../Parts/index";
 import { Col, Row, Container } from "react-bootstrap";
 import styled from "styled-components";

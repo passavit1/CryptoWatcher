@@ -5,26 +5,38 @@ import styled from "styled-components";
 
 const { Label } = Form;
 
+const StyledDivInline = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
 const StyledCard = styled(Card)`
-  margin-left: 8%;
   width: 30%;
-  height: 5rem;
+  height: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @media screen and (max-width: 550px) {
+    width: 45%;
+  }
 `;
 
 const StyledLabel = styled(Label)`
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-left: 1.1rem;
+  text-align: center;
+  display: block;
+  margin-bottom: 10%;
+  margin-top: 10%;
 `;
 
 const StyledButton = styled(Button)`
   width: 100px;
-  margin: 0.5rem 0 0 1rem;
   border-radius: 1rem 0 0 1rem;
 `;
 
 const StyledDropDownToggle = styled(Dropdown.Toggle)`
-  margin-top: 0.5rem;
   border-radius: 0 1rem 1rem 0;
 `;
 
@@ -47,33 +59,63 @@ const SearchDropDown = ({ items }) => {
 
   return (
     <>
-      <StyledCard>
-        <StyledLabel>Email address</StyledLabel>
-        <Dropdown>
-          <StyledButton variant="danger">
-            {selectedItem || "Select"}
-          </StyledButton>
-          <StyledDropDownToggle split variant="danger" id="dropdown-basic" />
-          <Dropdown.Menu>
-            <FormControl
-              type="text"
-              placeholder="Search"
-              className="mb-2"
-              value={searchValue}
-              onChange={handleSearch}
+      <StyledDivInline>
+        <StyledCard>
+          <div>
+            <StyledLabel>COINS</StyledLabel>
+            <div>
+              <Dropdown>
+                <StyledButton variant="danger">
+                  {selectedItem || "Select"}
+                </StyledButton>
+                <StyledDropDownToggle
+                  split
+                  variant="danger"
+                  id="dropdown-basic"
+                />
+                <Dropdown.Menu>
+                  <FormControl
+                    type="text"
+                    placeholder="Search"
+                    className="mb-2"
+                    value={searchValue}
+                    onChange={handleSearch}
+                  />
+                  {filteredItems.map((item) => (
+                    <Dropdown.Item
+                      key={uuidv4()}
+                      href="#/action-1"
+                      onClick={() => handleSelect(item)}
+                    >
+                      {item}
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown.Menu>
+              </Dropdown>
+            </div>
+          </div>
+        </StyledCard>
+        <StyledCard>
+          <StyledLabel>BALANCE</StyledLabel>
+          <StyledDivInline>
+            <Form.Control
+              type="Number"
+              placeholder="Number"
+              style={{ width: "65%" }}
             />
-            {filteredItems.map((item) => (
-              <Dropdown.Item
-                key={uuidv4()}
-                href="#/action-1"
-                onClick={() => handleSelect(item)}
-              >
-                {item}
-              </Dropdown.Item>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
-      </StyledCard>
+            <Form.Label
+              style={{
+                display: "flex",
+                alignItems: "center",
+                height: "100%",
+                fontWeight: "bolder",
+              }}
+            >
+              USD
+            </Form.Label>
+          </StyledDivInline>
+        </StyledCard>
+      </StyledDivInline>
     </>
   );
 };
