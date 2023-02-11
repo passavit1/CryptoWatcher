@@ -102,6 +102,7 @@ const SearchDropDown = ({ items }) => {
               type="Number"
               placeholder="Number"
               style={{ width: "65%" }}
+              min={0}
             />
             <Form.Label
               style={{
