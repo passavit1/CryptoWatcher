@@ -8,31 +8,60 @@ const { Label } = Form;
 const StyledDivInline = styled.div`
   display: flex;
   justify-content: space-around;
-`;
 
-const StyledCard = styled(Card)`
-  width: 30%;
-  height: 7rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  label:first-child {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
 
-  @media screen and (max-width: 550px) {
-    width: 45%;
+  .outer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+
+    .inner {
+      width: 100%;
+
+      .dropdown {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        button:first-child {
+          width: 60%;
+        }
+      }
+    }
+  }
+
+  .Balance {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+
+    .InputBalance {
+      width: 65%;
+
+      @media (min-width: 768px) {
+        width: 80%;
+        margin-right: 1rem;
+      }
+    }
   }
 `;
 
-const StyledLabel = styled(Label)`
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  display: block;
-  margin-bottom: 10%;
-  margin-top: 10%;
+const StyledCard = styled(Card)`
+  width: 45%;
+  height: 7rem;
 `;
 
 const StyledButton = styled(Button)`
-  width: 100px;
   border-radius: 1rem 0 0 1rem;
 `;
 
@@ -61,9 +90,9 @@ const SearchDropDown = ({ items }) => {
     <>
       <StyledDivInline>
         <StyledCard>
-          <div>
-            <StyledLabel>COINS</StyledLabel>
-            <div>
+          <div className="outer">
+            <Label>COINS</Label>
+            <div className="inner">
               <Dropdown>
                 <StyledButton variant="danger">
                   {selectedItem || "Select"}
@@ -95,14 +124,14 @@ const SearchDropDown = ({ items }) => {
             </div>
           </div>
         </StyledCard>
-        <StyledCard>
-          <StyledLabel>BALANCE</StyledLabel>
+        <StyledCard className="Balance">
+          <Label>BALANCE</Label>
           <StyledDivInline>
             <Form.Control
               type="Number"
               placeholder="Number"
-              style={{ width: "65%" }}
               min={0}
+              className="InputBalance"
             />
             <Form.Label
               style={{
