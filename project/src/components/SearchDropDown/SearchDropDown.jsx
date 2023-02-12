@@ -12,6 +12,10 @@ const StyledDivInline = styled.div`
   label:first-child {
     font-size: 1.5rem;
     font-weight: bold;
+
+    @media (max-width: 350px) {
+      scale: 0.8;
+    }
   }
 
   .outer {
