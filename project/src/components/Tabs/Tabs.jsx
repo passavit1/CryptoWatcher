@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Tab, Tabs } from "react-bootstrap";
 import { SearchDropDown, SLIDER, BlockButton } from "../../components/index";
-import { FormInput } from "../../Parts/index";
+import { FormInput, FormResult } from "../../Parts/index";
 import styled from "styled-components";
+import { Divider } from "antd";
 
 const items = ["my", "name", "is", "password", "hello", "world"];
 
@@ -22,10 +23,13 @@ function TABS() {
       fill
     >
       <Tab eventKey="Calculator" title="Calculator">
+        <Divider style={{}}>User Information</Divider>
         <SearchDropDown items={items}></SearchDropDown>
         <BlockButton />
         <SLIDER />
         <FormInput />
+        <Divider style={{}}>Result</Divider>
+        <FormResult />
       </Tab>
       <Tab eventKey="NEWS" title="NEWS">
         Test Tab 2

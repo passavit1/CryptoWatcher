@@ -1,7 +1,9 @@
-import { Slider } from "antd";
+import { Slider, InputNumber } from "antd";
 import styled from "styled-components";
 import { TEXT } from "../index";
 import { useState } from "react";
+
+//Styled Component
 
 const StyledSlider = styled(Slider)`
   width: 95%;
@@ -82,7 +84,7 @@ const railStyle = {
   height: "0.75rem",
 };
 
-const handleStyle = {};
+//Return the Function
 
 const SLIDER = () => {
   const [leverage, setLeverage] = useState(25);
@@ -91,22 +93,32 @@ const SLIDER = () => {
     setLeverage(value);
   };
 
+  const handleInputChange = (value) => {
+    if (!isNaN(parseFloat(value))) {
+      setLeverage(parseFloat(value));
+    }
+  };
+
   return (
     <StyledDiv>
       <StyledLeverage>
         <TEXT strong>LEVERAGE</TEXT>
-        <TEXT class="SetBG" strong>
-          {leverage}
-        </TEXT>
+        <InputNumber
+          min={0}
+          max={125}
+          value={leverage}
+          onChange={handleInputChange}
+          className="SetBG"
+        />
       </StyledLeverage>
       <StyledSlider
         marks={marks}
         defaultValue={25}
         max={125}
+        value={leverage}
         onChange={handleSliderChange}
         trackStyle={trackStyle}
         railStyle={railStyle}
-        handleStyle={handleStyle}
       />
     </StyledDiv>
   );
