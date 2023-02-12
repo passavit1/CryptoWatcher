@@ -18,6 +18,10 @@ const StyledFormGroup = styled(Group)`
 
   input {
     width: 45%;
+
+    @media (min-width: 768px) {
+      width: 50%;
+    }
   }
 `;
 

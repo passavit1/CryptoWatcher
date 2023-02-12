@@ -26,32 +26,30 @@ const FormResult = () => {
 
   return (
     <>
-      <StyledDiv>
-        <TEXT>Entry Price : </TEXT>
-        <TEXT>20000</TEXT>
-      </StyledDiv>
-      <StyledDiv>
-        <TEXT>Quantity : </TEXT>
-        <TEXT>20000</TEXT>
-      </StyledDiv>
-      <StyledDiv>
-        <TEXT>Take Profit : </TEXT>
-        <TEXT style={{ color }}>{ProfitColor}</TEXT>
-        <TEXT>20000</TEXT>
-      </StyledDiv>
-      <StyledDiv>
-        <TEXT>Stop Price :</TEXT>
-        <TEXT style={{ color: cutlossColor }}>{CutlossColor}</TEXT>
-        <TEXT>20000</TEXT>
-      </StyledDiv>
-      <StyledDiv>
-        <TEXT>Risk : </TEXT>
-        <TEXT>20000</TEXT>
-      </StyledDiv>
-      <StyledDiv>
-        <TEXT>Reward : </TEXT>
-        <TEXT>20000</TEXT>
-      </StyledDiv>
+      <div className="DivContainer">
+        <StyledDiv>
+          <TEXT>Current Price :</TEXT>
+          <TEXT>20000</TEXT>
+        </StyledDiv>
+        <StyledDiv>
+          <TEXT>Quantity : </TEXT>
+          <TEXT>20000</TEXT>
+        </StyledDiv>
+        <StyledDiv>
+          <TEXT>Take Profit : </TEXT>
+          <TEXT style={{ color }}>{ProfitColor}</TEXT>
+          <TEXT>20000</TEXT>
+        </StyledDiv>
+        <StyledDiv>
+          <TEXT>Stop Price :</TEXT>
+          <TEXT style={{ color: cutlossColor }}>{CutlossColor}</TEXT>
+          <TEXT>20000</TEXT>
+        </StyledDiv>
+        <StyledDiv>
+          <TEXT>Risk : Reward </TEXT>
+          <TEXT>20000</TEXT>
+        </StyledDiv>
+      </div>
     </>
   );
 };
