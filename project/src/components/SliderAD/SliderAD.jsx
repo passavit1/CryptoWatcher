@@ -48,7 +48,14 @@ const StyledSlider = styled(Slider)`
 const StyledDiv = styled.div`
   margin-left: 5%;
   margin-right: 5%;
-  padding-top: 5%;
+  padding-top: 4%;
+
+  @media (min-width: 480px) {
+    padding-top: 3%;
+  }
+  @media (min-width: 768px) {
+    padding-top: 2%;
+  }
 `;
 
 const StyledLeverage = styled.div`
