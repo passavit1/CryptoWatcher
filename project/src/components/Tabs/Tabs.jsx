@@ -5,8 +5,6 @@ import { FormInput, FormResult } from "../../Parts/index";
 import styled from "styled-components";
 import { Divider } from "antd";
 
-const items = ["my", "name", "is", "password", "hello", "world"];
-
 const StyledTabs = styled(Tabs)`
   margin-top: 5px;
 `;
@@ -57,7 +55,7 @@ function TABS() {
     >
       <Tab eventKey="Calculator" title="Calculator">
         <Divider>User Information</Divider>
-        <SearchDropDown items={items}></SearchDropDown>
+        <SearchDropDown></SearchDropDown>
         <BlockButton />
         <SLIDER />
         <StyledDivWhenMedium>

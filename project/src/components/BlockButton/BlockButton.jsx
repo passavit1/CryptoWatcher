@@ -11,12 +11,7 @@ const StyledDiv = styled.div`
 function BlockButton() {
   return (
     <StyledDiv>
-      <Button
-        variant="primary"
-        size="sm"
-        style={{ width: "94%" }}
-        onClick={() => console.log("hello world")}
-      >
+      <Button variant="primary" size="sm" style={{ width: "94%" }}>
         CLEAR
       </Button>
     </StyledDiv>
