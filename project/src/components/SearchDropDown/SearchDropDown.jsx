@@ -94,7 +94,7 @@ const SearchDropDown = () => {
   const [selectedItem, setSelectedItem] = useState("");
   const [coinList, setCoinList] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-  const [filteredItems, setFilteredItems] = useState(coinList);
+  const [filteredItems, setFilteredItems] = useState([]);
 
   useEffect(() => {
     const fetchCoinList = async () => {
@@ -107,16 +107,21 @@ const SearchDropDown = () => {
 
   const handleSearch = (e) => {
     setSearchValue(e.target.value);
-    const filtered = coinList.filter((item) =>
-      item.symbol.toLowerCase().includes(e.target.value.toLowerCase())
-    );
-    setFilteredItems(filtered);
+    if (e.target.value === "") {
+      setFilteredItems(coinList);
+    } else {
+      const filtered = coinList.filter((item) =>
+        item.symbol.toLowerCase().includes(e.target.value.toLowerCase())
+      );
+      setFilteredItems(filtered);
+    }
   };
 
   const handleSelect = (item) => {
     setSelectedItem(item.symbol);
   };
 
+  console.log(getCoinList().then((x) => console.log(x)));
   return (
     <StyledDivInline>
       <StyledCard>
@@ -142,8 +147,7 @@ const SearchDropDown = () => {
                 />
                 {filteredItems.map((item) => (
                   <Dropdown.Item
-                    key={item.id}
-                    href="#/action-1"
+                    key={uuidv4()}
                     onClick={() => handleSelect(item)}
                   >
                     {item.symbol}
