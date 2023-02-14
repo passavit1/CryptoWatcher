@@ -35,7 +35,7 @@ function IndexPage() {
           </DelCol>
         </Row>
       </Container>
-      <TABS></TABS>
+      <TABS />
     </>
   );
 }

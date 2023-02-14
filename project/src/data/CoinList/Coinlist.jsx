@@ -23,7 +23,7 @@ async function getCoinList(searchTerm) {
     coin.symbol.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  return [...top100Coins, ...filteredCoins];
+  return filteredCoins;
 }
 
 export default getCoinList;

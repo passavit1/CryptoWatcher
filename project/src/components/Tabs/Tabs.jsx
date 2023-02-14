@@ -44,6 +44,7 @@ const StyledDivWhenMedium = styled.div`
 
 function TABS() {
   const [key, setKey] = useState("Calculator");
+  const [selectedCoin, setSelectedCoin] = useState("");
 
   return (
     <StyledTabs

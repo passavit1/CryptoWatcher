@@ -110,10 +110,9 @@ const SearchDropDown = () => {
     if (e.target.value === "") {
       setFilteredItems(coinList);
     } else {
-      const filtered = coinList.filter((item) =>
-        item.symbol.toLowerCase().includes(e.target.value.toLowerCase())
-      );
-      setFilteredItems(filtered);
+      getCoinList(e.target.value).then((filtered) => {
+        setFilteredItems(filtered);
+      });
     }
   };
 
@@ -121,12 +120,11 @@ const SearchDropDown = () => {
     setSelectedItem(item.symbol);
   };
 
-  console.log(getCoinList().then((x) => console.log(x)));
   return (
     <StyledDivInline>
       <StyledCard>
         <div className="outer">
-          <Label>COINS</Label>
+          <Label>COINS SYMBOL</Label>
           <div className="inner">
             <Dropdown>
               <StyledButton variant="danger">

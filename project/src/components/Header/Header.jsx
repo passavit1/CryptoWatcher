@@ -2,7 +2,13 @@ import { Container, Navbar, Nav } from "react-bootstrap";
 import styled from "styled-components";
 
 const StyledNavbar = styled(Navbar)`
-  background-color: #9fd6c6;
+  background-color: #2e3f4f;
+
+  .container {
+    a {
+      color: white;
+    }
+  }
 `;
 
 const Header = () => {
