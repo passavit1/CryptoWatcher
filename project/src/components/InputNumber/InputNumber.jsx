@@ -1,5 +1,6 @@
 import { Form } from "react-bootstrap";
 import styled from "styled-components";
+import { useState } from "react";
 
 const { Control, Label, Group } = Form;
 
@@ -25,10 +26,13 @@ const StyledFormGroup = styled(Group)`
 `;
 
 const InputNUM = ({ children, name, value, onChange, ...props }) => {
+  const [stateValue, setStateValue] = useState(value);
+
   const handleNumberChange = (event) => {
     const inputValue = event.target.value;
 
     if (!isNaN(parseFloat(inputValue))) {
+      setStateValue(parseFloat(inputValue));
       onChange(name, parseFloat(inputValue));
     }
   };
@@ -39,7 +43,7 @@ const InputNUM = ({ children, name, value, onChange, ...props }) => {
       <Control
         type="number"
         name={name}
-        value={value}
+        value={stateValue}
         onChange={handleNumberChange}
         placeholder="Enter The Number"
         min={0}

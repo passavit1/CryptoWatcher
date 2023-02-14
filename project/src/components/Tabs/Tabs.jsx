@@ -47,12 +47,12 @@ function TABS() {
   const [selectedCoin, setSelectedCoin] = useState("");
 
   const [inputValues, setInputValues] = useState({
-    entryPrice: 0,
-    quantity: 0,
-    stopPrice: 0,
-    takeProfit: 0,
-    risk: 0,
-    reward: 0,
+    entryPrice: "",
+    quantity: "",
+    stopPrice: "",
+    takeProfit: "",
+    risk: "",
+    reward: "",
   });
 
   const handleCoinSelection = (symbol) => {
@@ -60,9 +60,13 @@ function TABS() {
   };
 
   const handleInputChange = (name, value) => {
-    setInputValues((prevValues) => ({ ...prevValues, [name]: value }));
+    if (value !== 0) {
+      setInputValues((prevValues) => ({
+        ...prevValues,
+        [name]: value,
+      }));
+    }
   };
-
   return (
     <StyledTabs
       id="controlled-tab-example"
