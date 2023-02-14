@@ -52,6 +52,10 @@ const FormResult = ({ symbol }) => {
           <TEXT>20000</TEXT>
         </StyledDiv>
         <StyledDiv>
+          <TEXT>Margin Use : </TEXT>
+          <TEXT>20000</TEXT>
+        </StyledDiv>
+        <StyledDiv>
           <TEXT>Take Profit : </TEXT>
           <TEXT style={{ color }}>{ProfitColor}</TEXT>
           <TEXT>20000</TEXT>

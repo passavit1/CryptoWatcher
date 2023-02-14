@@ -31,10 +31,8 @@ const InputNUM = ({ children, name, value, onChange, ...props }) => {
   const handleNumberChange = (event) => {
     const inputValue = event.target.value;
 
-    if (!isNaN(parseFloat(inputValue))) {
-      setStateValue(parseFloat(inputValue));
-      onChange(name, parseFloat(inputValue));
-    }
+    setStateValue(inputValue);
+    onChange(name, inputValue);
   };
 
   return (

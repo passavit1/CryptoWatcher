@@ -44,7 +44,16 @@ const StyledDivWhenMedium = styled.div`
 
 function TABS() {
   const [key, setKey] = useState("Calculator");
+
+  //handle selected coin
+
   const [selectedCoin, setSelectedCoin] = useState("");
+
+  const handleCoinSelection = (symbol) => {
+    setSelectedCoin(symbol);
+  };
+
+  // handle value from Form Input
 
   const [inputValues, setInputValues] = useState({
     entryPrice: "",
@@ -55,10 +64,6 @@ function TABS() {
     reward: "",
   });
 
-  const handleCoinSelection = (symbol) => {
-    setSelectedCoin(symbol);
-  };
-
   const handleInputChange = (name, value) => {
     if (value !== 0) {
       setInputValues((prevValues) => ({
@@ -67,6 +72,8 @@ function TABS() {
       }));
     }
   };
+
+  console.log(inputValues);
   return (
     <StyledTabs
       id="controlled-tab-example"

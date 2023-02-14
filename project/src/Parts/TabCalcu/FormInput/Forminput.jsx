@@ -17,7 +17,7 @@ const StyledDiv = styled.div`
 
 const FormInput = ({ inputValues, onInputChange }) => {
   const handleInputChange = (name, value) => {
-    onInputChange({ ...inputValues, [name]: value });
+    onInputChange(name, value);
   };
 
   return (
