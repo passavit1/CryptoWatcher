@@ -73,7 +73,16 @@ function TABS() {
     }
   };
 
-  console.log(inputValues);
+  // handle value from slider
+
+  const [LeverageValue, setLeverageValue] = useState(25);
+
+  const handleValueLeverage = (Leverage) => {
+    if (Leverage !== 0) {
+      setLeverageValue(Leverage);
+    }
+  };
+
   return (
     <StyledTabs
       id="controlled-tab-example"
@@ -86,14 +95,18 @@ function TABS() {
         <Divider>User Information</Divider>
         <SearchDropDown onSelect={handleCoinSelection}></SearchDropDown>
         <BlockButton />
-        <SLIDER />
+        <SLIDER onChange={handleValueLeverage} />
         <StyledDivWhenMedium>
           <FormInput
             inputValues={inputValues}
             onInputChange={handleInputChange}
           />
           <StyledDivider className="result-divider">Result</StyledDivider>
-          <FormResult symbol={selectedCoin} />
+          <FormResult
+            inputValues={inputValues}
+            symbol={selectedCoin}
+            LeverageValue={LeverageValue}
+          />
         </StyledDivWhenMedium>
         <Divider></Divider>
       </Tab>

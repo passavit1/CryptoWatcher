@@ -18,10 +18,14 @@ const StyledDiv = styled.div`
   }
 `;
 
-const FormResult = ({ symbol }) => {
+const FormResult = ({ symbol, inputValues, LeverageValue }) => {
   const [ProfitColor, setProfitColor] = useState(200);
   const [CutlossColor, setCutlossColor] = useState(-100);
   const [currentPrice, setCurrentPrice] = useState(null);
+  const [MarginUse, setMarginUse] = useState("");
+
+  const { entryPrice, quantity, stopPrice, takeProfit, risk, reward } =
+    inputValues;
 
   const color = ProfitColor >= 0 ? "green" : "red";
   const cutlossColor = CutlossColor >= 0 ? "green" : "red";
@@ -40,6 +44,10 @@ const FormResult = ({ symbol }) => {
     fetchCurrentPrice();
   }, [symbol]);
 
+  useEffect(() => {
+    setMarginUse((quantity / LeverageValue).toFixed(2));
+  }, [quantity, LeverageValue]);
+
   return (
     <>
       <div className="DivContainer">
@@ -49,21 +57,23 @@ const FormResult = ({ symbol }) => {
         </StyledDiv>
         <StyledDiv>
           <TEXT>Quantity : </TEXT>
-          <TEXT>20000</TEXT>
+          <TEXT>{quantity}</TEXT>
         </StyledDiv>
         <StyledDiv>
           <TEXT>Margin Use : </TEXT>
-          <TEXT>20000</TEXT>
+          <TEXT>{MarginUse}</TEXT>
         </StyledDiv>
         <StyledDiv>
           <TEXT>Take Profit : </TEXT>
-          <TEXT style={{ color }}>{ProfitColor}</TEXT>
-          <TEXT>20000</TEXT>
+          <TEXT style={{ color }}>
+            {((takeProfit - entryPrice) * (quantity / takeProfit)).toFixed(2)}
+          </TEXT>
+          <TEXT>{takeProfit}</TEXT>
         </StyledDiv>
         <StyledDiv>
           <TEXT>Stop Price :</TEXT>
           <TEXT style={{ color: cutlossColor }}>{CutlossColor}</TEXT>
-          <TEXT>20000</TEXT>
+          <TEXT>{stopPrice}</TEXT>
         </StyledDiv>
         <StyledDiv>
           <TEXT>Risk : Reward </TEXT>

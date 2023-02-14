@@ -7,6 +7,7 @@ import { useState } from "react";
 
 const StyledSlider = styled(Slider)`
   width: 95%;
+  margin-top: 3%;
 
   .ant-slider-mark {
     margin-top: 8px;
@@ -93,16 +94,18 @@ const railStyle = {
 
 //Return the Function
 
-const SLIDER = () => {
+const SLIDER = ({ onChange }) => {
   const [leverage, setLeverage] = useState(25);
 
   const handleSliderChange = (value) => {
     setLeverage(value);
+    onChange(value);
   };
 
   const handleInputChange = (value) => {
     if (!isNaN(parseFloat(value))) {
       setLeverage(parseFloat(value));
+      onChange(value);
     }
   };
 

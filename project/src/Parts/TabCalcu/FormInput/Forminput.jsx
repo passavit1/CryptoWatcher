@@ -38,18 +38,18 @@ const FormInput = ({ inputValues, onInputChange }) => {
           Quantity :{" "}
         </InputNUM>
         <InputNUM
-          name="stopPrice"
-          value={inputValues.stopPrice}
-          onChange={handleInputChange}
-        >
-          Stop Price :{" "}
-        </InputNUM>
-        <InputNUM
           name="takeProfit"
           value={inputValues.takeProfit}
           onChange={handleInputChange}
         >
           Take Profit :{" "}
+        </InputNUM>
+        <InputNUM
+          name="stopPrice"
+          value={inputValues.stopPrice}
+          onChange={handleInputChange}
+        >
+          Stop Price :{" "}
         </InputNUM>
         <InputNUM
           name="risk"
