@@ -1,8 +1,25 @@
 import { InputNUM } from "../../../components/index";
+import { BuySellButton } from "../../index";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
   margin-top: 10%;
+
+  .ant-radio-group {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3%;
+
+    label {
+      width: 45%;
+      text-align: center;
+
+      &.ant-radio-button-wrapper-checked {
+        background-color: red;
+      }
+    }
+  }
 
   @media (min-width: 578px) {
     margin-top: 8%;
@@ -23,6 +40,7 @@ const FormInput = ({ inputValues, onInputChange }) => {
   return (
     <>
       <StyledDiv>
+        <BuySellButton />
         <InputNUM
           name="entryPrice"
           value={inputValues.entryPrice}

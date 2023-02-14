@@ -96,6 +96,7 @@ function TABS() {
         <SearchDropDown onSelect={handleCoinSelection}></SearchDropDown>
         <BlockButton />
         <SLIDER onChange={handleValueLeverage} />
+
         <StyledDivWhenMedium>
           <FormInput
             inputValues={inputValues}
