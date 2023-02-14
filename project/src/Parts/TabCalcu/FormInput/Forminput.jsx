@@ -15,16 +15,56 @@ const StyledDiv = styled.div`
   }
 `;
 
-const FormInput = () => {
+const FormInput = ({ inputValues, onInputChange }) => {
+  const handleInputChange = (name, value) => {
+    onInputChange({ ...inputValues, [name]: value });
+  };
+
   return (
     <>
       <StyledDiv>
-        <InputNUM>Entry Price : </InputNUM>
-        <InputNUM>Quantity : </InputNUM>
-        <InputNUM>Stop Price : </InputNUM>
-        <InputNUM>Take Profit : </InputNUM>
-        <InputNUM>Risk : </InputNUM>
-        <InputNUM>Reward : </InputNUM>
+        <InputNUM
+          name="entryPrice"
+          value={inputValues.entryPrice}
+          onChange={handleInputChange}
+        >
+          Entry Price :{" "}
+        </InputNUM>
+        <InputNUM
+          name="quantity"
+          value={inputValues.quantity}
+          onChange={handleInputChange}
+        >
+          Quantity :{" "}
+        </InputNUM>
+        <InputNUM
+          name="stopPrice"
+          value={inputValues.stopPrice}
+          onChange={handleInputChange}
+        >
+          Stop Price :{" "}
+        </InputNUM>
+        <InputNUM
+          name="takeProfit"
+          value={inputValues.takeProfit}
+          onChange={handleInputChange}
+        >
+          Take Profit :{" "}
+        </InputNUM>
+        <InputNUM
+          name="risk"
+          value={inputValues.risk}
+          onChange={handleInputChange}
+        >
+          Risk :{" "}
+        </InputNUM>
+        <InputNUM
+          name="reward"
+          value={inputValues.reward}
+          onChange={handleInputChange}
+        >
+          Reward :{" "}
+        </InputNUM>
       </StyledDiv>
     </>
   );

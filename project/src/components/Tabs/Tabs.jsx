@@ -46,6 +46,23 @@ function TABS() {
   const [key, setKey] = useState("Calculator");
   const [selectedCoin, setSelectedCoin] = useState("");
 
+  const [inputValues, setInputValues] = useState({
+    entryPrice: 0,
+    quantity: 0,
+    stopPrice: 0,
+    takeProfit: 0,
+    risk: 0,
+    reward: 0,
+  });
+
+  const handleCoinSelection = (symbol) => {
+    setSelectedCoin(symbol);
+  };
+
+  const handleInputChange = (name, value) => {
+    setInputValues((prevValues) => ({ ...prevValues, [name]: value }));
+  };
+
   return (
     <StyledTabs
       id="controlled-tab-example"
@@ -56,13 +73,16 @@ function TABS() {
     >
       <Tab eventKey="Calculator" title="Calculator">
         <Divider>User Information</Divider>
-        <SearchDropDown></SearchDropDown>
+        <SearchDropDown onSelect={handleCoinSelection}></SearchDropDown>
         <BlockButton />
         <SLIDER />
         <StyledDivWhenMedium>
-          <FormInput />
+          <FormInput
+            inputValues={inputValues}
+            onInputChange={handleInputChange}
+          />
           <StyledDivider className="result-divider">Result</StyledDivider>
-          <FormResult />
+          <FormResult symbol={selectedCoin} />
         </StyledDivWhenMedium>
         <Divider></Divider>
       </Tab>

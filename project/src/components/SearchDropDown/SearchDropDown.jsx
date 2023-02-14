@@ -90,7 +90,7 @@ const StyledSearchBox = styled(FormControl)`
   margin-bottom: 0.5rem;
 `;
 
-const SearchDropDown = () => {
+const SearchDropDown = ({ onSelect }) => {
   const [selectedItem, setSelectedItem] = useState("");
   const [coinList, setCoinList] = useState([]);
   const [searchValue, setSearchValue] = useState("");
@@ -118,6 +118,7 @@ const SearchDropDown = () => {
 
   const handleSelect = (item) => {
     setSelectedItem(item.symbol);
+    onSelect({ symbol: item.symbol, id: item.id });
   };
 
   return (

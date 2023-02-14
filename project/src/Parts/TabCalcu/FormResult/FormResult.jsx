@@ -1,6 +1,7 @@
 import { TEXT } from "../../../components/index";
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const StyledDiv = styled.div`
   display: flex;
@@ -17,19 +18,34 @@ const StyledDiv = styled.div`
   }
 `;
 
-const FormResult = () => {
+const FormResult = ({ symbol }) => {
   const [ProfitColor, setProfitColor] = useState(200);
   const [CutlossColor, setCutlossColor] = useState(-100);
+  const [currentPrice, setCurrentPrice] = useState(null);
 
   const color = ProfitColor >= 0 ? "green" : "red";
   const cutlossColor = CutlossColor >= 0 ? "green" : "red";
+
+  useEffect(() => {
+    const fetchCurrentPrice = async () => {
+      if (!symbol) return;
+
+      const response = await axios.get(
+        `https://api.coingecko.com/api/v3/simple/price?ids=${symbol.id}&vs_currencies=usd`
+      );
+
+      setCurrentPrice(response.data[symbol.id].usd);
+    };
+
+    fetchCurrentPrice();
+  }, [symbol]);
 
   return (
     <>
       <div className="DivContainer">
         <StyledDiv>
           <TEXT>Current Price :</TEXT>
-          <TEXT>20000</TEXT>
+          <TEXT>{currentPrice}</TEXT>
         </StyledDiv>
         <StyledDiv>
           <TEXT>Quantity : </TEXT>
