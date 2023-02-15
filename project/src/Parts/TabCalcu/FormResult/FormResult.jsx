@@ -36,7 +36,7 @@ const FormResult = ({
   const color = CalculateProfit >= 0 ? "green" : "red";
   const cutlossColor = CalculateLoss >= 0 ? "green" : "red";
 
-  // Fetch current Price
+  // Fetch current Price every 3 minutes
 
   useEffect(() => {
     const fetchCurrentPrice = async () => {

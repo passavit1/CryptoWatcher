@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const StyledCard = styled(Card)`
   width: 100%;
-  height: 80px;
   background: linear-gradient(90deg, #c7daf0 0, #e6effd);
 `;
 

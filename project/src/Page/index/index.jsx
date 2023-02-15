@@ -1,18 +1,23 @@
-import { CardBST, Header, TABS } from "../../components/index";
+import { useState, useEffect } from "react";
+import { Header, TABS } from "../../components/index";
 import { GenCard } from "../../Parts/index";
-import { Col, Row, Container } from "react-bootstrap";
-import styled from "styled-components";
-
-const DelCol = styled(Col)`
-  padding: 0 2px 2px;
-
-  @media (max-width: 575px) {
-    display: none;
-  }
-`;
+import { Row, Container } from "react-bootstrap";
 
 function IndexPage() {
-  const numOfCols = 4;
+  const [numOfCols, setNumOfCols] = useState(window.innerWidth >= 576 ? 6 : 4);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setNumOfCols(window.innerWidth >= 576 ? 6 : 4);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const columns = GenCard(numOfCols);
 
   return (
@@ -25,15 +30,7 @@ function IndexPage() {
           marginBottom: "2px",
         }}
       >
-        <Row>
-          {columns}
-          <DelCol sm={4} md={2}>
-            <CardBST>Test</CardBST>
-          </DelCol>
-          <DelCol sm={4} md={2}>
-            <CardBST>Test</CardBST>
-          </DelCol>
-        </Row>
+        <Row>{columns}</Row>
       </Container>
       <TABS />
     </>
