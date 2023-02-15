@@ -6,6 +6,8 @@ import { Row, Container } from "react-bootstrap";
 function IndexPage() {
   const [numOfCols, setNumOfCols] = useState(window.innerWidth >= 576 ? 6 : 4);
 
+  // useEffect for test render when in inspect
+
   useEffect(() => {
     const handleResize = () => {
       setNumOfCols(window.innerWidth >= 576 ? 6 : 4);

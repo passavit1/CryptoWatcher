@@ -15,7 +15,7 @@ const GenCard = (numOfCols) => {
   for (let i = 0; i < numOfCols; i++) {
     columns.push(
       <StyledCol xs={6} sm={4} md={2}>
-        <CardBST>Test</CardBST>
+        <CardBST name={`Card ${i + 1}`}>Test</CardBST>
       </StyledCol>
     );
   }
