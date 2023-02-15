@@ -24,16 +24,16 @@ const FormResult = ({
   LeverageValue,
   SelectTypeValue,
 }) => {
-  const [ProfitColor, setProfitColor] = useState(200);
-  const [CutlossColor, setCutlossColor] = useState(-100);
   const [currentPrice, setCurrentPrice] = useState(null);
   const [MarginUse, setMarginUse] = useState("");
+  const [CalculateProfit, setCalculateProfit] = useState("");
+  const [CalculateLoss, setCalculateLoss] = useState("");
 
   const { entryPrice, quantity, stopPrice, takeProfit, risk, reward } =
     inputValues;
 
-  const color = ProfitColor >= 0 ? "green" : "red";
-  const cutlossColor = CutlossColor >= 0 ? "green" : "red";
+  const color = CalculateProfit >= 0 ? "green" : "red";
+  const cutlossColor = CalculateLoss >= 0 ? "green" : "red";
 
   useEffect(() => {
     const fetchCurrentPrice = async () => {
@@ -53,6 +53,37 @@ const FormResult = ({
     setMarginUse((quantity / LeverageValue).toFixed(2));
   }, [quantity, LeverageValue]);
 
+  useEffect(() => {
+    if (SelectTypeValue === "buy") {
+      if (takeProfit === "") return;
+      else {
+        setCalculateProfit(
+          ((takeProfit - entryPrice) * (quantity / takeProfit)).toFixed(2)
+        );
+        setCalculateLoss(
+          ((stopPrice - entryPrice) * (quantity / stopPrice)).toFixed(2)
+        );
+      }
+    } else {
+      if (stopPrice === "") return;
+      else {
+        setCalculateProfit(
+          ((entryPrice - takeProfit) * (quantity / takeProfit)).toFixed(2)
+        );
+        setCalculateLoss(
+          ((entryPrice - stopPrice) * (quantity / stopPrice)).toFixed(2)
+        );
+      }
+    }
+  }, [
+    takeProfit,
+    entryPrice,
+    quantity,
+    SelectTypeValue,
+    currentPrice,
+    stopPrice,
+  ]);
+
   return (
     <>
       <div className="DivContainer">
@@ -70,14 +101,12 @@ const FormResult = ({
         </StyledDiv>
         <StyledDiv>
           <TEXT>Take Profit : </TEXT>
-          <TEXT style={{ color }}>
-            {((takeProfit - entryPrice) * (quantity / takeProfit)).toFixed(2)}
-          </TEXT>
+          <TEXT style={{ color }}>{CalculateProfit}</TEXT>
           <TEXT>{takeProfit}</TEXT>
         </StyledDiv>
         <StyledDiv>
           <TEXT>Stop Price :</TEXT>
-          <TEXT style={{ color: cutlossColor }}>{CutlossColor}</TEXT>
+          <TEXT style={{ color: cutlossColor }}>{CalculateLoss}</TEXT>
           <TEXT>{stopPrice}</TEXT>
         </StyledDiv>
         <StyledDiv>

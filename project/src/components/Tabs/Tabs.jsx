@@ -85,7 +85,7 @@ function TABS() {
 
   //handle Value from SelectType
 
-  const [SelectTypeValue, setSelectTypeValue] = useState("");
+  const [SelectTypeValue, setSelectTypeValue] = useState("buy");
 
   const handleValueSelectType = (SelectType) => {
     setSelectTypeValue(SelectType);
