@@ -18,7 +18,12 @@ const StyledDiv = styled.div`
   }
 `;
 
-const FormResult = ({ symbol, inputValues, LeverageValue }) => {
+const FormResult = ({
+  symbol,
+  inputValues,
+  LeverageValue,
+  SelectTypeValue,
+}) => {
   const [ProfitColor, setProfitColor] = useState(200);
   const [CutlossColor, setCutlossColor] = useState(-100);
   const [currentPrice, setCurrentPrice] = useState(null);

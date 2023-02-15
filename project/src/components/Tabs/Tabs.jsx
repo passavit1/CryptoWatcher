@@ -83,6 +83,14 @@ function TABS() {
     }
   };
 
+  //handle Value from SelectType
+
+  const [SelectTypeValue, setSelectTypeValue] = useState("");
+
+  const handleValueSelectType = (SelectType) => {
+    setSelectTypeValue(SelectType);
+  };
+
   return (
     <StyledTabs
       id="controlled-tab-example"
@@ -101,12 +109,14 @@ function TABS() {
           <FormInput
             inputValues={inputValues}
             onInputChange={handleInputChange}
+            TypeSelect={handleValueSelectType}
           />
           <StyledDivider className="result-divider">Result</StyledDivider>
           <FormResult
             inputValues={inputValues}
             symbol={selectedCoin}
             LeverageValue={LeverageValue}
+            SelectTypeValue={SelectTypeValue}
           />
         </StyledDivWhenMedium>
         <Divider></Divider>
