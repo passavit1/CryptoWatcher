@@ -28,12 +28,15 @@ const FormResult = ({
   const [MarginUse, setMarginUse] = useState("");
   const [CalculateProfit, setCalculateProfit] = useState("");
   const [CalculateLoss, setCalculateLoss] = useState("");
+  const [Reward, setReward] = useState("XXX");
 
   const { entryPrice, quantity, stopPrice, takeProfit, risk, reward } =
     inputValues;
 
   const color = CalculateProfit >= 0 ? "green" : "red";
   const cutlossColor = CalculateLoss >= 0 ? "green" : "red";
+
+  // Fetch current Price
 
   useEffect(() => {
     const fetchCurrentPrice = async () => {
@@ -44,34 +47,45 @@ const FormResult = ({
       );
 
       setCurrentPrice(response.data[symbol.id].usd);
+      console.log("Current price:", response.data[symbol.id].usd);
     };
 
     fetchCurrentPrice();
+
+    const UpdatePrice = setInterval(() => {
+      fetchCurrentPrice();
+    }, 180000);
+
+    return () => clearInterval(UpdatePrice);
   }, [symbol]);
+
+  // Calculate Margin Use
 
   useEffect(() => {
     setMarginUse((quantity / LeverageValue).toFixed(2));
   }, [quantity, LeverageValue]);
+
+  // Calculate profit and loss
 
   useEffect(() => {
     if (SelectTypeValue === "buy") {
       if (takeProfit === "") return;
       else {
         setCalculateProfit(
-          ((takeProfit - entryPrice) * (quantity / takeProfit)).toFixed(2)
+          ((takeProfit - entryPrice) * (quantity / entryPrice)).toFixed(2)
         );
         setCalculateLoss(
-          ((stopPrice - entryPrice) * (quantity / stopPrice)).toFixed(2)
+          ((stopPrice - entryPrice) * (quantity / entryPrice)).toFixed(2)
         );
       }
     } else {
       if (stopPrice === "") return;
       else {
         setCalculateProfit(
-          ((entryPrice - takeProfit) * (quantity / takeProfit)).toFixed(2)
+          ((entryPrice - takeProfit) * (quantity / entryPrice)).toFixed(2)
         );
         setCalculateLoss(
-          ((entryPrice - stopPrice) * (quantity / stopPrice)).toFixed(2)
+          ((entryPrice - stopPrice) * (quantity / entryPrice)).toFixed(2)
         );
       }
     }
@@ -83,6 +97,12 @@ const FormResult = ({
     currentPrice,
     stopPrice,
   ]);
+
+  // Calculate Risk per Reward
+
+  useEffect(() => {
+    setReward((CalculateProfit / Math.abs(CalculateLoss)).toFixed(0));
+  }, [CalculateProfit, CalculateLoss]);
 
   return (
     <>
@@ -111,7 +131,7 @@ const FormResult = ({
         </StyledDiv>
         <StyledDiv>
           <TEXT>Risk : Reward </TEXT>
-          <TEXT>20000</TEXT>
+          <TEXT> 1 : {Reward}</TEXT>
         </StyledDiv>
       </div>
     </>
