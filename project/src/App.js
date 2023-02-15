@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { IndexPage, Page2 } from "./Page/index";
+import { IndexPage, Page2, TestFunction } from "./Page/index";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -8,6 +8,7 @@ function App() {
       <Routes>
         <Route path="/" element={<IndexPage />} />
         <Route path="page2" element={<Page2 />} />
+        <Route path="test" element={<TestFunction />} />
       </Routes>
     </BrowserRouter>
   );
