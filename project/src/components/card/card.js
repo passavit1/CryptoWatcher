@@ -30,6 +30,7 @@ function CardBST({ children, name }) {
 
   const handleSearch = (e) => {
     setSearchValue(e.target.value);
+
     if (e.target.value === "") {
       setFilteredCoin(ListOfCoin);
     } else {
