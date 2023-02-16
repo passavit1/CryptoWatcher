@@ -32,6 +32,7 @@ const GenCard = (numOfCols) => {
     fetchData();
   }, [numOfCols]);
 
+  console.log(Coin);
   const columns =
     Coin.length > 0 &&
     Coin.map((coin) => (

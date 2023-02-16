@@ -16,6 +16,7 @@ function CardBST({ children, ids, symbol }) {
   const [FilteredCoin, setFilteredCoin] = useState([]);
   const [SelectedCoin, setSelectedCoin] = useState("");
   const [CurrentPrice, setCurrentPrice] = useState("");
+  const [DefaultCoin, setDefaultCoin] = useState(ids);
 
   // Fetch Data First Time and set To ListOfCoin
 
@@ -46,19 +47,20 @@ function CardBST({ children, ids, symbol }) {
 
   const handleSelect = (item) => {
     setSelectedCoin(item.symbol);
+    setDefaultCoin(item.symbol);
   };
 
   // Fetch Current Price
 
   useEffect(() => {
     const fetchCurrentPrice = async () => {
-      if (!ids) return;
-      console.log(ids);
+      if (!DefaultCoin) return;
+      console.log(DefaultCoin);
       const response = await axios.get(
-        `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd`
+        `https://api.coingecko.com/api/v3/simple/price?ids=${DefaultCoin}&vs_currencies=usd`
       );
 
-      setCurrentPrice(response.data[ids].usd);
+      setCurrentPrice(response.data[DefaultCoin].usd);
     };
 
     fetchCurrentPrice();
@@ -68,7 +70,7 @@ function CardBST({ children, ids, symbol }) {
     }, 180000);
 
     return () => clearInterval(UpdatePrice);
-  }, [ids]);
+  }, [DefaultCoin]);
 
   return (
     <StyledCard>
