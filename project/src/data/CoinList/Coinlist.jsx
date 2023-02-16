@@ -1,5 +1,6 @@
 import axios from "axios";
 import Coinlist from "./Coinlist.json";
+import { useState } from "react";
 
 async function getCoinList(searchTerm) {
   const response = await axios.get(
@@ -15,7 +16,6 @@ async function getCoinList(searchTerm) {
 
   const top100Coins = response.data.map(({ id, symbol }) => ({ id, symbol }));
 
-  console.log(top100Coins);
   if (!searchTerm) {
     return top100Coins;
   }
@@ -24,12 +24,7 @@ async function getCoinList(searchTerm) {
     coin.symbol.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  console.log(filteredCoins);
-  const sortedCoins = filteredCoins.sort(
-    (a, b) => b.market_cap_rank - a.market_cap_rank
-  );
-
-  return sortedCoins;
+  return filteredCoins;
 }
 
 export default getCoinList;
