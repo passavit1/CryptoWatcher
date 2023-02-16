@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { getCoinList } from "../../data/index";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
+import Coinlist from "../../data/CoinList/Coinlist.json";
 
 const StyledCard = styled(Card)`
   width: 100%;
@@ -46,8 +47,9 @@ function CardBST({ children, ids, symbol }) {
   //Handle Selected Coin
 
   const handleSelect = (item) => {
+    console.log(item);
     setSelectedCoin(item.symbol);
-    setDefaultCoin(item.symbol);
+    setDefaultCoin(item.id);
   };
 
   // Fetch Current Price
@@ -59,7 +61,7 @@ function CardBST({ children, ids, symbol }) {
       const response = await axios.get(
         `https://api.coingecko.com/api/v3/simple/price?ids=${DefaultCoin}&vs_currencies=usd`
       );
-
+      console.log(response);
       setCurrentPrice(response.data[DefaultCoin].usd);
     };
 
