@@ -52,7 +52,7 @@ function CardBST({ children, name }) {
         <Card.Title>
           <Dropdown>
             <Dropdown.Toggle variant="danger" id="dropdown-basic">
-              {SelectedCoin ? SelectedCoin : name.toUpperCase()}
+              {SelectedCoin ? SelectedCoin.toUpperCase() : name.toUpperCase()}
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <FormControl
@@ -66,7 +66,7 @@ function CardBST({ children, name }) {
                   key={uuidv4()}
                   onClick={() => handleSelect(item)}
                 >
-                  {item.symbol}
+                  {item.symbol.toUpperCase()}
                 </Dropdown.Item>
               ))}
             </Dropdown.Menu>

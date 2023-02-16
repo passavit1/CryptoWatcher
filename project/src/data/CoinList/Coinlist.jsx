@@ -1,6 +1,5 @@
 import axios from "axios";
 import Coinlist from "./Coinlist.json";
-import { useState } from "react";
 
 async function getCoinList(searchTerm) {
   const response = await axios.get(

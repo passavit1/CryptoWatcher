@@ -16,6 +16,8 @@ const StyledCol = styled(Col)`
 const GenCard = (numOfCols) => {
   const [Coin, setCoin] = useState([]);
 
+  //Fetch Data Default Coins to show on Card
+
   useEffect(() => {
     const fetchData = async () => {
       const data = await getCoinList();
@@ -25,20 +27,16 @@ const GenCard = (numOfCols) => {
           coin.id !== "usd-coin" &&
           coin.id !== "binance-usd"
       );
-
-      const sortedCoins = filteredCoins.sort(
-        (a, b) => b.market_cap_rank - a.market_cap_rank
-      );
-      setCoin(sortedCoins.slice(0, numOfCols));
+      setCoin(filteredCoins.slice(0, numOfCols));
     };
     fetchData();
   }, [numOfCols]);
 
   const columns =
     Coin.length > 0 &&
-    Coin.map((coin, i) => (
+    Coin.map((coin) => (
       <StyledCol xs={6} sm={4} md={2} key={coin.id}>
-        <CardBST name={coin.symbol} number={i + 1} />
+        <CardBST name={coin.symbol} />
       </StyledCol>
     ));
 

@@ -129,7 +129,7 @@ const SearchDropDown = ({ onSelect }) => {
           <div className="inner">
             <Dropdown>
               <StyledButton variant="danger">
-                {selectedItem || "Select"}
+                {selectedItem.toUpperCase() || "Select"}
               </StyledButton>
               <StyledDropDownToggle
                 split
@@ -149,7 +149,7 @@ const SearchDropDown = ({ onSelect }) => {
                     key={uuidv4()}
                     onClick={() => handleSelect(item)}
                   >
-                    {item.symbol}
+                    {item.symbol.toUpperCase()}
                   </Dropdown.Item>
                 ))}
               </StyledDropdownMenu>
