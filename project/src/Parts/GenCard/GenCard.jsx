@@ -1,6 +1,9 @@
 import { CardBST } from "../../components/index";
 import { Col } from "react-bootstrap";
 import styled from "styled-components";
+import { getCoinList } from "../../data/index";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const StyledCol = styled(Col)`
   padding: 0 2px 2px;
@@ -11,14 +14,34 @@ const StyledCol = styled(Col)`
 `;
 
 const GenCard = (numOfCols) => {
-  const columns = [];
-  for (let i = 0; i < numOfCols; i++) {
-    columns.push(
-      <StyledCol xs={6} sm={4} md={2}>
-        <CardBST name={`Card ${i + 1}`}>Test</CardBST>
+  const [Coin, setCoin] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getCoinList();
+      const filteredCoins = data.filter(
+        (coin) =>
+          coin.id !== "tether" &&
+          coin.id !== "usd-coin" &&
+          coin.id !== "binance-usd"
+      );
+
+      const sortedCoins = filteredCoins.sort(
+        (a, b) => b.market_cap_rank - a.market_cap_rank
+      );
+      setCoin(sortedCoins.slice(0, numOfCols));
+    };
+    fetchData();
+  }, [numOfCols]);
+
+  const columns =
+    Coin.length > 0 &&
+    Coin.map((coin, i) => (
+      <StyledCol xs={6} sm={4} md={2} key={coin.id}>
+        <CardBST name={coin.symbol} number={i + 1} />
       </StyledCol>
-    );
-  }
+    ));
+
   return columns;
 };
 
