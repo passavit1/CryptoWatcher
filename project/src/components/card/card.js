@@ -3,17 +3,19 @@ import { Dropdown, Card, FormControl } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { getCoinList } from "../../data/index";
 import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
 const StyledCard = styled(Card)`
   width: 100%;
   background: linear-gradient(90deg, #c7daf0 0, #e6effd);
 `;
 
-function CardBST({ children, name }) {
+function CardBST({ children, ids, symbol }) {
   const [SearchValue, setSearchValue] = useState("");
   const [ListOfCoin, setListOfCoin] = useState([]);
   const [FilteredCoin, setFilteredCoin] = useState([]);
   const [SelectedCoin, setSelectedCoin] = useState("");
+  const [CurrentPrice, setCurrentPrice] = useState("");
 
   // Fetch Data First Time and set To ListOfCoin
 
@@ -46,13 +48,36 @@ function CardBST({ children, name }) {
     setSelectedCoin(item.symbol);
   };
 
+  // Fetch Current Price
+
+  console.log(ids);
+  useEffect(() => {
+    const fetchCurrentPrice = async () => {
+      if (!ids) return;
+      console.log(ids);
+      const response = await axios.get(
+        `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd`
+      );
+
+      setCurrentPrice(response.data[ids].usd);
+    };
+
+    fetchCurrentPrice();
+
+    const UpdatePrice = setInterval(() => {
+      fetchCurrentPrice();
+    }, 180000);
+
+    return () => clearInterval(UpdatePrice);
+  }, [ids]);
+
   return (
     <StyledCard>
       <Card.Body>
         <Card.Title>
           <Dropdown>
             <Dropdown.Toggle variant="danger" id="dropdown-basic">
-              {SelectedCoin ? SelectedCoin.toUpperCase() : name.toUpperCase()}
+              {SelectedCoin ? SelectedCoin.toUpperCase() : symbol.toUpperCase()}
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <FormControl
@@ -72,7 +97,7 @@ function CardBST({ children, name }) {
             </Dropdown.Menu>
           </Dropdown>
         </Card.Title>
-        <Card.Text>{children}</Card.Text>
+        <Card.Text>{CurrentPrice}</Card.Text>
       </Card.Body>
     </StyledCard>
   );

@@ -36,7 +36,7 @@ const GenCard = (numOfCols) => {
     Coin.length > 0 &&
     Coin.map((coin) => (
       <StyledCol xs={6} sm={4} md={2} key={coin.id}>
-        <CardBST name={coin.symbol} />
+        <CardBST ids={coin.id} symbol={coin.symbol}></CardBST>
       </StyledCol>
     ));
 
