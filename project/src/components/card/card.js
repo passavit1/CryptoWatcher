@@ -50,7 +50,6 @@ function CardBST({ children, ids, symbol }) {
 
   // Fetch Current Price
 
-  console.log(ids);
   useEffect(() => {
     const fetchCurrentPrice = async () => {
       if (!ids) return;
