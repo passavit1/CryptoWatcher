@@ -71,23 +71,28 @@ function CardBST({ InitSymbol, CardCurrentPrice }) {
         console.log(CoinID);
 
         const FetchCurrentPrice = async () => {
-          const response = await axios.get(
-            `https://api.coingecko.com/api/v3/simple/price?ids=${CoinID}&vs_currencies=usd`
-          );
-          console.log(
-            "SelectCoin is ",
-            SelectedCoin,
-            " Price",
-            response.data[CoinID].usd
-          );
-          setCurrentPrice(response.data[CoinID].usd);
+          try {
+            const response = await axios.get(
+              `https://api.coingecko.com/api/v3/simple/price?ids=${CoinID}&vs_currencies=usd`
+            );
+            console.log(
+              "SelectCoin is ",
+              SelectedCoin,
+              " Price",
+              response.data[CoinID].usd
+            );
+            setCurrentPrice(response.data[CoinID].usd);
+          } catch (error) {
+            console.log("Error fetching current price: ", error);
+            setCurrentPrice(CardCurrentPrice);
+          }
         };
         FetchCurrentPrice();
       } else {
         setCurrentPrice(CardCurrentPrice);
       }
     }
-  }, [InitSymbol, CardCurrentPrice, SelectedCoin]);
+  }, [CardCurrentPrice, SelectedCoin]);
 
   return (
     <StyledCard>

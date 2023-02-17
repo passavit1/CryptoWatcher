@@ -33,7 +33,7 @@ const GenCard = (numOfCols) => {
 
     const interval = setInterval(() => {
       fetchData();
-    }, 180000);
+    }, 240000);
 
     return () => clearInterval(interval);
   }, [numOfCols]);

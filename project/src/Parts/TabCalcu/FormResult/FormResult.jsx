@@ -54,7 +54,7 @@ const FormResult = ({
 
     const UpdatePrice = setInterval(() => {
       fetchCurrentPrice();
-    }, 180000);
+    }, 240000);
 
     return () => clearInterval(UpdatePrice);
   }, [symbol]);

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Tab, Tabs } from "react-bootstrap";
 import { SearchDropDown, SLIDER, BlockButton } from "../../components/index";
-import { FormInput, FormResult } from "../../Parts/index";
+import { FormInput, FormResult, CoinInfo } from "../../Parts/index";
 import styled from "styled-components";
 import { Divider } from "antd";
 
@@ -99,7 +99,6 @@ function TABS() {
   const [SelectdTab, setSelectdTab] = useState("Calculator");
 
   const ValueSelectedTab = (TAB) => {
-    console.log(SelectdTab);
     setSelectdTab(TAB);
   };
 
@@ -140,7 +139,7 @@ function TABS() {
         Test Tab 2
       </Tab>
       <Tab eventKey="CoinInfo" title="CoinInfo">
-        Test Tab 3
+        <CoinInfo selectedCoin={selectedCoin} />
       </Tab>
     </StyledTabs>
   );
