@@ -94,10 +94,9 @@ function TABS() {
   const [SelectdTab, setSelectdTab] = useState("Calculator");
 
   const ValueSelectedTab = (TAB) => {
+    console.log(SelectdTab);
     setSelectdTab(TAB);
   };
-
-  console.log(SelectdTab);
 
   return (
     <StyledTabs
@@ -132,7 +131,7 @@ function TABS() {
         </StyledDivWhenMedium>
         <Divider></Divider>
       </Tab>
-      <Tab eventKey="NEWS" title="NEWS">
+      <Tab eventKey="CoinInfo" title="CoinInfo">
         Test Tab 2
       </Tab>
       <Tab eventKey="contact" title="Contact">

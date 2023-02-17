@@ -148,7 +148,7 @@ const SearchDropDown = ({ onSelect, ValueSelectedTab }) => {
         <div className="outer">
           <div className="First-Line">
             <Label>COINS SYMBOL</Label>
-            <button onClick={() => ValueSelectedTab("NEWS")}>
+            <button onClick={() => ValueSelectedTab("CoinInfo")}>
               <InfoCircleTwoTone />
             </button>
           </div>
