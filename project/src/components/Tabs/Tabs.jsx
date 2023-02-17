@@ -43,8 +43,6 @@ const StyledDivWhenMedium = styled.div`
 `;
 
 function TABS() {
-  const [key, setKey] = useState("Calculator");
-
   //handle selected coin
 
   const [selectedCoin, setSelectedCoin] = useState("");
@@ -91,17 +89,30 @@ function TABS() {
     setSelectTypeValue(SelectType);
   };
 
+  //Call Back Function to handle Page
+
+  const [SelectdTab, setSelectdTab] = useState("Calculator");
+
+  const ValueSelectedTab = (TAB) => {
+    setSelectdTab(TAB);
+  };
+
+  console.log(SelectdTab);
+
   return (
     <StyledTabs
       id="controlled-tab-example"
-      activeKey={key}
-      onSelect={(k) => setKey(k)}
+      activeKey={SelectdTab}
+      onSelect={(k) => setSelectdTab(k)}
       className="mb-3"
       fill
     >
       <Tab eventKey="Calculator" title="Calculator">
         <Divider>User Information</Divider>
-        <SearchDropDown onSelect={handleCoinSelection}></SearchDropDown>
+        <SearchDropDown
+          onSelect={handleCoinSelection}
+          ValueSelectedTab={ValueSelectedTab}
+        ></SearchDropDown>
         <BlockButton />
         <SLIDER onChange={handleValueLeverage} />
 

@@ -3,6 +3,7 @@ import { FormControl, Dropdown, Button, Form, Card } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import { getCoinList } from "../../data/index";
+import { InfoCircleTwoTone } from "@ant-design/icons";
 
 const { Label } = Form;
 
@@ -27,6 +28,26 @@ const StyledDivInline = styled.div`
     align-items: center;
     gap: 0.5rem;
     justify-content: center;
+
+    .First-Line {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+
+      button {
+        background-color: transparent;
+        outline: none;
+        border: none;
+      }
+      span,
+      button {
+        scale: 1.3;
+        position: absolute;
+        right: 3%;
+        top: 3%;
+      }
+    }
 
     .inner {
       width: 100%;
@@ -90,7 +111,7 @@ const StyledSearchBox = styled(FormControl)`
   margin-bottom: 0.5rem;
 `;
 
-const SearchDropDown = ({ onSelect }) => {
+const SearchDropDown = ({ onSelect, ValueSelectedTab }) => {
   const [selectedItem, setSelectedItem] = useState("");
   const [coinList, setCoinList] = useState([]);
   const [searchValue, setSearchValue] = useState("");
@@ -125,7 +146,12 @@ const SearchDropDown = ({ onSelect }) => {
     <StyledDivInline>
       <StyledCard>
         <div className="outer">
-          <Label>COINS SYMBOL</Label>
+          <div className="First-Line">
+            <Label>COINS SYMBOL</Label>
+            <button onClick={() => ValueSelectedTab("NEWS")}>
+              <InfoCircleTwoTone />
+            </button>
+          </div>
           <div className="inner">
             <Dropdown>
               <StyledButton variant="danger">

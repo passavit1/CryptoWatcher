@@ -4,14 +4,13 @@ import { useState, useEffect } from "react";
 import { getCoinList } from "../../data/index";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
-import Coinlist from "../../data/CoinList/Coinlist.json";
 
 const StyledCard = styled(Card)`
   width: 100%;
   background: linear-gradient(90deg, #c7daf0 0, #e6effd);
 `;
 
-function CardBST({ children, ids, symbol }) {
+function CardBST({ ids, symbol }) {
   const [SearchValue, setSearchValue] = useState("");
   const [ListOfCoin, setListOfCoin] = useState([]);
   const [FilteredCoin, setFilteredCoin] = useState([]);
