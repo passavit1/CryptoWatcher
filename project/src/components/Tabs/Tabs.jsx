@@ -7,6 +7,10 @@ import { Divider } from "antd";
 
 const StyledTabs = styled(Tabs)`
   margin-top: 5px;
+
+  li:last-child {
+    display: none;
+  }
 `;
 
 const StyledDivider = styled(Divider)`
@@ -49,6 +53,7 @@ function TABS() {
 
   const handleCoinSelection = (symbol) => {
     setSelectedCoin(symbol);
+    console.log(selectedCoin);
   };
 
   // handle value from Form Input
@@ -131,10 +136,10 @@ function TABS() {
         </StyledDivWhenMedium>
         <Divider></Divider>
       </Tab>
-      <Tab eventKey="CoinInfo" title="CoinInfo">
+      <Tab eventKey="Tab2" title="Tab2">
         Test Tab 2
       </Tab>
-      <Tab eventKey="contact" title="Contact">
+      <Tab eventKey="CoinInfo" title="CoinInfo">
         Test Tab 3
       </Tab>
     </StyledTabs>

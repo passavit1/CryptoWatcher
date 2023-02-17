@@ -11,7 +11,7 @@ const StyledCard = styled(Card)`
   background: linear-gradient(90deg, #c7daf0 0, #e6effd);
 `;
 
-function CardBST({ symbol, CardCurrentPrice }) {
+function CardBST({ InitSymbol, CardCurrentPrice }) {
   const [SearchValue, setSearchValue] = useState("");
   const [ListOfCoin, setListOfCoin] = useState([]);
   const [FilteredCoin, setFilteredCoin] = useState([]);
@@ -54,10 +54,10 @@ function CardBST({ symbol, CardCurrentPrice }) {
 
   useEffect(() => {
     if (!SelectedCoin) {
-      console.log("Current Price", CardCurrentPrice);
+      console.log("InitSymbol is ", InitSymbol, " Price", CardCurrentPrice);
       setCurrentPrice(CardCurrentPrice);
     } else {
-      if (symbol !== SelectedCoin) {
+      if (InitSymbol !== SelectedCoin) {
         console.log(SelectedCoin);
         const getCoinIds = () => {
           const coin = Coinlist.find(
@@ -74,7 +74,12 @@ function CardBST({ symbol, CardCurrentPrice }) {
           const response = await axios.get(
             `https://api.coingecko.com/api/v3/simple/price?ids=${CoinID}&vs_currencies=usd`
           );
-          console.log("Current Price", response.data[CoinID].usd);
+          console.log(
+            "SelectCoin is ",
+            SelectedCoin,
+            " Price",
+            response.data[CoinID].usd
+          );
           setCurrentPrice(response.data[CoinID].usd);
         };
         FetchCurrentPrice();
@@ -82,7 +87,7 @@ function CardBST({ symbol, CardCurrentPrice }) {
         setCurrentPrice(CardCurrentPrice);
       }
     }
-  }, [symbol, CardCurrentPrice, SelectedCoin]);
+  }, [InitSymbol, CardCurrentPrice, SelectedCoin]);
 
   return (
     <StyledCard>
@@ -90,7 +95,9 @@ function CardBST({ symbol, CardCurrentPrice }) {
         <Card.Title>
           <Dropdown>
             <Dropdown.Toggle variant="danger" id="dropdown-basic">
-              {SelectedCoin ? SelectedCoin.toUpperCase() : symbol.toUpperCase()}
+              {SelectedCoin
+                ? SelectedCoin.toUpperCase()
+                : InitSymbol.toUpperCase()}
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <FormControl
