@@ -30,6 +30,12 @@ const GenCard = (numOfCols) => {
       setCoin(filteredCoins.slice(0, numOfCols));
     };
     fetchData();
+
+    const interval = setInterval(() => {
+      fetchData();
+    }, 120000);
+
+    return () => clearInterval(interval);
   }, [numOfCols]);
 
   console.log(Coin);
@@ -37,7 +43,11 @@ const GenCard = (numOfCols) => {
     Coin.length > 0 &&
     Coin.map((coin) => (
       <StyledCol xs={6} sm={4} md={2} key={coin.id}>
-        <CardBST ids={coin.id} symbol={coin.symbol}></CardBST>
+        <CardBST
+          ids={coin.id}
+          symbol={coin.symbol}
+          CardCurrentPrice={coin.current_price}
+        ></CardBST>
       </StyledCol>
     ));
 

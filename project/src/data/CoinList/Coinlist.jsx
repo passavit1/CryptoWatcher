@@ -13,7 +13,12 @@ async function getCoinList(searchTerm) {
     }
   );
 
-  const top100Coins = response.data.map(({ id, symbol }) => ({ id, symbol }));
+  console.log(response);
+  const top100Coins = response.data.map(({ id, symbol, current_price }) => ({
+    id,
+    symbol,
+    current_price,
+  }));
 
   if (!searchTerm) {
     return top100Coins;

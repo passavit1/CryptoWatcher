@@ -10,7 +10,7 @@ const StyledCard = styled(Card)`
   background: linear-gradient(90deg, #c7daf0 0, #e6effd);
 `;
 
-function CardBST({ ids, symbol }) {
+function CardBST({ ids, symbol, CardCurrentPrice }) {
   const [SearchValue, setSearchValue] = useState("");
   const [ListOfCoin, setListOfCoin] = useState([]);
   const [FilteredCoin, setFilteredCoin] = useState([]);
