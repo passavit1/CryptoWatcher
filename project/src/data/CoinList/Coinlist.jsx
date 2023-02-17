@@ -13,7 +13,6 @@ async function getCoinList(searchTerm) {
     }
   );
 
-  console.log(response);
   const top100Coins = response.data.map(({ id, symbol, current_price }) => ({
     id,
     symbol,
