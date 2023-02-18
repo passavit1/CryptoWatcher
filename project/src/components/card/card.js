@@ -54,11 +54,10 @@ function CardBST({ InitSymbol, CardCurrentPrice }) {
 
   useEffect(() => {
     if (!SelectedCoin) {
-      console.log("InitSymbol is ", InitSymbol, " Price", CardCurrentPrice);
+      // console.log("InitSymbol is ", InitSymbol, " Price", CardCurrentPrice);
       setCurrentPrice(CardCurrentPrice);
     } else {
       if (InitSymbol !== SelectedCoin) {
-        console.log(SelectedCoin);
         const getCoinIds = () => {
           const coin = Coinlist.find(
             (coin) => coin.symbol === SelectedCoin.toLowerCase()
@@ -67,8 +66,6 @@ function CardBST({ InitSymbol, CardCurrentPrice }) {
         };
 
         const CoinID = getCoinIds(SelectedCoin);
-
-        console.log(CoinID);
 
         const FetchCurrentPrice = async () => {
           try {

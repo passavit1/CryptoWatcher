@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const CoinInfo = ({ selectedCoin }) => {
+  // Set Info
+
   const [CoinInfo, setCoinInfo] = useState({
     image: "",
     price: 0,
@@ -29,6 +31,8 @@ const CoinInfo = ({ selectedCoin }) => {
     max_supply: 0,
     circulating_supply: 0,
   });
+
+  // Destructuring
 
   const {
     image,

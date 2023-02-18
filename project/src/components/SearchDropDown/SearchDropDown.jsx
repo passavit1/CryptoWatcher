@@ -111,7 +111,7 @@ const StyledSearchBox = styled(FormControl)`
   margin-bottom: 0.5rem;
 `;
 
-const SearchDropDown = ({ onSelect, ValueSelectedTab }) => {
+const SearchDropDown = ({ onSelect, ValueSelectedTab, ClearCoin }) => {
   const [selectedItem, setSelectedItem] = useState("");
   const [coinList, setCoinList] = useState([]);
   const [searchValue, setSearchValue] = useState("");
@@ -125,6 +125,12 @@ const SearchDropDown = ({ onSelect, ValueSelectedTab }) => {
     };
     fetchCoinList();
   }, []);
+
+  //Clear coin when user selected in Trending
+
+  useEffect(() => {
+    if (ClearCoin) setSelectedItem("");
+  }, [ClearCoin]);
 
   const handleSearch = (e) => {
     setSearchValue(e.target.value);

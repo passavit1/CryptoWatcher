@@ -4,7 +4,7 @@ import FormResult from "./TabCalcu/FormResult/FormResult.jsx";
 import BuySellButton from "./TabCalcu/SelectType/SelectType.jsx";
 import CoinInfo from "./TabCoinInfo/CoinInfo.jsx";
 import CryptoNews from "./TabNews/CryptoNews.jsx";
-import CryptoEvent from "./TabEvent/TabEvent.jsx";
+import Trending from "./TabTrending/Trending.jsx";
 
 export {
   GenCard,
@@ -13,5 +13,5 @@ export {
   BuySellButton,
   CoinInfo,
   CryptoNews,
-  CryptoEvent,
+  Trending,
 };

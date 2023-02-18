@@ -38,7 +38,7 @@ const GenCard = (numOfCols) => {
     return () => clearInterval(interval);
   }, [numOfCols]);
 
-  console.log(Coin);
+  // console.log(Coin);
   const columns =
     Coin.length > 0 &&
     Coin.map((coin) => (

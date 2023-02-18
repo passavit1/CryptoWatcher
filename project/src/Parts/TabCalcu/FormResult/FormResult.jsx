@@ -23,6 +23,7 @@ const FormResult = ({
   inputValues,
   LeverageValue,
   SelectTypeValue,
+  ClearCoin,
 }) => {
   const [currentPrice, setCurrentPrice] = useState(null);
   const [MarginUse, setMarginUse] = useState("");
@@ -36,7 +37,13 @@ const FormResult = ({
   const color = CalculateProfit >= 0 ? "green" : "red";
   const cutlossColor = CalculateLoss >= 0 ? "green" : "red";
 
-  // Fetch current Price every 3 minutes
+  // Clear Price After Selected Coin in Trending
+
+  useEffect(() => {
+    if (!ClearCoin) setCurrentPrice(null);
+  }, [ClearCoin]);
+
+  // Fetch current Price every 4 minutes
 
   useEffect(() => {
     const fetchCurrentPrice = async () => {
