@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { Tab, Tabs } from "react-bootstrap";
 import { SearchDropDown, SLIDER, BlockButton } from "../../components/index";
-import { FormInput, FormResult, CoinInfo } from "../../Parts/index";
+import {
+  FormInput,
+  FormResult,
+  CoinInfo,
+  CryptoNews,
+  CryptoEvent,
+} from "../../Parts/index";
 import styled from "styled-components";
 import { Divider } from "antd";
 
@@ -135,8 +141,11 @@ function TABS() {
         </StyledDivWhenMedium>
         <Divider></Divider>
       </Tab>
-      <Tab eventKey="Tab2" title="Tab2">
-        Test Tab 2
+      <Tab eventKey="CryptoNews" title="Crypto News">
+        <CryptoNews />
+      </Tab>
+      <Tab eventKey="CryptoEvent" title="Crypto Event">
+        <CryptoEvent />
       </Tab>
       <Tab eventKey="CoinInfo" title="CoinInfo">
         <CoinInfo selectedCoin={selectedCoin} />
