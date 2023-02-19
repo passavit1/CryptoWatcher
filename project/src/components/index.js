@@ -6,6 +6,7 @@ import BlockButton from "./BlockButton/BlockButton.jsx";
 import SLIDER from "./SliderAD/SliderAD.jsx";
 import TEXT from "./Typography/Typography.jsx";
 import InputNUM from "./InputNumber/InputNumber.jsx";
+import DropDownTabs from "./DropdownTabs/DropdownTabs.jsx";
 
 export {
   CardBST,
@@ -16,4 +17,5 @@ export {
   SLIDER,
   TEXT,
   InputNUM,
+  DropDownTabs,
 };

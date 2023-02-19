@@ -4,7 +4,7 @@ import {
   SearchDropDown,
   SLIDER,
   BlockButton,
-  ResponsiveTabs,
+  DropDownTabs,
 } from "../../components/index";
 import {
   FormInput,
@@ -18,10 +18,6 @@ import { Divider } from "antd";
 
 const StyledTabs = styled(Tabs)`
   margin-top: 5px;
-
-  li {
-    width: 100%;
-  }
 
   .nav-link.active {
     background-color: #7ec8e3;
@@ -81,6 +77,39 @@ const StyledDivWhenMedium = styled.div`
       .WXyGi {
         height: 2.5rem;
       }
+    }
+  }
+`;
+
+const StyledContainer = styled.div`
+  .ant-typography.ant-dropdown-trigger {
+    margin-top: 3%;
+    display: inline-block;
+    width: 100%;
+    height: 2.3rem;
+    text-align: center;
+
+    @media screen and (min-width: 351px) {
+      display: none;
+    }
+
+    .ant-space {
+      background-color: #08678e;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: white;
+
+      div:last-child {
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+
+  ul {
+    @media screen and (max-width: 350px) {
+      display: none;
     }
   }
 `;
@@ -154,7 +183,8 @@ function TABS() {
   };
 
   return (
-    <div>
+    <StyledContainer>
+      <DropDownTabs ValueSelectedTab={ValueSelectedTab} />
       <StyledTabs
         id="controlled-tab-example"
         activeKey={SelectdTab}
@@ -214,7 +244,7 @@ function TABS() {
           <CoinInfo selectedCoin={selectedCoin} />
         </Tab>
       </StyledTabs>
-    </div>
+    </StyledContainer>
   );
 }
 
