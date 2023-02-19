@@ -8,7 +8,43 @@ import Coinlist from "../../data/CoinList/Coinlist.json";
 
 const StyledCard = styled(Card)`
   width: 100%;
-  background: linear-gradient(90deg, #c7daf0 0, #e6effd);
+  background: linear-gradient(90deg, #bfebf1, #e9f8fa);
+  color: #bd2818;
+
+  button {
+    width: 100%;
+    background-color: #d4ebf0;
+    color: #e43a27;
+    border: 0.9px dotted #184cb4;
+  }
+
+  .btn:hover {
+    background-color: #05445e;
+  }
+
+  .btn.show {
+    background-color: #189ab4;
+  }
+
+  .card-text {
+    text-align: center;
+  }
+
+  .dropdown-menu {
+    max-height: 250px;
+    overflow: scroll;
+    padding-top: 0;
+
+    .form-control {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background-color: #fff;
+      padding: 0.5rem;
+      border-radius: 0.25rem;
+      margin-bottom: 0.5rem;
+    }
+  }
 `;
 
 function CardBST({ InitSymbol, CardCurrentPrice }) {
@@ -96,7 +132,7 @@ function CardBST({ InitSymbol, CardCurrentPrice }) {
       <Card.Body>
         <Card.Title>
           <Dropdown>
-            <Dropdown.Toggle variant="danger" id="dropdown-basic">
+            <Dropdown.Toggle id="dropdown-basic">
               {SelectedCoin
                 ? SelectedCoin.toUpperCase()
                 : InitSymbol.toUpperCase()}

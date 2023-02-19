@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
-import { Tab, Tabs } from "react-bootstrap";
-import { SearchDropDown, SLIDER, BlockButton } from "../../components/index";
+import { Tab, Tabs, Dropdown } from "react-bootstrap";
+import {
+  SearchDropDown,
+  SLIDER,
+  BlockButton,
+  ResponsiveTabs,
+} from "../../components/index";
 import {
   FormInput,
   FormResult,
@@ -14,8 +19,36 @@ import { Divider } from "antd";
 const StyledTabs = styled(Tabs)`
   margin-top: 5px;
 
+  li {
+    width: 100%;
+  }
+
+  .nav-link.active {
+    background-color: #7ec8e3;
+    color: #f7082e;
+
+    &:hover {
+      color: #f7082e;
+    }
+  }
+
+  li:hover {
+    background-color: #05445e;
+    border-radius: 0.375rem;
+
+    button:hover {
+      color: white;
+    }
+  }
+
   li:last-child {
     display: none;
+  }
+`;
+
+const StyledInfoDivider = styled(Divider)`
+  span {
+    color: #e43a27;
   }
 `;
 
@@ -58,9 +91,7 @@ function TABS() {
   const [selectedCoin, setSelectedCoin] = useState("");
 
   const handleCoinSelection = (symbol) => {
-    // console.log(symbol);
     setSelectedCoin(symbol);
-    // console.log(selectedCoin);
   };
 
   // handle value from Form Input
@@ -122,67 +153,68 @@ function TABS() {
     if (SelectdTab === "Trending" && !Status) setClearCoin(true);
   };
 
-  console.log(ClearCoin);
   return (
-    <StyledTabs
-      id="controlled-tab-example"
-      activeKey={SelectdTab}
-      onSelect={(k) => setSelectdTab(k)}
-      className="mb-3"
-      fill
-    >
-      {/* Calculator */}
+    <div>
+      <StyledTabs
+        id="controlled-tab-example"
+        activeKey={SelectdTab}
+        onSelect={(k) => setSelectdTab(k)}
+        className="mb-3"
+        fill
+      >
+        {/* Calculator */}
 
-      <Tab eventKey="Calculator" title="Calculator">
-        <Divider>User Information</Divider>
-        <SearchDropDown
-          onSelect={handleCoinSelection}
-          ValueSelectedTab={ValueSelectedTab}
-          ClearCoin={ClearCoin}
-        ></SearchDropDown>
-        <BlockButton />
-        <SLIDER onChange={handleValueLeverage} />
-
-        <StyledDivWhenMedium>
-          <FormInput
-            inputValues={inputValues}
-            onInputChange={handleInputChange}
-            TypeSelect={handleValueSelectType}
-          />
-          <StyledDivider className="result-divider">Result</StyledDivider>
-          <FormResult
-            inputValues={inputValues}
-            symbol={selectedCoin}
-            LeverageValue={LeverageValue}
-            SelectTypeValue={SelectTypeValue}
+        <Tab eventKey="Calculator" title="Calculator">
+          <StyledInfoDivider>User Information</StyledInfoDivider>
+          <SearchDropDown
+            onSelect={handleCoinSelection}
+            ValueSelectedTab={ValueSelectedTab}
             ClearCoin={ClearCoin}
+          ></SearchDropDown>
+          <BlockButton />
+          <SLIDER onChange={handleValueLeverage} />
+
+          <StyledDivWhenMedium>
+            <FormInput
+              inputValues={inputValues}
+              onInputChange={handleInputChange}
+              TypeSelect={handleValueSelectType}
+            />
+            <StyledDivider className="result-divider">Result</StyledDivider>
+            <FormResult
+              inputValues={inputValues}
+              symbol={selectedCoin}
+              LeverageValue={LeverageValue}
+              SelectTypeValue={SelectTypeValue}
+              ClearCoin={ClearCoin}
+            />
+          </StyledDivWhenMedium>
+          <Divider></Divider>
+        </Tab>
+
+        {/* Crypto News */}
+
+        <Tab eventKey="CryptoNews" title="Crypto News">
+          <CryptoNews />
+        </Tab>
+
+        {/* Trending */}
+
+        <Tab eventKey="Trending" title="Trending">
+          <Trending
+            ValueSelectedTab={ValueSelectedTab}
+            handleCoinSelection={handleCoinSelection}
+            SelectedCoinInTrending={SelectedCoinInTrending}
           />
-        </StyledDivWhenMedium>
-        <Divider></Divider>
-      </Tab>
+        </Tab>
 
-      {/* Crypto News */}
+        {/* Coins Info */}
 
-      <Tab eventKey="CryptoNews" title="Crypto News">
-        <CryptoNews />
-      </Tab>
-
-      {/* Trending */}
-
-      <Tab eventKey="Trending" title="Trending">
-        <Trending
-          ValueSelectedTab={ValueSelectedTab}
-          handleCoinSelection={handleCoinSelection}
-          SelectedCoinInTrending={SelectedCoinInTrending}
-        />
-      </Tab>
-
-      {/* Coins Info */}
-
-      <Tab eventKey="CoinInfo" title="CoinInfo">
-        <CoinInfo selectedCoin={selectedCoin} />
-      </Tab>
-    </StyledTabs>
+        <Tab eventKey="CoinInfo" title="CoinInfo">
+          <CoinInfo selectedCoin={selectedCoin} />
+        </Tab>
+      </StyledTabs>
+    </div>
   );
 }
 
