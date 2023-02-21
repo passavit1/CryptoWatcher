@@ -21,36 +21,24 @@ const StyledDivInline = styled.div`
   }
 
   .outer {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    justify-content: center;
-
     .First-Line {
-      position: relative;
-      width: 100%;
-      display: flex;
-      justify-content: center;
+      label {
+        width: 100%;
+        text-align: center;
+      }
 
       button {
+        position: absolute;
+        right: 0;
+        scale: 1.2;
         background-color: transparent;
         outline: none;
         border: none;
       }
-      span,
-      button {
-        scale: 1.3;
-        position: absolute;
-        right: 3%;
-        top: 3%;
-      }
     }
 
     .inner {
-      width: 100%;
+      padding-bottom: 5%;
 
       .dropdown {
         width: 100%;
@@ -84,7 +72,6 @@ const StyledDivInline = styled.div`
 
 const StyledCard = styled(Card)`
   width: 45%;
-  height: 7rem;
 `;
 
 const StyledButton = styled(Button)`

@@ -18,9 +18,10 @@ import { Divider } from "antd";
 
 const StyledTabs = styled(Tabs)`
   margin-top: 5px;
+  background-color: white;
 
   .nav-link.active {
-    background-color: #7ec8e3;
+    background-color: #f5fcfd;
     color: #f7082e;
 
     &:hover {
@@ -29,11 +30,11 @@ const StyledTabs = styled(Tabs)`
   }
 
   li:hover {
-    background-color: #05445e;
+    background-color: #e9f8fa;
     border-radius: 0.375rem;
 
     button:hover {
-      color: white;
+      color: red;
     }
   }
 
@@ -94,12 +95,12 @@ const StyledContainer = styled.div`
     }
 
     .ant-space {
-      background-color: #08678e;
+      background-color: #7dd1e3;
       width: 100%;
       height: 100%;
       justify-content: center;
       font-size: 1.5rem;
-      color: white;
+      color: #d35035;
 
       div:last-child {
         padding-bottom: 0.5rem;

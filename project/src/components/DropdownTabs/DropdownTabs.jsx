@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Space, Typography } from "antd";
 import { useState } from "react";
@@ -31,8 +30,8 @@ const DropDownTabs = ({ ValueSelectedTab }) => {
       menu={{
         items,
         selectable: true,
-        defaultSelectedKeys: ["Calculator"],
-        onSelect: (x) => {
+        defaultSelectedKeys: [""],
+        onClick: (x) => {
           SetValueInDropdown(x.key);
           ValueSelectedTab(x.key);
         },
