@@ -3,7 +3,7 @@ import { BuySellButton } from "../../index";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-  margin-top: 10%;
+  margin-top: 5%;
 
   @media (min-width: 578px) {
     margin-top: 8%;
@@ -41,7 +41,9 @@ const StyledDiv = styled.div`
   
 `;
 
-const FormInput = ({ inputValues, onInputChange, TypeSelect }) => {
+const FormInput = ({ inputValues, onInputChange, TypeSelect, ClearField }) => {
+  //handleInputChange = {Handle State }
+
   const handleInputChange = (name, value) => {
     onInputChange(name, value);
   };
@@ -58,6 +60,7 @@ const FormInput = ({ inputValues, onInputChange, TypeSelect }) => {
           name="entryPrice"
           value={inputValues.entryPrice}
           onChange={handleInputChange}
+          clean={ClearField}
         >
           Entry Price :{" "}
         </InputNUM>
@@ -65,6 +68,7 @@ const FormInput = ({ inputValues, onInputChange, TypeSelect }) => {
           name="quantity"
           value={inputValues.quantity}
           onChange={handleInputChange}
+          clean={ClearField}
         >
           Quantity :{" "}
         </InputNUM>
@@ -72,6 +76,7 @@ const FormInput = ({ inputValues, onInputChange, TypeSelect }) => {
           name="takeProfit"
           value={inputValues.takeProfit}
           onChange={handleInputChange}
+          clean={ClearField}
         >
           Take Profit :{" "}
         </InputNUM>
@@ -79,6 +84,7 @@ const FormInput = ({ inputValues, onInputChange, TypeSelect }) => {
           name="stopPrice"
           value={inputValues.stopPrice}
           onChange={handleInputChange}
+          clean={ClearField}
         >
           Stop Price :{" "}
         </InputNUM>
@@ -86,6 +92,7 @@ const FormInput = ({ inputValues, onInputChange, TypeSelect }) => {
           name="risk"
           value={inputValues.risk}
           onChange={handleInputChange}
+          clean={ClearField}
         >
           Risk :{" "}
         </InputNUM>
@@ -93,6 +100,7 @@ const FormInput = ({ inputValues, onInputChange, TypeSelect }) => {
           name="reward"
           value={inputValues.reward}
           onChange={handleInputChange}
+          clean={ClearField}
         >
           Reward :{" "}
         </InputNUM>

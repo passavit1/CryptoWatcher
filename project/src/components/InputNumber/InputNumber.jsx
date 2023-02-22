@@ -1,6 +1,6 @@
 import { Form } from "react-bootstrap";
 import styled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const { Control, Label, Group } = Form;
 
@@ -25,7 +25,7 @@ const StyledFormGroup = styled(Group)`
   }
 `;
 
-const InputNUM = ({ children, name, value, onChange, ...props }) => {
+const InputNUM = ({ children, name, value, onChange, clean, ...props }) => {
   const [stateValue, setStateValue] = useState(value);
 
   const handleNumberChange = (event) => {
@@ -35,6 +35,13 @@ const InputNUM = ({ children, name, value, onChange, ...props }) => {
     onChange(name, inputValue);
   };
 
+  useEffect(() => {
+    setStateValue(clean);
+  }, [clean]);
+
+  useEffect(() => {
+    setStateValue(value);
+  }, [value]);
   return (
     <StyledFormGroup controlId="input-number" {...props}>
       <Label>{children}</Label>

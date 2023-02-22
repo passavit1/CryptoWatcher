@@ -183,6 +183,10 @@ function TABS() {
     if (SelectdTab === "Trending" && !Status) setClearCoin(true);
   };
 
+  // Clear Input Field
+
+  const [ClearField, setClearField] = useState("");
+
   return (
     <StyledContainer>
       <DropDownTabs ValueSelectedTab={ValueSelectedTab} />
@@ -202,14 +206,27 @@ function TABS() {
             ValueSelectedTab={ValueSelectedTab}
             ClearCoin={ClearCoin}
           ></SearchDropDown>
-          <BlockButton />
           <SLIDER onChange={handleValueLeverage} />
+          <BlockButton
+            OnClickClear={() =>
+              setInputValues({
+                entryPrice: "",
+                quantity: "",
+                stopPrice: "",
+                takeProfit: "",
+                risk: "",
+                reward: "",
+              })
+            }
+            ClearingField={() => setClearField("")}
+          />
 
           <StyledDivWhenMedium>
             <FormInput
               inputValues={inputValues}
               onInputChange={handleInputChange}
               TypeSelect={handleValueSelectType}
+              ClearField={ClearField}
             />
             <StyledDivider className="result-divider">Result</StyledDivider>
             <FormResult

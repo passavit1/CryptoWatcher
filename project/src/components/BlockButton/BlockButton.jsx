@@ -6,12 +6,36 @@ const StyledDiv = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 12%;
+
+  Button {
+    background-color: #bfebf1;
+    color: #e43a27;
+    font-weight: bold;
+  }
+
+  Button:hover {
+    background-color: red;
+    color: white;
+  }
+
+  .btn:active {
+    background-color: #bd2818;
+    color: white;
+  }
 `;
 
-function BlockButton() {
+function BlockButton({ OnClickClear, ClearingField }) {
   return (
     <StyledDiv>
-      <Button variant="primary" size="sm" style={{ width: "94%" }}>
+      <Button
+        size="sm"
+        style={{ width: "94%" }}
+        onClick={() => {
+          OnClickClear();
+          ClearingField();
+        }}
+      >
         CLEAR
       </Button>
     </StyledDiv>

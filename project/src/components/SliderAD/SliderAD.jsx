@@ -9,40 +9,65 @@ const StyledSlider = styled(Slider)`
   width: 95%;
   margin-top: 3%;
 
+  .ant-slider-track {
+    background-color: ${(props) =>
+      props.value <= 25
+        ? "#11ac27"
+        : props.value <= 50
+        ? "#61f20d"
+        : props.value <= 75
+        ? "#96ef10"
+        : props.value <= 100
+        ? "#dfeb14"
+        : props.value <= 120
+        ? "#e9b116"
+        : "#e53e1a"} !important;
+
+    transition: background-color 0.5s ease-in-out;
+  }
+
   .ant-slider-mark {
     margin-top: 8px;
   }
 
-  .ant-slider-dot-active {
-    background-color: blue;
-  }
-
   .ant-slider-dot:first-child,
   .ant-slider-dot ~ .ant-slider-dot-active {
-    background-color: aqua;
     border-color: black;
+    background-color: ${(props) =>
+      props.value <= 25
+        ? "#11ac27"
+        : props.value <= 50
+        ? "#61f20d"
+        : props.value <= 75
+        ? "#96ef10"
+        : props.value <= 100
+        ? "#dfeb14"
+        : props.value <= 120
+        ? "#e9b116"
+        : "#e53e1a"} !important;
+
+    transition: background-color 0.2s ease-in-out;
   }
 
   .ant-slider-dot {
     width: 0.8rem;
     height: 0.8rem;
     inset-block-start: -1px;
-    background-color: green;
-    border-color: red;
   }
 
-  .ant-slider-handle::after {
-    width: 1rem;
-    height: 1rem;
-    box-shadow: 0 0 0 2px black;
-  }
+  .ant-slider-handle {
+    &::before {
+      width: 1rem;
+      height: 1rem;
+    }
 
-  .ant-slider-handle:focus::after {
-    width: 1rem;
-    height: 1rem;
-    box-shadow: 0 0 0 2px purple;
-    inset-inline-start: 0px;
-    inset-block-start: 0px;
+    &::after {
+      width: 1rem;
+      height: 1rem;
+      inset-inline-start: 0px;
+      inset-block-start: 0px;
+      display: none;
+    }
   }
 `;
 
@@ -83,12 +108,11 @@ const marks = {
 };
 
 const trackStyle = {
-  backgroundColor: "blue",
   height: "0.75rem",
 };
 
 const railStyle = {
-  backgroundColor: "red",
+  backgroundColor: "#ddd",
   height: "0.75rem",
 };
 
