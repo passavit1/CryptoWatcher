@@ -15,6 +15,9 @@ const StyledDiv = styled.div`
   @media (min-width: 768px) {
     margin-top: 6%;
   }
+  @media (min-width: 1000px) {
+    margin-top: 5%;
+  }
 
   Button {
     background-color: #bfebf1;
