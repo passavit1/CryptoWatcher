@@ -1,4 +1,8 @@
 body {
   background-color: #f5fcfd;
   padding-bottom: 2rem;
+
+  @media (min-width: 768px) {
+    padding-bottom: 0;
+  }
 }

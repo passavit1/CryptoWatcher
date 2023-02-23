@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Tab, Tabs, Dropdown } from "react-bootstrap";
+import { Tab, Tabs } from "react-bootstrap";
 import {
   SearchDropDown,
   SLIDER,

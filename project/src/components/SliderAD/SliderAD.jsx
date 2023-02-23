@@ -138,7 +138,7 @@ const SLIDER = ({ onChange }) => {
       <StyledLeverage>
         <TEXT strong>LEVERAGE</TEXT>
         <InputNumber
-          min={0}
+          min={1}
           max={125}
           value={leverage}
           onChange={handleInputChange}

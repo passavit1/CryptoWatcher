@@ -11,13 +11,20 @@ const StyledFormGroup = styled(Group)`
   font-weight: bold;
   font-size: 1.3rem;
   padding: 0 5%;
+  margin-bottom: 2%;
+
+  @media (min-width: 576px) {
+    margin-bottom: 1%;
+  }
 
   .form-label {
     margin-bottom: 0;
   }
 
   input {
-    width: 45%;
+    width: 30%;
+    background-color: #ffffff;
+    text-align: end;
 
     @media (min-width: 768px) {
       width: 50%;

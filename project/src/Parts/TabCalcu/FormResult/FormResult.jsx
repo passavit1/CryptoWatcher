@@ -6,8 +6,12 @@ import axios from "axios";
 const StyledDiv = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: end;
+
   padding: 0 5%;
+  height: 2.5rem;
+  margin-bottom: 0.1rem;
+  border-bottom: 0.5px dotted #ccc;
 
   span {
     font-size: 1.3rem;
@@ -15,6 +19,13 @@ const StyledDiv = styled.div`
 
   span:first-child {
     font-weight: bold;
+  }
+
+  span:last-child {
+    min-width: 25%;
+    height: 40px;
+    display: flex;
+    align-items: center;
   }
 `;
 
@@ -69,7 +80,9 @@ const FormResult = ({
   // Calculate Margin Use
 
   useEffect(() => {
-    setMarginUse((quantity / LeverageValue).toFixed(2));
+    if (quantity && LeverageValue) {
+      setMarginUse((quantity / LeverageValue).toFixed(2));
+    }
   }, [quantity, LeverageValue]);
 
   // Calculate profit and loss
@@ -108,7 +121,7 @@ const FormResult = ({
   // Calculate Risk per Reward
 
   useEffect(() => {
-    setReward((CalculateProfit / Math.abs(CalculateLoss)).toFixed(0));
+    setReward((CalculateProfit / Math.abs(CalculateLoss)).toFixed(1));
   }, [CalculateProfit, CalculateLoss]);
 
   return (

@@ -11,6 +11,10 @@ const StyledCard = styled(Card)`
   background: linear-gradient(90deg, #bfebf1, #e9f8fa);
   color: #bd2818;
 
+  .card-body {
+    padding: 0.5rem 1rem;
+  }
+
   button {
     width: 100%;
     background-color: #d4ebf0;
@@ -28,6 +32,11 @@ const StyledCard = styled(Card)`
 
   .card-text {
     text-align: center;
+
+    @media (min-width: 576px) {
+      margin-top: 10%;
+      scale: 1.2;
+    }
   }
 
   .dropdown-menu {

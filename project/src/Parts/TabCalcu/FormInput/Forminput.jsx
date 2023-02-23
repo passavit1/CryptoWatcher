@@ -3,6 +3,9 @@ import { BuySellButton } from "../../index";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
+  // sc-gikAfH kSeWjg
+
+
   margin-top: 5%;
 
   @media (min-width: 578px) {
@@ -37,13 +40,10 @@ const StyledDiv = styled.div`
         background-color: green;
     }
   }
-
   
 `;
 
 const FormInput = ({ inputValues, onInputChange, TypeSelect, ClearField }) => {
-  //handleInputChange = {Handle State }
-
   const handleInputChange = (name, value) => {
     onInputChange(name, value);
   };
@@ -87,22 +87,6 @@ const FormInput = ({ inputValues, onInputChange, TypeSelect, ClearField }) => {
           clean={ClearField}
         >
           Stop Price :{" "}
-        </InputNUM>
-        <InputNUM
-          name="risk"
-          value={inputValues.risk}
-          onChange={handleInputChange}
-          clean={ClearField}
-        >
-          Risk :{" "}
-        </InputNUM>
-        <InputNUM
-          name="reward"
-          value={inputValues.reward}
-          onChange={handleInputChange}
-          clean={ClearField}
-        >
-          Reward :{" "}
         </InputNUM>
       </StyledDiv>
     </>

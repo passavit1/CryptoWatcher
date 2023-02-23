@@ -8,6 +8,14 @@ const StyledDiv = styled.div`
   justify-content: center;
   margin-top: 12%;
 
+  @media (min-width: 576px) {
+    margin-top: 9%;
+  }
+
+  @media (min-width: 768px) {
+    margin-top: 6%;
+  }
+
   Button {
     background-color: #bfebf1;
     color: #e43a27;

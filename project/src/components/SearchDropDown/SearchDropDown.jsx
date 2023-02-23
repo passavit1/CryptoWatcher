@@ -22,9 +22,23 @@ const StyledDivInline = styled.div`
 
   .outer {
     .First-Line {
+      @media (min-width: 480px) {
+        margin-bottom: 3%;
+      }
+
       label {
         width: 100%;
         text-align: center;
+
+        @media (min-width: 397px) {
+          scale: 0.7;
+        }
+        @media (min-width: 480px) {
+          scale: 0.8;
+        }
+        @media (min-width: 576px) {
+          scale: 0.9;
+        }
       }
 
       button {
@@ -58,6 +72,7 @@ const StyledDivInline = styled.div`
     align-items: center;
     gap: 0.5rem;
     justify-content: center;
+    padding-bottom: 10px;
 
     .InputBalance {
       width: 65%;
