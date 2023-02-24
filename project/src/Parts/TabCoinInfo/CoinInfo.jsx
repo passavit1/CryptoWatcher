@@ -1,11 +1,60 @@
 import { Image } from "antd";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import styled from "styled-components";
+
+const StyledInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  // Pic and Main Info
+
+  .first-line {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > div:first-child {
+      margin: 10px 0;
+    }
+
+    .first-line-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid red;
+      text-shadow: 2px 2px 1px #d7d7d7;
+      font-size: 2rem;
+      margin-bottom: 10px;
+
+      > div:first-child {
+        color: blue;
+        text-align: center;
+      }
+
+      div:nth-child(2) {
+        span {
+          font-size: 1.5rem;
+        }
+      }
+
+      div:last-child {
+        color: yellow;
+      }
+    }
+  }
+
+  // Data - Information
+
+  .data-info {
+    .hl24 {
+      border: 1px solid red;
+    }
+  }
+`;
 
 const CoinInfo = ({ selectedCoin }) => {
-  // Set Info
-
-  const [CoinInfo, setCoinInfo] = useState({
+  const [coinInfo, setCoinInfo] = useState({
     image: "",
     price: 0,
     name: "",
@@ -19,6 +68,11 @@ const CoinInfo = ({ selectedCoin }) => {
     high_24h: 0,
     low_24h: 0,
     price_change_24h: 0,
+    price_change_7d: 0,
+    price_change_30d: 0,
+    price_change_60d: 0,
+    price_change_200d: 0,
+    price_change_1y: 0,
     price_change_percentage_24h: 0,
     price_change_percentage_7d: 0,
     price_change_percentage_30d: 0,
@@ -32,38 +86,9 @@ const CoinInfo = ({ selectedCoin }) => {
     circulating_supply: 0,
   });
 
-  // Destructuring
-
-  const {
-    image,
-    price,
-    name,
-    market_cap_rank,
-    description,
-    ath,
-    ath_change_percentage,
-    homepage,
-    ath_date,
-    market_cap,
-    high_24h,
-    low_24h,
-    price_change_24h,
-    price_change_percentage_24h,
-    price_change_percentage_7d,
-    price_change_percentage_30d,
-    price_change_percentage_60d,
-    price_change_percentage_200d,
-    price_change_percentage_1y,
-    market_cap_change_24h,
-    market_cap_change_percentage_24h,
-    total_supply,
-    max_supply,
-    circulating_supply,
-  } = CoinInfo;
-
   useEffect(() => {
     if (!selectedCoin) return;
-    const SelectedCoinData = async () => {
+    const getCoinData = async () => {
       const response = await axios.get(
         `https://api.coingecko.com/api/v3/coins/${selectedCoin.id}`,
         {
@@ -108,37 +133,91 @@ const CoinInfo = ({ selectedCoin }) => {
         total_supply: response.data.market_data.total_supply,
         max_supply: response.data.market_data.max_supply,
         circulating_supply: response.data.market_data.circulating_supply,
+        price_change_7d:
+          coinInfo.price -
+          coinInfo.price / ((100 + coinInfo.price_change_percentage_7d) / 100),
+        price_change_30d:
+          coinInfo.price -
+          coinInfo.price / ((100 + coinInfo.price_change_percentage_30d) / 100),
+        price_change_60d:
+          coinInfo.price -
+          coinInfo.price / ((100 + coinInfo.price_change_percentage_60d) / 100),
+        price_change_200d:
+          coinInfo.price -
+          coinInfo.price /
+            ((100 + coinInfo.price_change_percentage_200d) / 100),
+        price_change_1y:
+          coinInfo.price -
+          coinInfo.price / ((100 + coinInfo.price_change_percentage_1y) / 100),
       });
     };
-    SelectedCoinData();
+    getCoinData();
   }, [selectedCoin]);
 
   return (
     <>
-      <Image width={200} src={image} />
-      <div>{price}</div>
-      <div>{name}</div>
-      <div>{market_cap_rank}</div>
-      <div>{description}</div>
-      <div>{ath}</div>
-      <div>{ath_change_percentage}</div>
-      <div>{homepage}</div>
-      <div>{ath_date}</div>
-      <div>{market_cap}</div>
-      <div>{high_24h}</div>
-      <div>{low_24h}</div>
-      <div>{price_change_24h}</div>
-      <div>{price_change_percentage_24h}</div>
-      <div>{price_change_percentage_7d}</div>
-      <div>{price_change_percentage_30d}</div>
-      <div>{price_change_percentage_60d}</div>
-      <div>{price_change_percentage_200d}</div>
-      <div>{price_change_percentage_1y}</div>
-      <div>{market_cap_change_24h}</div>
-      <div>{market_cap_change_percentage_24h}</div>
-      <div>{total_supply}</div>
-      <div>{max_supply}</div>
-      <div>{circulating_supply}</div>
+      <StyledInfo className="container">
+        <div className="first-line">
+          <Image width={150} src={coinInfo.image} />
+          <div className="first-line-info">
+            <div>{coinInfo.name.toUpperCase()}</div>
+            <div className="price">
+              Price : {coinInfo.price.toLocaleString()}{" "}
+              <span
+                style={{
+                  color:
+                    coinInfo.price_change_percentage_24h > 0
+                      ? "green"
+                      : coinInfo.price_change_percentage_24h < 0
+                      ? "red"
+                      : "black",
+                }}
+              >
+                {coinInfo.price_change_percentage_24h > 0 ? "+" : "-"}
+                {Math.abs(
+                  coinInfo.price_change_percentage_24h
+                ).toLocaleString()}
+                %
+              </span>
+            </div>
+            <div>Market Cap Rank : {coinInfo.market_cap_rank}</div>
+          </div>
+        </div>
+        <div className="data-info">
+          <div className="hl24">
+            <div>24H High : {coinInfo.high_24h}</div>
+            <div>24H Low : {coinInfo.low_24h}</div>
+          </div>
+          <div>24H Price change : {coinInfo.price_change_24h}</div>
+          <div>24H Price Change % : {coinInfo.price_change_percentage_24h}</div>
+          <div>7D Price Change : {coinInfo.price_change_7d}</div>
+          <div>7D Price Change % : {coinInfo.price_change_percentage_7d}</div>
+          <div>30D Price Change : {coinInfo.price_change_30d}</div>
+          <div>30D Price Change % : {coinInfo.price_change_percentage_30d}</div>
+          <div>60D Price Change : {coinInfo.price_change_60d}</div>
+          <div>60D Price Change % : {coinInfo.price_change_percentage_60d}</div>
+          <div>200D Price Change : {coinInfo.price_change_200d}</div>
+          <div>
+            200D Price Change % : {coinInfo.price_change_percentage_200d}
+          </div>
+          <div>1Y Price Change : {coinInfo.price_change_1y}</div>
+          <div>1Y Price Change % : {coinInfo.price_change_percentage_1y}</div>
+          <div>ATH : {coinInfo.ath}</div>
+          <div>ATH % change : {coinInfo.ath_change_percentage}</div>
+          <div>Homepage : {coinInfo.homepage}</div>
+          <div>ATH Date : {coinInfo.ath_date}</div>
+          <div>Market Cap : {coinInfo.market_cap.toLocaleString()}</div>
+          <div>24H Market Cap Change % : {coinInfo.market_cap_change_24h}</div>
+          <div>
+            24H Market Cap Change % :{" "}
+            {coinInfo.market_cap_change_percentage_24h}
+          </div>
+          <div>Total Supply : {coinInfo.total_supply}</div>
+          <div>Max Supply % : {coinInfo.max_supply}</div>
+          <div>Circulating Supply : {coinInfo.circulating_supply}</div>
+        </div>
+        <div>Description : {coinInfo.description}</div>
+      </StyledInfo>
     </>
   );
 };

@@ -5,7 +5,6 @@ import styled from "styled-components";
 const StyledNews = styled.div`
   position: relative;
   height: auto;
-  max-height: 10rem;
   padding: 1rem 2rem;
   margin-bottom: 0.5rem;
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
