@@ -86,6 +86,26 @@ const CoinInfo = ({ selectedCoin }) => {
     circulating_supply: 0,
   });
 
+  const calculatePriceChanges = (coinInfo) => {
+    return {
+      price_change_7d:
+        coinInfo.price -
+        coinInfo.price / ((100 + coinInfo.price_change_percentage_7d) / 100),
+      price_change_30d:
+        coinInfo.price -
+        coinInfo.price / ((100 + coinInfo.price_change_percentage_30d) / 100),
+      price_change_60d:
+        coinInfo.price -
+        coinInfo.price / ((100 + coinInfo.price_change_percentage_60d) / 100),
+      price_change_200d:
+        coinInfo.price -
+        coinInfo.price / ((100 + coinInfo.price_change_percentage_200d) / 100),
+      price_change_1y:
+        coinInfo.price -
+        coinInfo.price / ((100 + coinInfo.price_change_percentage_1y) / 100),
+    };
+  };
+
   useEffect(() => {
     if (!selectedCoin) return;
     const getCoinData = async () => {
@@ -133,22 +153,7 @@ const CoinInfo = ({ selectedCoin }) => {
         total_supply: response.data.market_data.total_supply,
         max_supply: response.data.market_data.max_supply,
         circulating_supply: response.data.market_data.circulating_supply,
-        price_change_7d:
-          coinInfo.price -
-          coinInfo.price / ((100 + coinInfo.price_change_percentage_7d) / 100),
-        price_change_30d:
-          coinInfo.price -
-          coinInfo.price / ((100 + coinInfo.price_change_percentage_30d) / 100),
-        price_change_60d:
-          coinInfo.price -
-          coinInfo.price / ((100 + coinInfo.price_change_percentage_60d) / 100),
-        price_change_200d:
-          coinInfo.price -
-          coinInfo.price /
-            ((100 + coinInfo.price_change_percentage_200d) / 100),
-        price_change_1y:
-          coinInfo.price -
-          coinInfo.price / ((100 + coinInfo.price_change_percentage_1y) / 100),
+        ...calculatePriceChanges(response.data.market_data),
       });
     };
     getCoinData();
