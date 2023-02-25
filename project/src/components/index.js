@@ -7,6 +7,8 @@ import SLIDER from "./SliderAD/SliderAD.jsx";
 import TEXT from "./Typography/Typography.jsx";
 import InputNUM from "./InputNumber/InputNumber.jsx";
 import DropDownTabs from "./DropdownTabs/DropdownTabs.jsx";
+import TABLE from "./Table/Table.jsx";
+import CircleBar from "./Circlebar/circlebar.jsx";
 
 export {
   CardBST,
@@ -18,4 +20,6 @@ export {
   TEXT,
   InputNUM,
   DropDownTabs,
+  TABLE,
+  CircleBar,
 };

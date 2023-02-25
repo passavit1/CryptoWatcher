@@ -1,16 +1,12 @@
-import Counter from "../../data/test";
-import { useState } from "react";
+// import { CircleBar } from "../../components/index";
 
 const TestFunction = () => {
-  const [showCounter, setShowCounter] = useState(true);
-
+  const value = -21.46;
   return (
-    <div>
-      <button onClick={() => setShowCounter(!showCounter)}>
-        Toggle Counter
-      </button>
-      {showCounter && <Counter />}
-    </div>
+    <>
+      {/* <CircleBar value={value} /> */}
+      Hello Tester
+    </>
   );
 };
 
