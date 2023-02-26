@@ -13,15 +13,25 @@ const StyledProgress = styled(Progress)`
 
 const CircleBar = (props) => (
   <StyledProgress
-    type="line"
-    percent={(100 + props.value).toFixed(2)}
-    format={() => `${props.value}%`}
+    type={props.type || "line"}
+    percent={props.percent || (100 + props.value).toFixed(2)}
+    format={() => `${props.children || props.value + "%"}`}
     status="active"
-    strokeColor={{
-      0: "#DE2130",
-      100: "#10EF2F",
-    }}
-    strokeWidth={30}
+    strokeColor={
+      props.color
+        ? (() => {
+            if (props.percent >= 80) return { 0: "#2AD54C" };
+            if (props.percent >= 60) return { 0: "#7ADB24" };
+            if (props.percent >= 40) return { 0: "#C0DD22" };
+            if (props.percent >= 20) return { 0: "#D8B627" };
+            return { 0: "#DA3C25" };
+          })()
+        : {
+            0: "#DE2130",
+            100: "#10EF2F",
+          }
+    }
+    strokeWidth={props.width || 30}
   />
 );
 

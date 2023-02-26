@@ -7,6 +7,7 @@ import { TABLE, CircleBar } from "../../components/index";
 const StyledInfo = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 1rem 0.5rem;
 
   // Pic and Main Info
 
@@ -23,7 +24,7 @@ const StyledInfo = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-      border: 1px solid red;
+      
       text-shadow: 2px 2px 1px #d7d7d7;
       font-size: 2rem;
       margin-bottom: 10px;
@@ -54,6 +55,7 @@ const StyledInfo = styled.div`
 
     .hl24 {
       margin-bottom: 1.5rem;
+      padding: 1rem 0;
 
       > div:first-child {
         text-align: center;
@@ -85,15 +87,16 @@ const StyledInfo = styled.div`
     }
 
     .PriceChangeTable {
-      border: 1px solid red;
+      
       margin-bottom: 1rem;
     }
 
     .ATH {
-      border: 1px solid red;
+      
       margin-bottom: 1rem;
       display: flex;
       flex-direction: column;
+      padding: 1rem 0;
 
       > div:first-child {
         text-align: center;
@@ -133,8 +136,9 @@ const StyledInfo = styled.div`
     }
 
     .MarketCap {
-      border: 1px solid red;
+      
       margin-bottom: 1rem;
+      padding: 1rem 0;
 
       > div:first-child {
         text-align: center;
@@ -143,24 +147,101 @@ const StyledInfo = styled.div`
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
       }
+
+      > div:last-child {
+        .MCTitle {
+          display: flex;
+
+          > div {
+            width: 50%;
+            padding-left: 10%;
+
+            @media (min-width: 768px) {
+              padding-left: 20%;
+            }
+          }
+        }
+      }
     }
 
     .supply {
-      border: 1px solid red;
+      
       margin-bottom: 1rem;
+      padding: 1rem 0;
+
+      > div:first-child {
+        text-align: center;
+        text-weight: 400;
+        color: black;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      
+
+      > div:nth-child(2) {
+        margin-bottom: 1rem;
+
+        .SupplyTitle{
+          display: flex;
+  
+          > div {
+            width: 50%;
+            padding-left: 10%;
+            
+  
+            @media (min-width: 768px) {
+              padding-left: 20%;            }
+            }
+          }
+  
+          
+        }
+      }
+
+
+      .GraphSupply {
+        display: flex;
+
+        > div{
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: center; 
+
+          >div:first-child{
+            margin-bottom: 0.5rem;
+          }
+        }
+      }
     }
 
     .Homepage {
-      border: 1px solid red;
+      
       margin-bottom: 1rem;
+      text-align: center;
     }
   }
 
   // Description
 
   .Description {
-    background-color: gray;
+  padding: 1rem 0;
+
+  > div:first-child {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
   }
+
+  > div:last-child {
+    text-align: justify;
+    text-overflow: ellipsis;
+    padding: 0 1rem;
+    line-height: 1.5;
+    overflow: hidden;
+  }
+}
 `;
 
 const CoinInfo = ({ selectedCoin }) => {
@@ -408,7 +489,7 @@ const CoinInfo = ({ selectedCoin }) => {
               />
               <div className="DataNumberATH">
                 <div className="ATHPrice">
-                  <div className="ATHtitle">All Time Price Price</div>
+                  <div className="ATHtitle">All Time High Price</div>
                   <div>{coinInfo.ath ? coinInfo.ath.toLocaleString() : 0}</div>
                 </div>
                 <div className="ATHPriceChange">
@@ -442,44 +523,105 @@ const CoinInfo = ({ selectedCoin }) => {
           <div className="MarketCap">
             <div>MARKET CAP</div>
             <div>
-              Market Cap :{" "}
-              {coinInfo.market_cap ? coinInfo.market_cap.toLocaleString() : 0}
-            </div>
-            <div>
-              24H Market Cap Change :{" "}
-              {coinInfo.market_cap_change_24h
-                ? coinInfo.market_cap_change_24h.toLocaleString()
-                : 0}
-            </div>
-            <div>
-              24H Market Cap Change % :{" "}
-              {coinInfo.market_cap_change_percentage_24h
-                ? coinInfo.market_cap_change_percentage_24h.toLocaleString()
-                : 0}{" "}
-              %
+              <div className="MCTitle">
+                <div>Market Cap</div>
+                <div>
+                  {coinInfo.market_cap
+                    ? coinInfo.market_cap.toLocaleString()
+                    : 0}
+                </div>
+              </div>
+              <div className="MCTitle">
+                <div>24H Change</div>
+                <div>
+                  {coinInfo.market_cap_change_24h
+                    ? coinInfo.market_cap_change_24h.toLocaleString()
+                    : 0}
+                </div>
+              </div>
+              <div className="MCTitle">
+                <div>24H % Change</div>
+                <div>
+                  {coinInfo.market_cap_change_percentage_24h
+                    ? coinInfo.market_cap_change_percentage_24h.toLocaleString()
+                    : 0}{" "}
+                  %
+                </div>
+              </div>
             </div>
           </div>
           <div className="supply">
+            <div>TOTAL SUPPLY</div>
             <div>
-              Total Supply :{" "}
-              {coinInfo.total_supply
-                ? coinInfo.total_supply.toLocaleString()
-                : 0}
+              <div className="SupplyTitle">
+                <div>Max Supply </div>
+                <div>
+                  {coinInfo.max_supply
+                    ? coinInfo.max_supply.toLocaleString()
+                    : 0}
+                </div>
+              </div>
+              <div className="SupplyTitle">
+                <div>Total Supply</div>
+                <div>
+                  {coinInfo.total_supply
+                    ? coinInfo.total_supply.toLocaleString()
+                    : 0}
+                </div>
+              </div>
+              <div className="SupplyTitle">
+                <div>Circulating Supply</div>
+                <div>
+                  {coinInfo.circulating_supply
+                    ? coinInfo.circulating_supply.toLocaleString()
+                    : 0}
+                </div>
+              </div>
             </div>
-            <div>
-              Max Supply % :{" "}
-              {coinInfo.max_supply ? coinInfo.max_supply.toLocaleString() : 0}
-            </div>
-            <div>
-              Circulating Supply :{" "}
-              {coinInfo.circulating_supply
-                ? coinInfo.circulating_supply.toLocaleString()
-                : 0}
+            <div className="GraphSupply">
+              <div>
+                <div>TOTAL</div>
+                <CircleBar
+                  type="circle"
+                  width="15"
+                  percent={(coinInfo.total_supply / coinInfo.max_supply) * 100}
+                  color="true"
+                >
+                  {(
+                    (coinInfo.total_supply / coinInfo.max_supply) *
+                    100
+                  ).toFixed(0) + "%"}
+                </CircleBar>
+              </div>
+              <div>
+                <div>CIRCULATING</div>
+                <CircleBar
+                  type="circle"
+                  color="true"
+                  width="15"
+                  percent={
+                    (coinInfo.circulating_supply / coinInfo.total_supply) * 100
+                  }
+                >
+                  {(
+                    (coinInfo.circulating_supply / coinInfo.total_supply) *
+                    100.0
+                  ).toFixed(0) + "%"}
+                </CircleBar>
+              </div>
             </div>
           </div>
-          <div className="Homepage">Homepage : {coinInfo.homepage}</div>
+          <div className="Homepage">
+            Homepage :{" "}
+            <a href={coinInfo.homepage} target="_blank" rel="noreferrer">
+              {coinInfo.homepage}
+            </a>
+          </div>
         </div>
-        <div className="Description">Description : {coinInfo.description}</div>
+        <div className="Description">
+          <div>DESCRIPTION</div>
+          <div>{coinInfo.description}</div>
+        </div>
       </StyledInfo>
     </>
   );
