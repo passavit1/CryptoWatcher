@@ -31,8 +31,9 @@ const StyledInfo = styled.div`
       width: 100%;
 
       > div:first-child {
-        color: blue;
+        color: #150CF3;
         text-align: center;
+        font-size: 3rem;
       }
 
       div:nth-child(2) {
