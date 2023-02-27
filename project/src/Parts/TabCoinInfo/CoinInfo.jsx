@@ -31,7 +31,7 @@ const StyledInfo = styled.div`
       width: 100%;
 
       > div:first-child {
-        color: #150CF3;
+        color: #7422DD;
         text-align: center;
         font-size: 3rem;
       }
@@ -44,7 +44,7 @@ const StyledInfo = styled.div`
 
       div:last-child {
         font-size: 1.5rem;
-        color: yellow;
+        color: #E01F79;
       }
     }
   }
@@ -55,13 +55,17 @@ const StyledInfo = styled.div`
     width: 100%;
 
     .hl24 {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       padding: 1rem 0;
+
+      @media (min-width: 480px) {
+        padding: 0.8rem 0
+      }
 
       > div:first-child {
         text-align: center;
         text-weight: 400;
-        color: black;
+        color: #7422DD;
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
       }
@@ -72,7 +76,10 @@ const StyledInfo = styled.div`
         div {
           display: inline-block;
           width: 50%;
+          color:#EA15A2;
           text-align: center;
+          font-weight: 400;
+          font-size: 1.2rem;
         }
       }
 
@@ -90,6 +97,7 @@ const StyledInfo = styled.div`
     .PriceChangeTable {
       
       margin-bottom: 1rem;
+      th,tr,td{text-align: center};
     }
 
     .ATH {
@@ -97,14 +105,18 @@ const StyledInfo = styled.div`
       margin-bottom: 1rem;
       display: flex;
       flex-direction: column;
-      padding: 1rem 0;
+      padding: 0.5rem 0;
 
       > div:first-child {
         text-align: center;
         text-weight: 400;
-        color: black;
+        color: #7422DD;
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
+
+        @media (min-width: 576px) {
+          margin-bottom: 1rem;
+        }
       }
 
       .ATH-SecondLine {
@@ -113,6 +125,10 @@ const StyledInfo = styled.div`
           justify-content: center;
           align-items: center;
           margin-bottom: 1rem;
+
+          @media (min-width: 576px) {
+          margin-bottom: 1.5rem;
+        }
 
           .ant-progress-outer {
             width: 80%;
@@ -127,9 +143,14 @@ const StyledInfo = styled.div`
               width: 50%;
               padding-left: 10%;
 
-              @media (min-width: 768px) {
-                padding-left: 20%;
+              @media (min-width: 480px) {
+                padding-left: 15%;
               }
+
+              @media (min-width: 576px) {
+                padding-left: 17%;
+              }
+
             }
           }
         }
@@ -139,12 +160,12 @@ const StyledInfo = styled.div`
     .MarketCap {
       
       margin-bottom: 1rem;
-      padding: 1rem 0;
+
 
       > div:first-child {
         text-align: center;
         text-weight: 400;
-        color: black;
+        color: #7422DD;
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
       }
@@ -157,8 +178,12 @@ const StyledInfo = styled.div`
             width: 50%;
             padding-left: 10%;
 
-            @media (min-width: 768px) {
-              padding-left: 20%;
+                          @media (min-width: 480px) {
+                padding-left: 15%;
+              }
+
+            @media (min-width: 576px) {
+              padding-left: 17%;
             }
           }
         }
@@ -173,7 +198,7 @@ const StyledInfo = styled.div`
       > div:first-child {
         text-align: center;
         text-weight: 400;
-        color: black;
+        color: #7422DD;
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
       }
@@ -190,8 +215,12 @@ const StyledInfo = styled.div`
             padding-left: 10%;
             
   
-            @media (min-width: 768px) {
-              padding-left: 20%;            }
+              @media (min-width: 480px) {
+                padding-left: 15%;
+              }
+
+            @media (min-width: 576px) {
+              padding-left: 17%;            }
             }
           }
   
@@ -210,7 +239,10 @@ const StyledInfo = styled.div`
           align-items: center; 
 
           >div:first-child{
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            color:#EA15A2;
+            font-size: 1.2rem;
+            font-weight: 400;
           }
         }
       }
@@ -218,8 +250,17 @@ const StyledInfo = styled.div`
 
     .Homepage {
       
+      
       margin-bottom: 1rem;
       text-align: center;
+
+      div{
+        text-align: center;
+        text-weight: 400;
+        color: #7422DD;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
     }
   }
 
@@ -230,9 +271,10 @@ const StyledInfo = styled.div`
 
   > div:first-child {
     text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
+        text-weight: 400;
+        color: #7422DD;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
   }
 
   > div:last-child {
@@ -613,7 +655,7 @@ const CoinInfo = ({ selectedCoin }) => {
             </div>
           </div>
           <div className="Homepage">
-            Homepage :{" "}
+            <div>HOMEPAGE</div>
             <a href={coinInfo.homepage} target="_blank" rel="noreferrer">
               {coinInfo.homepage}
             </a>
