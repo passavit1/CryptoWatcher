@@ -4,6 +4,13 @@ import styled from "styled-components";
 const StyledProgress = styled(Progress)`
   .ant-progress-text {
     color: red;
+
+    @media (min-width: 576px) {
+      font-size: 1.2rem;
+    }
+    @media (min-width: 650px) {
+      font-size: 1.3rem;
+    }
   }
 
   .ant-progress-inner {

@@ -24,27 +24,39 @@ const StyledInfo = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-      
+
       text-shadow: 2px 2px 1px #d7d7d7;
       font-size: 2rem;
       margin-bottom: 10px;
       width: 100%;
 
       > div:first-child {
-        color: #7422DD;
+        color: #7422dd;
         text-align: center;
         font-size: 3rem;
+
+        @media (min-width: 768px) {
+          font-size: 4rem;
+        }
       }
 
       div:nth-child(2) {
         span {
           font-size: 1rem;
+
+          @media (min-width: 768px) {
+            font-size: 2rem;
+          }
         }
       }
 
       div:last-child {
         font-size: 1.5rem;
-        color: #E01F79;
+        color: #e01f79;
+
+        @media (min-width: 768px) {
+          font-size: 2rem;
+        }
       }
     }
   }
@@ -59,15 +71,23 @@ const StyledInfo = styled.div`
       padding: 1rem 0;
 
       @media (min-width: 480px) {
-        padding: 0.8rem 0
+        padding: 0.8rem 0;
       }
 
       > div:first-child {
         text-align: center;
         text-weight: 400;
-        color: #7422DD;
+        color: #7422dd;
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
+
+        @media (min-width: 650px) {
+          font-size: 1.7rem;
+        }
+
+        @media (min-width: 768px) {
+          font-size: 2rem;
+        }
       }
 
       > div:nth-child(2) {
@@ -76,10 +96,18 @@ const StyledInfo = styled.div`
         div {
           display: inline-block;
           width: 50%;
-          color:#EA15A2;
+          color: #ea15a2;
           text-align: center;
           font-weight: 400;
           font-size: 1.2rem;
+
+          @media (min-width: 650px) {
+            font-size: 1.4rem;
+          }
+
+          @media (min-width: 768px) {
+            font-size: 1.8rem;
+          }
         }
       }
 
@@ -90,18 +118,37 @@ const StyledInfo = styled.div`
           display: inline-block;
           width: 50%;
           text-align: center;
+
+          @media (min-width: 650px) {
+            font-size: 1.2rem;
+          }
+          @media (min-width: 768px) {
+            font-size: 1.4rem;
+          }
         }
       }
     }
 
     .PriceChangeTable {
-      
       margin-bottom: 1rem;
-      th,tr,td{text-align: center};
+      th,
+      tr,
+      td {
+        text-align: center;
+
+        @media (min-width: 576px) {
+          font-size: 1.1rem;
+        }
+        @media (min-width: 650px) {
+          font-size: 1.2rem;
+        }
+        @media (min-width: 768px) {
+          font-size: 1.4rem;
+        }
+      }
     }
 
     .ATH {
-      
       margin-bottom: 1rem;
       display: flex;
       flex-direction: column;
@@ -110,12 +157,18 @@ const StyledInfo = styled.div`
       > div:first-child {
         text-align: center;
         text-weight: 400;
-        color: #7422DD;
+        color: #7422dd;
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
 
         @media (min-width: 576px) {
           margin-bottom: 1rem;
+        }
+        @media (min-width: 650px) {
+          font-size: 1.7rem;
+        }
+        @media (min-width: 768px) {
+          font-size: 2rem;
         }
       }
 
@@ -127,8 +180,8 @@ const StyledInfo = styled.div`
           margin-bottom: 1rem;
 
           @media (min-width: 576px) {
-          margin-bottom: 1.5rem;
-        }
+            margin-bottom: 1.5rem;
+          }
 
           .ant-progress-outer {
             width: 80%;
@@ -151,6 +204,14 @@ const StyledInfo = styled.div`
                 padding-left: 17%;
               }
 
+              @media (min-width: 650px) {
+                padding-left: 15%;
+                font-size: 1.2rem;
+              }
+              @media (min-width: 768px) {
+                padding-left: 17%;
+                font-size: 1.4rem;
+              }
             }
           }
         }
@@ -158,16 +219,21 @@ const StyledInfo = styled.div`
     }
 
     .MarketCap {
-      
       margin-bottom: 1rem;
-
 
       > div:first-child {
         text-align: center;
         text-weight: 400;
-        color: #7422DD;
+        color: #7422dd;
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
+
+        @media (min-width: 650px) {
+          font-size: 1.7rem;
+        }
+        @media (min-width: 768px) {
+          font-size: 2rem;
+        }
       }
 
       > div:last-child {
@@ -178,12 +244,21 @@ const StyledInfo = styled.div`
             width: 50%;
             padding-left: 10%;
 
-                          @media (min-width: 480px) {
-                padding-left: 15%;
-              }
+            @media (min-width: 480px) {
+              padding-left: 15%;
+            }
 
             @media (min-width: 576px) {
               padding-left: 17%;
+            }
+
+            @media (min-width: 650px) {
+              padding-left: 15%;
+              font-size: 1.2rem;
+            }
+            @media (min-width: 768px) {
+              padding-left: 17%;
+              font-size: 1.4rem;
             }
           }
         }
@@ -191,75 +266,104 @@ const StyledInfo = styled.div`
     }
 
     .supply {
-      
       margin-bottom: 1rem;
       padding: 1rem 0;
 
       > div:first-child {
         text-align: center;
         text-weight: 400;
-        color: #7422DD;
+        color: #7422dd;
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
+
+        @media (min-width: 650px) {
+          font-size: 1.7rem;
+        }
+        @media (min-width: 768px) {
+          font-size: 2rem;
+        }
       }
-      
 
       > div:nth-child(2) {
         margin-bottom: 1rem;
 
-        .SupplyTitle{
+        .SupplyTitle {
           display: flex;
-  
+
           > div {
             width: 50%;
             padding-left: 10%;
-            
-  
-              @media (min-width: 480px) {
-                padding-left: 15%;
-              }
+
+            @media (min-width: 480px) {
+              padding-left: 15%;
+            }
 
             @media (min-width: 576px) {
-              padding-left: 17%;            }
+              padding-left: 17%;
+            }
+
+            @media (min-width: 650px) {
+              padding-left: 15%;
+              font-size: 1.2rem;
+            }
+            @media (min-width: 768px) {
+              padding-left: 17%;
+              font-size: 1.4rem;
             }
           }
-  
-          
         }
       }
-
 
       .GraphSupply {
         display: flex;
 
-        > div{
+        > div {
           width: 50%;
           display: flex;
           flex-direction: column;
-          align-items: center; 
+          align-items: center;
 
-          >div:first-child{
+          > div:first-child {
             margin-bottom: 0.8rem;
-            color:#EA15A2;
+            color: #ea15a2;
             font-size: 1.2rem;
             font-weight: 400;
+
+            @media (min-width: 768px) {
+              font-size: 1.4rem;
+            }
           }
         }
       }
     }
 
     .Homepage {
-      
-      
       margin-bottom: 1rem;
       text-align: center;
 
-      div{
+      div {
         text-align: center;
         text-weight: 400;
-        color: #7422DD;
+        color: #7422dd;
         font-size: 1.5rem;
         margin-bottom: 0.5rem;
+
+        @media (min-width: 650px) {
+          font-size: 1.7rem;
+        }
+        @media (min-width: 768px) {
+          font-size: 2rem;
+        }
+      }
+
+      a {
+        @media (min-width: 650px) {
+          font-size: 1.2rem;
+        }
+
+        @media (min-width: 768px) {
+          font-size: 1.4rem;
+        }
       }
     }
   }
@@ -267,24 +371,39 @@ const StyledInfo = styled.div`
   // Description
 
   .Description {
-  padding: 1rem 0;
+    padding: 1rem 0;
 
-  > div:first-child {
-    text-align: center;
-        text-weight: 400;
-        color: #7422DD;
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-  }
+    > div:first-child {
+      text-align: center;
+      text-weight: 400;
+      color: #7422dd;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
 
-  > div:last-child {
-    text-align: justify;
-    text-overflow: ellipsis;
-    padding: 0 1rem;
-    line-height: 1.5;
-    overflow: hidden;
+      @media (min-width: 650px) {
+        font-size: 1.7rem;
+      }
+      @media (min-width: 768px) {
+        font-size: 2rem;
+      }
+    }
+
+    > div:last-child {
+      text-align: justify;
+      text-overflow: ellipsis;
+      padding: 0 1rem;
+      line-height: 1.5;
+      overflow: hidden;
+
+      @media (min-width: 650px) {
+        font-size: 1.2rem;
+      }
+
+      @media (min-width: 768px) {
+        font-size: 1.4rem;
+      }
+    }
   }
-}
 `;
 
 const CoinInfo = ({ selectedCoin }) => {
