@@ -58,6 +58,9 @@ const StyledDivider = styled(Divider)`
 `;
 
 const StyledDivWhenMedium = styled.div`
+  background-color: #f2f2f2;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: space-around;
@@ -237,7 +240,6 @@ function TABS() {
               ClearCoin={ClearCoin}
             />
           </StyledDivWhenMedium>
-          <Divider></Divider>
         </Tab>
 
         {/* Crypto News */}

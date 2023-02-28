@@ -24,6 +24,9 @@ const StyledInfo = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
+      background-color: #f2f2f2;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      padding: 1rem 0;
 
       text-shadow: 2px 2px 1px #d7d7d7;
       font-size: 2rem;
@@ -69,6 +72,8 @@ const StyledInfo = styled.div`
     .hl24 {
       margin-bottom: 1rem;
       padding: 1rem 0;
+      background-color: #f2f2f2;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
       @media (min-width: 480px) {
         padding: 0.8rem 0;
@@ -152,7 +157,9 @@ const StyledInfo = styled.div`
       margin-bottom: 1rem;
       display: flex;
       flex-direction: column;
-      padding: 0.5rem 0;
+      padding: 1rem 0;
+      background-color: #f2f2f2;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
       > div:first-child {
         text-align: center;
@@ -220,6 +227,9 @@ const StyledInfo = styled.div`
 
     .MarketCap {
       margin-bottom: 1rem;
+      background-color: #f2f2f2;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      padding: 1rem 0;
 
       > div:first-child {
         text-align: center;
@@ -267,6 +277,9 @@ const StyledInfo = styled.div`
 
     .supply {
       margin-bottom: 1rem;
+      padding: 1rem 0;
+      background-color: #f2f2f2;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       padding: 1rem 0;
 
       > div:first-child {
@@ -340,6 +353,9 @@ const StyledInfo = styled.div`
     .Homepage {
       margin-bottom: 1rem;
       text-align: center;
+      background-color: #f2f2f2;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      padding: 1rem 0;
 
       div {
         text-align: center;
@@ -372,6 +388,8 @@ const StyledInfo = styled.div`
 
   .Description {
     padding: 1rem 0;
+    background-color: #f2f2f2;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
     > div:first-child {
       text-align: center;
@@ -595,7 +613,7 @@ const CoinInfo = ({ selectedCoin }) => {
     <>
       <StyledInfo className="container">
         <div className="first-line">
-          <Image width={150} src={coinInfo.image} />
+          <Image width={200} src={coinInfo.image} />
           <div className="first-line-info">
             <div>{coinInfo.name.toUpperCase()}</div>
             <div className="price">
