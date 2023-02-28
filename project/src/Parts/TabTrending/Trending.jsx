@@ -8,19 +8,19 @@ const Trending = ({
   SelectedCoinInTrending,
 }) => {
   const [TrendingCoin, setTrendingCoin] = useState([]);
+  const [getID, setGetID] = useState([]);
 
   useEffect(() => {
     const FetchData = async () => {
       const response = await axios.get(
         "https://api.coingecko.com/api/v3/search/trending"
       );
-      //   console.log(response);
+
       setTrendingCoin(response.data.coins);
+      setGetID(response.data.coins.map((item) => item.item.id));
     };
     FetchData();
   }, []);
-
-  //   console.log(TrendingCoin);
 
   return (
     <>
