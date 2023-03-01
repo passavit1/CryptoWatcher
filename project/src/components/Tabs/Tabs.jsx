@@ -190,6 +190,16 @@ function TABS() {
 
   const [ClearField, setClearField] = useState("");
 
+  //Handle Value in Balance Field
+
+  const [BalanceValue, setBalanceValue] = useState("");
+
+  const handleValueBalance = (Balance) => {
+    if (Balance !== 0) {
+      setBalanceValue(Balance);
+    }
+  };
+
   return (
     <StyledContainer>
       <DropDownTabs ValueSelectedTab={ValueSelectedTab} />
@@ -208,6 +218,7 @@ function TABS() {
             onSelect={handleCoinSelection}
             ValueSelectedTab={ValueSelectedTab}
             ClearCoin={ClearCoin}
+            handleValueBalance={handleValueBalance}
           ></SearchDropDown>
           <SLIDER onChange={handleValueLeverage} />
           <BlockButton
@@ -238,6 +249,7 @@ function TABS() {
               LeverageValue={LeverageValue}
               SelectTypeValue={SelectTypeValue}
               ClearCoin={ClearCoin}
+              BalanceValue={BalanceValue}
             />
           </StyledDivWhenMedium>
         </Tab>

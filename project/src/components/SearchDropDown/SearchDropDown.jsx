@@ -3,7 +3,7 @@ import { FormControl, Dropdown, Button, Form, Card } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import { getCoinList } from "../../data/index";
-import { InfoCircleTwoTone } from "@ant-design/icons";
+import { SwapOutlined } from "@ant-design/icons";
 
 const { Label } = Form;
 
@@ -40,19 +40,11 @@ const StyledDivInline = styled.div`
           scale: 0.9;
         }
       }
-
-      button {
-        position: absolute;
-        right: 0;
-        scale: 1.2;
-        background-color: transparent;
-        outline: none;
-        border: none;
-      }
     }
 
     .inner {
       padding-bottom: 5%;
+      display: flex;
 
       .dropdown {
         width: 100%;
@@ -61,6 +53,103 @@ const StyledDivInline = styled.div`
 
         button:first-child {
           width: 60%;
+        }
+
+        @media (max-width: 299px) {
+          scale: 0.8;
+          justify-content: flex-start;
+        }
+
+        @media (min-width: 300px) {
+          scale: 0.8;
+          justify-content: flex-start;
+        }
+        @media (min-width: 480px) {
+          scale: 0.9;
+          justify-content: flex-start;
+        }
+        @media (min-width: 576px) {
+          scale: 1;
+          justify-content: flex-start;
+          margin-left: 30px;
+        }
+        @media (min-width: 650px) {
+          scale: 1.1;
+          justify-content: flex-start;
+          margin-left: 30px;
+        }
+        @media (min-width: 900px) {
+          scale: 1.1;
+          justify-content: flex-start;
+          margin-left: 80px;
+        }
+      }
+
+      .ButtonIcon {
+        position: absolute;
+        right: 0;
+        background-color: transparent;
+        outline: none;
+        border: none;
+
+        @media (min-width: 300px) {
+          right: 5px;
+          bottom: 18px;
+        }
+        @media (min-width: 400px) {
+          right: 10px;
+          bottom: 28px;
+          scale: 1.1;
+        }
+        @media (min-width: 450px) {
+          right: 20px;
+          bottom: 27px;
+          scale: 1.2;
+        }
+        @media (min-width: 480px) {
+          right: 20px;
+          bottom: 23px;
+          scale: 1.2;
+        }
+        @media (min-width: 576px) {
+          right: 20px;
+          bottom: 20px;
+          scale: 1.1;
+        }
+        @media (min-width: 640px) {
+          right: 22px;
+          bottom: 22px;
+          scale: 1.3;
+        }
+        @media (min-width: 750px) {
+          right: 30px;
+          bottom: 25px;
+          scale: 1.5;
+        }
+        @media (min-width: 850px) {
+          right: 35px;
+          bottom: 30px;
+          scale: 1.7;
+        }
+        @media (min-width: 990px) {
+          right: 10%;
+          bottom: 35px;
+          scale: 1.9;
+        }
+        @media (min-width: 1200px) {
+          right: 65px;
+          bottom: 40px;
+          scale: 1.9;
+        }
+        @media (min-width: 1300px) {
+          right: 13%;
+          bottom: 33%;
+          scale: 1.9;
+        }
+        @media (min-width: 1500px) {
+          right: 15%;
+          bottom: 35%;
+          scale: 1.9;
         }
       }
     }
@@ -113,11 +202,17 @@ const StyledSearchBox = styled(FormControl)`
   margin-bottom: 0.5rem;
 `;
 
-const SearchDropDown = ({ onSelect, ValueSelectedTab, ClearCoin }) => {
+const SearchDropDown = ({
+  onSelect,
+  ValueSelectedTab,
+  ClearCoin,
+  handleValueBalance,
+}) => {
   const [selectedItem, setSelectedItem] = useState("");
   const [coinList, setCoinList] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
+  const [balance, setbalance] = useState("");
 
   useEffect(() => {
     const fetchCoinList = async () => {
@@ -150,15 +245,18 @@ const SearchDropDown = ({ onSelect, ValueSelectedTab, ClearCoin }) => {
     onSelect({ symbol: item.symbol, id: item.id });
   };
 
+  //Handle value in balance input to set balance
+  const handleBalance = (e) => {
+    setbalance(e.target.value);
+    handleValueBalance(e.target.value);
+  };
+
   return (
     <StyledDivInline>
       <StyledCard>
         <div className="outer">
           <div className="First-Line">
             <Label>COINS SYMBOL</Label>
-            <button onClick={() => ValueSelectedTab("CoinInfo")}>
-              <InfoCircleTwoTone />
-            </button>
           </div>
           <div className="inner">
             <Dropdown>
@@ -188,6 +286,12 @@ const SearchDropDown = ({ onSelect, ValueSelectedTab, ClearCoin }) => {
                 ))}
               </StyledDropdownMenu>
             </Dropdown>
+            <button
+              onClick={() => ValueSelectedTab("CoinInfo")}
+              className="ButtonIcon"
+            >
+              <SwapOutlined />
+            </button>
           </div>
         </div>
       </StyledCard>
@@ -199,6 +303,7 @@ const SearchDropDown = ({ onSelect, ValueSelectedTab, ClearCoin }) => {
             placeholder="Number"
             min={0}
             className="InputBalance"
+            onChange={handleBalance}
           />
           <Form.Label
             style={{

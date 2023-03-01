@@ -148,6 +148,7 @@ const SLIDER = ({ onChange }) => {
       <StyledSlider
         marks={marks}
         defaultValue={25}
+        min={1}
         max={125}
         value={leverage}
         onChange={handleSliderChange}

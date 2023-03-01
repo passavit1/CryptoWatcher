@@ -164,7 +164,7 @@ function CardBST({ InitSymbol, CardCurrentPrice }) {
             </Dropdown.Menu>
           </Dropdown>
         </Card.Title>
-        <Card.Text>{CurrentPrice}</Card.Text>
+        <Card.Text>{CurrentPrice} $</Card.Text>
       </Card.Body>
     </StyledCard>
   );

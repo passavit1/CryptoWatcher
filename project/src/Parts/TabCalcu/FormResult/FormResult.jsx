@@ -27,6 +27,10 @@ const StyledDiv = styled.div`
     display: flex;
     align-items: center;
   }
+
+  .MarginText {
+    font-weight: 450;
+  }
 `;
 
 const FormResult = ({
@@ -35,6 +39,7 @@ const FormResult = ({
   LeverageValue,
   SelectTypeValue,
   ClearCoin,
+  BalanceValue,
 }) => {
   const [currentPrice, setCurrentPrice] = useState(null);
   const [MarginUse, setMarginUse] = useState("");
@@ -137,6 +142,12 @@ const FormResult = ({
         </StyledDiv>
         <StyledDiv>
           <TEXT>Margin Use : </TEXT>
+          <TEXT className="MarginText">
+            {MarginUse !== 0 && BalanceValue !== 0
+              ? ((MarginUse / BalanceValue) * 100).toFixed(2) + " "
+              : ""}
+            %
+          </TEXT>
           <TEXT>{MarginUse}</TEXT>
         </StyledDiv>
         <StyledDiv>
