@@ -123,6 +123,7 @@ function CardBST({ InitSymbol, CardCurrentPrice }) {
               " Price",
               response.data[CoinID].usd
             );
+            // console.log(response);
             setCurrentPrice(response.data[CoinID].usd);
           } catch (error) {
             console.log("Error fetching current price: ", error);
