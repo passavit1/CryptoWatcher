@@ -94,6 +94,7 @@ const StyledDivInline = styled.div`
         background-color: transparent;
         outline: none;
         border: none;
+        z-index: 2;
 
         @media (min-width: 300px) {
           right: 5px;
