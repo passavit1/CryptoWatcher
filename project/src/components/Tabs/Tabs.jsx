@@ -12,6 +12,7 @@ import {
   CoinInfo,
   CryptoNews,
   Trending,
+  Top100Coins,
 } from "../../Parts/index";
 import styled from "styled-components";
 import { Divider } from "antd";
@@ -167,7 +168,7 @@ function TABS() {
 
   //Call Back Function to handle Page
 
-  const [SelectdTab, setSelectdTab] = useState("Calculator");
+  const [SelectdTab, setSelectdTab] = useState("Top100Coins");
 
   const ValueSelectedTab = (TAB) => {
     setSelectdTab(TAB);
@@ -210,6 +211,12 @@ function TABS() {
         className="mb-3"
         fill
       >
+        {/* Top 100 Coins */}
+
+        <Tab eventKey="Top100Coins" title="TOP 100 Coins">
+          <Top100Coins />
+        </Tab>
+
         {/* Calculator */}
 
         <Tab eventKey="Calculator" title="Calculator">

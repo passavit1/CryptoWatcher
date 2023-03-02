@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import { getCoinList } from "../../data/index";
 import { SwapOutlined } from "@ant-design/icons";
+import { Tooltip } from "antd";
 
 const { Label } = Form;
 
@@ -50,6 +51,8 @@ const StyledDivInline = styled.div`
         width: 100%;
         display: flex;
         justify-content: center;
+
+        z-index: 2;
 
         button:first-child {
           width: 60%;
@@ -286,12 +289,14 @@ const SearchDropDown = ({
                 ))}
               </StyledDropdownMenu>
             </Dropdown>
-            <button
-              onClick={() => ValueSelectedTab("CoinInfo")}
-              className="ButtonIcon"
-            >
-              <SwapOutlined />
-            </button>
+            <Tooltip title="COIN INFORMATION">
+              <button
+                onClick={() => ValueSelectedTab("CoinInfo")}
+                className="ButtonIcon"
+              >
+                <SwapOutlined />
+              </button>
+            </Tooltip>
           </div>
         </div>
       </StyledCard>

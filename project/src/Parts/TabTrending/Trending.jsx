@@ -118,7 +118,7 @@ const Trending = ({
                 <div className="InfoData">
                   <h3>{item.name}</h3>
                   <div>( {item.symbol.toUpperCase()} )</div>
-                  <div className="price">{item.current_price}</div>
+                  <div className="price">{item.current_price} $</div>
                 </div>
               </div>
               <TrendingCoinButton

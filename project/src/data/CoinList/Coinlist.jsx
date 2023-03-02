@@ -13,11 +13,31 @@ async function getCoinList(searchTerm) {
     }
   );
 
-  const top100Coins = response.data.map(({ id, symbol, current_price }) => ({
-    id,
-    symbol,
-    current_price,
-  }));
+  const top100Coins = response.data.map(
+    ({
+      id,
+      symbol,
+      current_price,
+      name,
+      image,
+      high_24h,
+      low_24h,
+      price_change_24h,
+      price_change_percentage_24h,
+      market_cap,
+    }) => ({
+      id,
+      symbol,
+      current_price,
+      name,
+      image,
+      high_24h,
+      low_24h,
+      price_change_24h,
+      price_change_percentage_24h,
+      market_cap,
+    })
+  );
 
   if (!searchTerm) {
     return top100Coins;

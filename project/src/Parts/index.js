@@ -5,6 +5,7 @@ import BuySellButton from "./TabCalcu/SelectType/SelectType.jsx";
 import CoinInfo from "./TabCoinInfo/CoinInfo.jsx";
 import CryptoNews from "./TabNews/CryptoNews.jsx";
 import Trending from "./TabTrending/Trending.jsx";
+import Top100Coins from "./TabTop100Coins/Top100Coins.jsx";
 
 export {
   GenCard,
@@ -14,4 +15,5 @@ export {
   CoinInfo,
   CryptoNews,
   Trending,
+  Top100Coins,
 };
