@@ -6,6 +6,7 @@ import CoinInfo from "./TabCoinInfo/CoinInfo.jsx";
 import CryptoNews from "./TabNews/CryptoNews.jsx";
 import Trending from "./TabTrending/Trending.jsx";
 import Top100Coins from "./TabTop100Coins/Top100Coins.jsx";
+import NavCoins from "./NavCoin/NavCoin.jsx";
 
 export {
   GenCard,
@@ -16,4 +17,5 @@ export {
   CryptoNews,
   Trending,
   Top100Coins,
+  NavCoins,
 };
