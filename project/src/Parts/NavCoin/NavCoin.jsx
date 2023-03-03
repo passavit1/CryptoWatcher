@@ -1,29 +1,33 @@
-import { getCoinList } from "../../data/index";
 import { useState, useEffect } from "react";
+import axios from "axios";
 
-const NavCoins = () => {
+const NavCoins = ({ NavCoin }) => {
   const [coinList, setCoinList] = useState([]);
 
   useEffect(() => {
-    const fetchCoinList = async () => {
-      const response = await getCoinList();
-      setCoinList(response);
+    const SetArray = async () => {
+      const response = await axios.get(
+        "https://api.coingecko.com/api/v3/simple/price",
+        {
+          params: {
+            ids: NavCoin,
+            vs_currencies: "usd",
+            include_24hr_change: true,
+          },
+        }
+      );
+      setCoinList([
+        ...coinList,
+        <div key={coinList.length}>{response.data[NavCoin]?.usd}</div>,
+      ]);
+      console.log(response.data);
     };
-
-    fetchCoinList();
-  }, []);
+    SetArray();
+  }, [NavCoin]);
 
   console.log(coinList);
 
-  return (
-    <>
-      <div>
-        {coinList.map((coin) => (
-          <div key={coin.id}>{coin.name}</div>
-        ))}
-      </div>
-    </>
-  );
+  return <>{coinList.map((coin) => coin)}</>;
 };
 
 export default NavCoins;

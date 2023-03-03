@@ -1,13 +1,14 @@
 import { getCoinList } from "../../data/index";
 import { useEffect, useState } from "react";
-import { Image as IMAGE } from "antd";
+import { Image as IMAGE, Tooltip } from "antd";
 import styled from "styled-components";
+import { PlusCircleTwoTone } from "@ant-design/icons";
 
 const StyledDiv = styled.div`
   display: flex;
 `;
 
-const Top100Coins = () => {
+const Top100Coins = ({ getNavCoin }) => {
   const [coinList, setCoinList] = useState([]);
 
   useEffect(() => {
@@ -70,6 +71,11 @@ const Top100Coins = () => {
           <div>
             {coin.market_cap ? coin.market_cap.toLocaleString() : "Loading..."}
           </div>
+          <Tooltip title="Add to watch list">
+            <button onClick={() => getNavCoin(coin.id)}>
+              <PlusCircleTwoTone />
+            </button>
+          </Tooltip>
         </StyledDiv>
       ))}
     </>

@@ -3,7 +3,7 @@ import { FormControl, Dropdown, Button, Form, Card } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import { getCoinList } from "../../data/index";
-import { SwapOutlined } from "@ant-design/icons";
+import { SnippetsFilled } from "@ant-design/icons";
 import { Tooltip } from "antd";
 
 const { Label } = Form;
@@ -295,7 +295,7 @@ const SearchDropDown = ({
                 onClick={() => ValueSelectedTab("CoinInfo")}
                 className="ButtonIcon"
               >
-                <SwapOutlined />
+                <SnippetsFilled />
               </button>
             </Tooltip>
           </div>

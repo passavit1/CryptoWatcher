@@ -119,7 +119,7 @@ const StyledContainer = styled.div`
   }
 `;
 
-function TABS() {
+function TABS({ getNavCoin }) {
   //handle selected coin
 
   const [selectedCoin, setSelectedCoin] = useState("");
@@ -214,7 +214,7 @@ function TABS() {
         {/* Top 100 Coins */}
 
         <Tab eventKey="Top100Coins" title="TOP 100 Coins">
-          <Top100Coins />
+          <Top100Coins getNavCoin={getNavCoin} />
         </Tab>
 
         {/* Calculator */}

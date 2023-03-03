@@ -22,6 +22,14 @@ function IndexPage() {
 
   // const columns = GenCard(numOfCols);
 
+  // Handle Selected Nav Coin
+
+  const [NavCoin, setNavCoin] = useState("");
+
+  const getNavCoin = (e) => {
+    setNavCoin(e);
+  };
+
   return (
     <>
       <Header />
@@ -33,10 +41,10 @@ function IndexPage() {
         }}
       >
         <Row>
-          <NavCoins />
+          <NavCoins NavCoin={NavCoin} />
         </Row>
       </Container>
-      <TABS />
+      <TABS getNavCoin={getNavCoin} />
     </>
   );
 }
