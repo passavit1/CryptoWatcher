@@ -1,35 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Header, TABS } from "../../components/index";
 import { NavCoins } from "../../Parts/index";
 import { Row, Container } from "react-bootstrap";
+import styled from "styled-components";
+
+const StyledRowNavCoin = styled(Row)`
+  display: grid;
+  grid-template-columns: repeat(
+    ${({ coincount }) => coincount},
+    ${({ coincount }) => `${100 / coincount}%`}
+  );
+  justify-content: center;
+`;
 
 function IndexPage() {
-  // const [numOfCols, setNumOfCols] = useState(window.innerWidth >= 576 ? 6 : 4);
-
-  // useEffect for test render when in inspect
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setNumOfCols(window.innerWidth >= 576 ? 6 : 4);
-  //   };
-
-  //   window.addEventListener("resize", handleResize);
-
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
-  // }, []);
-
-  // const columns = GenCard(numOfCols);
-
-  // Handle Selected Nav Coin
-
   const [NavCoin, setNavCoin] = useState("");
+  const [coinCount, setCoinCount] = useState("");
 
   const getNavCoin = (e) => {
     setNavCoin(e);
   };
 
+  const getCoinCount = (e) => {
+    setCoinCount(e);
+  };
+
+  console.log(coinCount);
   return (
     <>
       <Header />
@@ -40,9 +36,9 @@ function IndexPage() {
           marginBottom: "2px",
         }}
       >
-        <Row>
-          <NavCoins NavCoin={NavCoin} />
-        </Row>
+        <StyledRowNavCoin coincount={coinCount}>
+          <NavCoins NavCoin={NavCoin} getCoinCount={getCoinCount} />
+        </StyledRowNavCoin>
       </Container>
       <TABS getNavCoin={getNavCoin} />
     </>
