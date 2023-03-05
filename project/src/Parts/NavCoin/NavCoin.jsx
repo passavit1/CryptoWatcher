@@ -77,7 +77,13 @@ const NavCoins = ({ NavCoin, getCoinCount }) => {
           <div>{coinData[coin]?.usd.toLocaleString()} $</div>
           <div>{coinData[coin]?.usd_24h_change.toLocaleString()} %</div>
           {coinList.length > 0 && (
-            <button onClick={() => handleDelete(i)}>Delete</button>
+            <button
+              onClick={() => {
+                handleDelete(i);
+              }}
+            >
+              Delete
+            </button>
           )}
         </StyledCard>
       ))}

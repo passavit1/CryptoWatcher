@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Header, TABS } from "../../components/index";
 import { NavCoins } from "../../Parts/index";
 import { Row, Container } from "react-bootstrap";
@@ -25,7 +25,16 @@ function IndexPage() {
     setCoinCount(e);
   };
 
-  console.log(coinCount);
+  // Clear value for user if user want to at the same coin
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setNavCoin("");
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [NavCoin]);
+
+  console.log(NavCoin);
   return (
     <>
       <Header />
