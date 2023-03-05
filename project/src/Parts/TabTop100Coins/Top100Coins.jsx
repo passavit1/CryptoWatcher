@@ -4,16 +4,66 @@ import { Image as IMAGE, Tooltip } from "antd";
 import styled from "styled-components";
 import { PlusCircleTwoTone } from "@ant-design/icons";
 
-const StyledDiv = styled.div`
+const HeaderNav = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   padding: 10px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
+
+  > div:first-child {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+    color: #555;
+  }
+
+  > div:last-child {
+    width: 70%;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    overflow: scroll;
+
+    > div {
+      margin-right: 1%;
+    }
+  }
+
+  @media (max-width: 900px) {
+    > div:last-child {
+      overflow-x: scroll;
+      white-space: nowrap;
+    }
+  }
+`;
+
+const StyledDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 2% 5px 2%;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+  :hover {
+    background-color: red;
+  }
 
   > div:first-child {
     width: 30%;
@@ -40,6 +90,13 @@ const StyledDiv = styled.div`
     width: 70%;
     display: flex;
     font-weight: bold;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    // overflow: scroll;
+
+    > div {
+      margin-right: 1%;
+    }
   }
 
   button {
@@ -62,10 +119,26 @@ const Top100Coins = ({ getNavCoin }) => {
       setCoinList(list);
     };
     fetchData();
+
+    const RefreshData = setInterval(fetchData, 4 * 60 * 1000);
+
+    return () => clearInterval(RefreshData);
   }, []);
 
   return (
     <>
+      <HeaderNav>
+        <div>Crypto Dashboard</div>
+        <div>
+          <div>Current Price</div>
+          <div>24h Change</div>
+          <div>24h Change %</div>
+          <div>24h High</div>
+          <div>24h Low</div>
+          <div>Market Cap</div>
+          <div>Add to Watchlist</div>
+        </div>
+      </HeaderNav>
       {coinList.map((coin) => (
         <StyledDiv className="container" key={coin.id}>
           <div>
@@ -83,16 +156,14 @@ const Top100Coins = ({ getNavCoin }) => {
               {coin.current_price
                 ? coin.current_price > 1
                   ? coin.current_price.toLocaleString()
-                  : coin.current_price
+                  : coin.current_price.toFixed(4)
                 : "Loading..."}
             </div>
             <div className="top100-price-change">
               {coin.price_change_24h
                 ? coin.price_change_24h > 1
-                  ? coin.price_change_24h.toLocaleString()
-                  : coin.price_change_24h.toLocaleString("en-US", {
-                      maximumFractionDigits: 4,
-                    })
+                  ? coin.price_change_24h.toFixed(2)
+                  : coin.price_change_24h.toFixed(4)
                 : "Loading..."}
             </div>
             <div className="top100-price-change-percent">
@@ -107,18 +178,14 @@ const Top100Coins = ({ getNavCoin }) => {
               {coin.high_24h
                 ? coin.high_24h > 1
                   ? coin.high_24h.toLocaleString()
-                  : coin.high_24h.toLocaleString("en-US", {
-                      maximumFractionDigits: 4,
-                    })
+                  : coin.high_24h.toFixed(4)
                 : "Loading..."}
             </div>
             <div className="top100-low">
               {coin.low_24h
                 ? coin.low_24h > 1
                   ? coin.low_24h.toLocaleString()
-                  : coin.low_24h.toLocaleString("en-US", {
-                      maximumFractionDigits: 4,
-                    })
+                  : coin.low_24h.toFixed(4)
                 : "Loading..."}
             </div>
             <div className="top100-market-cap">

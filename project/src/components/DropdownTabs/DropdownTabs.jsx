@@ -4,6 +4,10 @@ import { useState } from "react";
 
 const items = [
   {
+    key: "Top100Coins",
+    label: "Top 100 Coins",
+  },
+  {
     key: "Calculator",
     label: "Calculator",
   },
@@ -22,7 +26,8 @@ const DropDownTabs = ({ ValueSelectedTab }) => {
   const [HandleValue, setHandleValue] = useState("");
 
   const SetValueInDropdown = (value) => {
-    setHandleValue(value);
+    const selectedItem = items.find((item) => item.key === value);
+    setHandleValue(selectedItem.label);
   };
 
   return (
