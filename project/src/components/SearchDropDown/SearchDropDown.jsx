@@ -3,7 +3,7 @@ import { FormControl, Dropdown, Button, Form, Card } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import { getCoinList } from "../../data/index";
-import { SnippetsFilled } from "@ant-design/icons";
+import { SnippetsFilled, PlusCircleTwoTone } from "@ant-design/icons";
 import { Tooltip } from "antd";
 
 const { Label } = Form;
@@ -23,6 +23,9 @@ const StyledDivInline = styled.div`
 
   .outer {
     .First-Line {
+      display: flex;
+      align-items: start;
+
       @media (min-width: 480px) {
         margin-bottom: 3%;
       }
@@ -39,6 +42,29 @@ const StyledDivInline = styled.div`
         }
         @media (min-width: 576px) {
           scale: 0.9;
+        }
+
+        @media (min-width: 760px) {
+          padding-top: 1%;
+        }
+      }
+
+      button {
+        display: none;
+
+        @media (min-width: 760px) {
+          display: block;
+          border: none;
+          background-color: transparent;
+          font-size: 20px;
+          cursor: pointer;
+          padding-right: 10%;
+        }
+        @media (min-width: 1000px) {
+          padding-right: 11%;
+        }
+        @media (min-width: 1000px) {
+          padding-right: 13%;
         }
       }
     }
@@ -211,12 +237,14 @@ const SearchDropDown = ({
   ValueSelectedTab,
   ClearCoin,
   handleValueBalance,
+  getNavCoin,
 }) => {
   const [selectedItem, setSelectedItem] = useState("");
   const [coinList, setCoinList] = useState([]);
   const [searchValue, setSearchValue] = useState("");
   const [filteredItems, setFilteredItems] = useState([]);
   const [balance, setbalance] = useState("");
+  const [coinIdSelected, setCoinIdSelected] = useState("");
 
   useEffect(() => {
     const fetchCoinList = async () => {
@@ -261,6 +289,11 @@ const SearchDropDown = ({
         <div className="outer">
           <div className="First-Line">
             <Label>COINS SYMBOL</Label>
+            <Tooltip title="Add to Watch List">
+              <button onClick={() => getNavCoin(coinIdSelected)}>
+                <PlusCircleTwoTone />
+              </button>
+            </Tooltip>
           </div>
           <div className="inner">
             <Dropdown>
@@ -283,7 +316,10 @@ const SearchDropDown = ({
                 {filteredItems.map((item) => (
                   <Dropdown.Item
                     key={uuidv4()}
-                    onClick={() => handleSelect(item)}
+                    onClick={() => {
+                      handleSelect(item);
+                      setCoinIdSelected(item.id);
+                    }}
                   >
                     {item.symbol.toUpperCase()}
                   </Dropdown.Item>

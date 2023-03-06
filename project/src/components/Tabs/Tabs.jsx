@@ -17,25 +17,38 @@ import {
 import styled from "styled-components";
 import { Divider } from "antd";
 
+// Tabs Color
 const StyledTabs = styled(Tabs)`
   margin-top: 5px;
   background-color: white;
+  padding: 1%;
+  gap: 1%;
+  white-space: nowrap;
 
-  .nav-link.active {
-    background-color: #f5fcfd;
-    color: #f7082e;
+  li {
+    background-color: transparent;
+    border-radius: 1rem;
+    width: 20%;
+    border: transparent;
+    outline: transparent;
 
     &:hover {
-      color: #f7082e;
+      background-color: purple;
+      border: transparent;
     }
   }
 
-  li:hover {
-    background-color: #e9f8fa;
-    border-radius: 0.375rem;
+  .nav-link.active {
+    background-color: #f5fcfd;
+    background-color: green;
+    color: #f7082e;
+    border-radius: 1rem;
+    border: transparent;
 
-    button:hover {
-      color: red;
+    &:hover {
+      color: #f7082e;
+      background-color: yellow;
+      border-radius: 1rem;
     }
   }
 
@@ -44,12 +57,14 @@ const StyledTabs = styled(Tabs)`
   }
 `;
 
+// Color Divided User Information
 const StyledInfoDivider = styled(Divider)`
   span {
     color: #e43a27;
   }
 `;
 
+// Hide Divided Results
 const StyledDivider = styled(Divider)`
   @media screen and (min-width: 768px) {
     &.ant-divider-horizontal.ant-divider-with-text {
@@ -58,10 +73,10 @@ const StyledDivider = styled(Divider)`
   }
 `;
 
+// input and result area
 const StyledDivWhenMedium = styled.div`
   background-color: #f2f2f2;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: space-around;
@@ -238,6 +253,7 @@ function TABS({ getNavCoin }) {
             ValueSelectedTab={ValueSelectedTab}
             ClearCoin={ClearCoin}
             handleValueBalance={handleValueBalance}
+            getNavCoin={getNavCoin}
           ></SearchDropDown>
           <SLIDER onChange={handleValueLeverage} />
           <BlockButton
