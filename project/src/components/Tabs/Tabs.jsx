@@ -87,33 +87,43 @@ const StyledDivWhenMedium = styled.div`
 `;
 
 const StyledContainer = styled.div`
-  .ant-typography.ant-dropdown-trigger {
-    margin-top: 3%;
-    display: inline-block;
-    width: 100%;
-    height: 2.3rem;
-    text-align: center;
+  > div:first-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    @media screen and (min-width: 351px) {
-      display: none;
-    }
+    .ant-typography.ant-dropdown-trigger {
+      margin-top: 3%;
+      display: inline-block;
+      width: 90%;
+      height: 2.3rem;
+      text-align: center;
+      margin-bottom: 10px;
 
-    .ant-space {
-      background-color: #7dd1e3;
-      width: 100%;
-      height: 100%;
-      justify-content: center;
-      font-size: 1.5rem;
-      color: #d35035;
+      @media screen and (min-width: 430px) {
+        display: none;
+      }
 
-      div:last-child {
-        padding-bottom: 0.5rem;
+      .ant-space {
+        background-color: #7dd1e3;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: #d35035;
+        border-radius: 10px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+        div:last-child {
+          padding-bottom: 0.5rem;
+        }
       }
     }
   }
 
   ul {
-    @media screen and (max-width: 350px) {
+    @media screen and (max-width: 429px) {
       display: none;
     }
   }
@@ -203,7 +213,9 @@ function TABS({ getNavCoin }) {
 
   return (
     <StyledContainer>
-      <DropDownTabs ValueSelectedTab={ValueSelectedTab} />
+      <div>
+        <DropDownTabs ValueSelectedTab={ValueSelectedTab} />
+      </div>
       <StyledTabs
         id="controlled-tab-example"
         activeKey={SelectdTab}

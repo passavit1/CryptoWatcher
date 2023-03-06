@@ -5,71 +5,113 @@ import styled from "styled-components";
 import { PlusCircleTwoTone } from "@ant-design/icons";
 
 const HeaderNav = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 5px;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  margin-left: auto;
-  margin-right: auto;
+  @media (max-width: 759px) {
+    display: none;
+  }
 
-  > div:first-child {
+  @media (min-width: 760px) {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
-    font-weight: bold;
-    font-size: 24px;
-    color: #555;
-  }
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    top: 0;
+    z-index: 1;
+    width: 90%;
+    margin: 0 5% 5px 5%;
+    color: red;
+    position: sticky;
 
-  > div:last-child {
-    width: 70%;
-    font-weight: bold;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    overflow: scroll;
+    > div:first-child {
+      width: 25%;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      font-weight: bold;
+      font-size: 0.9rem;
+      color: black;
+      padding-left: 5%;
 
-    > div {
-      margin-right: 1%;
+      @media (min-width: 820px) {
+        font-size: 1.1rem;
+        color: green;
+      }
     }
-  }
 
-  @media (max-width: 900px) {
     > div:last-child {
-      overflow-x: scroll;
-      white-space: nowrap;
+      width: 75%;
+      font-weight: bold;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      font-size: 0.9rem;
+      justify-items: center;
+
+      @media (min-width: 820px) {
+        font-size: 1rem;
+        color: green;
+      }
+
+      > div {
+        white-space: nowrap;
+      }
+
+      > div:first-child {
+        padding-left: 20%;
+      }
+
+      > div:nth-child(4) {
+        padding-right: 20%;
+      }
+
+      > div:nth-child(5) {
+        padding-right: 40%;
+      }
+      > div:nth-child(6) {
+        padding-right: 20%;
+      }
     }
   }
 `;
+
+//Coins Data
 
 const StyledDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  margin: 0 2% 5px 2%;
+  width:90%;
+  margin: 0 5% 5px 5%;
   padding: 10px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  max-width: 100%;
+  flex-direction: column;
+  white-space: nowrap;
+  overflow: hidden;
 
   :hover {
-    background-color: red;
+    background-color: #E0FFFF;
   }
 
   > div:first-child {
-    width: 30%;
-    display: flex;
-    align-items: center;
+    width:100%;
     font-weight: bold;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom:5px;
+    
+    @media (min-width:400px){
+      scale:1.1;
+      margin-bottom:10px;
+
+    }
+    
 
     .ant-image {
       margin-right: 3%;
@@ -86,27 +128,110 @@ const StyledDiv = styled.div`
     }
   }
 
-  > div:last-child {
-    width: 70%;
-    display: flex;
-    font-weight: bold;
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    // overflow: scroll;
 
-    > div {
-      margin-right: 1%;
+  > div:last-child {
+    display:flex;
+    width:100%;
+
+    >div{
+      display:flex;
+      flex-direction:column;
+      font-weight: bold;
+    }
+  
+
+    .titleNavCoins{
+      width:50%;
+      padding-left:10%
+    }
+    .top100-coin-data{
+      text-align:start;
+      width:50%;      
+
+      @media (min-width:400px){
+        padding-left:5%;
+      }
     }
   }
 
+  // responsive @760px 
+
+   @media (min-width:760px){
+      flex-direction:row;
+
+      
+
+      > div:first-child {
+        display:flex;
+        width:30%;
+        height:100%;
+        margin:0;
+        justify-content:start;
+        scale:1;
+        overflow:hidden;
+        align-items:center;
+        
+        .coin-name {
+          font-size: 0.8rem;
+          
+        }
+
+        .coin-symbol{
+          font-size:0.7rem;
+
+
+        }
+        .ant-image{
+          margin-right:1%;
+
+
+          .ant-image-img {
+            width:16px;
+
+            @media (min-width:800px){
+              width:18px;
+            }
+          }
+        }
+
+      }
+
+      >div:last-child{
+        width:70%;
+
+        .titleNavCoins{
+          display:none;
+        }
+
+        .top100-coin-data{
+          font-size:0.8rem;
+          white-space:nowrap;
+          width:100%;
+          display:grid;
+          grid-template-columns: repeat(7, 1fr);
+          padding:0;
+          align-items:baseline;
+        }
+      }
+    }
+
+
   button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background-color: transparent;
-    font-size: 20px;
-    cursor: pointer;
+    display:none;
+
+
+    @media (min-width:760px){
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      border: none;
+      background-color: transparent;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+
+
   }
 `;
 
@@ -128,17 +253,18 @@ const Top100Coins = ({ getNavCoin }) => {
   return (
     <>
       <HeaderNav>
-        <div>Crypto Dashboard</div>
+        <div>COIN</div>
         <div>
-          <div>Current Price</div>
-          <div>24h Change</div>
-          <div>24h Change %</div>
-          <div>24h High</div>
-          <div>24h Low</div>
-          <div>Market Cap</div>
-          <div>Add to Watchlist</div>
+          <div>Price</div>
+          <div>Change</div>
+          <div>% Change</div>
+          <div>High</div>
+          <div>Low</div>
+          <div>MCap</div>
+          <div>Watchlist</div>
         </div>
       </HeaderNav>
+
       {coinList.map((coin) => (
         <StyledDiv className="container" key={coin.id}>
           <div>
@@ -146,58 +272,68 @@ const Top100Coins = ({ getNavCoin }) => {
             <div className="coin-name">
               {coin.name ? coin.name.toUpperCase() : "Loading..."}
             </div>
-
             <div className="coin-symbol">
               {coin.symbol ? coin.symbol.toUpperCase() : "Loading..."}
             </div>
           </div>
-          <div className="top100-coin-data">
-            <div className="top100-current-price">
-              {coin.current_price
-                ? coin.current_price > 1
-                  ? coin.current_price.toLocaleString()
-                  : coin.current_price.toFixed(4)
-                : "Loading..."}
+          <div>
+            <div className="titleNavCoins">
+              <div>Price</div>
+              <div>Change</div>
+              <div>%Change</div>
+              <div>High</div>
+              <div>Low</div>
+              <div>MCap</div>
+              <div></div>
             </div>
-            <div className="top100-price-change">
-              {coin.price_change_24h
-                ? coin.price_change_24h > 1
-                  ? coin.price_change_24h.toFixed(2)
-                  : coin.price_change_24h.toFixed(4)
-                : "Loading..."}
+            <div className="top100-coin-data">
+              <div className="top100-current-price">
+                {coin.current_price
+                  ? coin.current_price > 1
+                    ? coin.current_price.toLocaleString()
+                    : coin.current_price.toFixed(4)
+                  : "Loading..."}
+              </div>
+              <div className="top100-price-change">
+                {coin.price_change_24h
+                  ? coin.price_change_24h > 1
+                    ? coin.price_change_24h.toFixed(2)
+                    : coin.price_change_24h.toFixed(4)
+                  : "Loading..."}
+              </div>
+              <div className="top100-price-change-percent">
+                {coin.price_change_percentage_24h
+                  ? coin.price_change_percentage_24h.toLocaleString("en-US", {
+                      maximumFractionDigits: 2,
+                    })
+                  : "Loading..."}{" "}
+                %
+              </div>
+              <div className="top100-high">
+                {coin.high_24h
+                  ? coin.high_24h > 1
+                    ? coin.high_24h.toLocaleString()
+                    : coin.high_24h.toFixed(4)
+                  : "Loading..."}
+              </div>
+              <div className="top100-low">
+                {coin.low_24h
+                  ? coin.low_24h > 1
+                    ? coin.low_24h.toLocaleString()
+                    : coin.low_24h.toFixed(4)
+                  : "Loading..."}
+              </div>
+              <div className="top100-market-cap">
+                {coin.market_cap
+                  ? coin.market_cap.toLocaleString()
+                  : "Loading..."}
+              </div>
+              <Tooltip title="Add to watch list">
+                <button onClick={() => getNavCoin(coin.id)}>
+                  <PlusCircleTwoTone />
+                </button>
+              </Tooltip>
             </div>
-            <div className="top100-price-change-percent">
-              {coin.price_change_percentage_24h
-                ? coin.price_change_percentage_24h.toLocaleString("en-US", {
-                    maximumFractionDigits: 2,
-                  })
-                : "Loading..."}{" "}
-              %
-            </div>
-            <div className="top100-high">
-              {coin.high_24h
-                ? coin.high_24h > 1
-                  ? coin.high_24h.toLocaleString()
-                  : coin.high_24h.toFixed(4)
-                : "Loading..."}
-            </div>
-            <div className="top100-low">
-              {coin.low_24h
-                ? coin.low_24h > 1
-                  ? coin.low_24h.toLocaleString()
-                  : coin.low_24h.toFixed(4)
-                : "Loading..."}
-            </div>
-            <div className="top100-market-cap">
-              {coin.market_cap
-                ? coin.market_cap.toLocaleString()
-                : "Loading..."}
-            </div>
-            <Tooltip title="Add to watch list">
-              <button onClick={() => getNavCoin(coin.id)}>
-                <PlusCircleTwoTone />
-              </button>
-            </Tooltip>
           </div>
         </StyledDiv>
       ))}
