@@ -2,28 +2,85 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import Coinlist from "../../data/CoinList/Coinlist.json";
+import { CloseCircleFilled } from "@ant-design/icons";
 
 const StyledCard = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 95%;
-  height: 130px;
+  width: 90%;
+  height: auto;
   border-radius: 10px;
   background-color: white;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-  margin: 1%;
+  margin: 1% 5%;
   padding: 5px;
   cursor: pointer;
+
+  .Data {
+    width: 90%;
+    padding-left: ${({ coinListLength }) => {
+      switch (coinListLength) {
+        case 1:
+          return "45%";
+        case 2:
+          return "40%";
+        case 3:
+          return "35%";
+        case 4:
+          return "30%";
+        case 5:
+          return "15%";
+        default:
+          return "10%";
+      }
+    }};
+
+    .Symbol {
+      font-size: 16px;
+      font-weight: bold;
+      color: black;
+    }
+
+    .Price {
+      font-size: 14px;
+      font-weight: bold;
+      color: black;
+    }
+
+    .Percent-Change {
+      font-size: 14px;
+      font-weight: bold;
+      color: black;
+    }
+  }
+
+  .Button {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: start;
+
+    button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      font-weight: 400;
+      font-size: 14px;
+
+      &:hover {
+        color: red;
+      }
+    }
+  }
 `;
 
 const NavCoins = ({ NavCoin, getCoinCount }) => {
   const [coinList, setCoinList] = useState([]);
   const [coinData, setCoinData] = useState({});
   const [coinSymbols, setCoinSymbols] = useState({});
-
-  console.log(coinList, coinData, coinSymbols);
 
   const handleDelete = (index) => {
     setCoinList(coinList.filter((b, i) => i !== index));
@@ -72,19 +129,43 @@ const NavCoins = ({ NavCoin, getCoinCount }) => {
   return (
     <>
       {coinList.map((coin, i) => (
-        <StyledCard key={i} className="NavContainer">
-          <div>{coinSymbols[coin]}</div>
-          <div>{coinData[coin]?.usd.toLocaleString()} $</div>
-          <div>{coinData[coin]?.usd_24h_change.toLocaleString()} %</div>
-          {coinList.length > 0 && (
-            <button
-              onClick={() => {
-                handleDelete(i);
+        <StyledCard
+          key={i}
+          className="NavContainer"
+          coinListLength={coinList.length}
+        >
+          <div className="Data">
+            <div className="Symbol">
+              {coinSymbols[coin]
+                ? coinSymbols[coin].toUpperCase()
+                : coinSymbols[coin]}
+            </div>
+            <div className="Price">
+              {coinData[coin]?.usd > 1
+                ? coinData[coin]?.usd.toLocaleString()
+                : coinData[coin]?.usd}{" "}
+              $
+            </div>
+            <div
+              className="Percent-Change"
+              style={{
+                color: coinData[coin]?.usd_24h_change >= 0 ? "green" : "red",
               }}
             >
-              Delete
-            </button>
-          )}
+              {coinData[coin]?.usd_24h_change.toLocaleString()} %
+            </div>
+          </div>
+          <div className="Button">
+            {coinList.length > 0 && (
+              <button
+                onClick={() => {
+                  handleDelete(i);
+                }}
+              >
+                X
+              </button>
+            )}
+          </div>
         </StyledCard>
       ))}
     </>
