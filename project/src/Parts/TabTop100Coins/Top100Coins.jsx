@@ -82,7 +82,7 @@ const StyledDiv = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width:90%;
+  width: 90%;
   margin: 0 5% 5px 5%;
   padding: 10px;
   background-color: #fff;
@@ -95,23 +95,21 @@ const StyledDiv = styled.div`
   overflow: hidden;
 
   :hover {
-    background-color: #E0FFFF;
+    background-color: #e0ffff;
   }
 
   > div:first-child {
-    width:100%;
+    width: 100%;
     font-weight: bold;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom:5px;
-    
-    @media (min-width:400px){
-      scale:1.1;
-      margin-bottom:10px;
+    margin-bottom: 5px;
 
+    @media (min-width: 400px) {
+      scale: 1.1;
+      margin-bottom: 10px;
     }
-    
 
     .ant-image {
       margin-right: 3%;
@@ -128,99 +126,88 @@ const StyledDiv = styled.div`
     }
   }
 
-
   > div:last-child {
-    display:flex;
-    width:100%;
+    display: flex;
+    width: 100%;
 
-    >div{
-      display:flex;
-      flex-direction:column;
+    > div {
+      display: flex;
+      flex-direction: column;
       font-weight: bold;
     }
-  
 
-    .titleNavCoins{
-      width:50%;
-      padding-left:10%
+    .titleNavCoins {
+      width: 50%;
+      padding-left: 10%;
     }
-    .top100-coin-data{
-      text-align:start;
-      width:50%;      
+    .top100-coin-data {
+      text-align: start;
+      width: 50%;
 
-      @media (min-width:400px){
-        padding-left:5%;
+      @media (min-width: 400px) {
+        padding-left: 5%;
       }
     }
   }
 
-  // responsive @760px 
+  // responsive @760px
 
-   @media (min-width:760px){
-      flex-direction:row;
+  @media (min-width: 760px) {
+    flex-direction: row;
 
-      
+    > div:first-child {
+      display: flex;
+      width: 30%;
+      height: 100%;
+      margin: 0;
+      justify-content: start;
+      scale: 1;
+      overflow: hidden;
+      align-items: baseline;
 
-      > div:first-child {
-        display:flex;
-        width:30%;
-        height:100%;
-        margin:0;
-        justify-content:start;
-        scale:1;
-        overflow:hidden;
-        align-items:center;
-        
-        .coin-name {
-          font-size: 0.8rem;
-          
-        }
-
-        .coin-symbol{
-          font-size:0.7rem;
-
-
-        }
-        .ant-image{
-          margin-right:1%;
-
-
-          .ant-image-img {
-            width:16px;
-
-            @media (min-width:800px){
-              width:18px;
-            }
-          }
-        }
-
+      .coin-name {
+        font-size: 0.8rem;
       }
 
-      >div:last-child{
-        width:70%;
+      .coin-symbol {
+        font-size: 0.7rem;
+      }
+      .ant-image {
+        margin-right: 1%;
 
-        .titleNavCoins{
-          display:none;
-        }
+        .ant-image-img {
+          width: 16px;
 
-        .top100-coin-data{
-          font-size:0.8rem;
-          white-space:nowrap;
-          width:100%;
-          display:grid;
-          grid-template-columns: repeat(7, 1fr);
-          padding:0;
-          align-items:baseline;
+          @media (min-width: 800px) {
+            width: 18px;
+          }
         }
       }
     }
 
+    > div:last-child {
+      width: 70%;
+
+      .titleNavCoins {
+        display: none;
+      }
+
+      .top100-coin-data {
+        font-size: 0.8rem;
+        white-space: nowrap;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        padding: 0;
+        align-items: baseline;
+      }
+    }
+  }
 
   button {
-    display:none;
+    display: none;
 
-
-    @media (min-width:760px){
+    @media (min-width: 760px) {
       display: flex;
       align-items: center;
       justify-content: end;
@@ -229,9 +216,10 @@ const StyledDiv = styled.div`
       font-size: 20px;
       cursor: pointer;
     }
-  }
 
-
+    @media (min-width: 900px) {
+      justify-content: center;
+    }
   }
 `;
 
