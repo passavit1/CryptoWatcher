@@ -2,12 +2,18 @@ import { Container, Navbar } from "react-bootstrap";
 import styled from "styled-components";
 
 const StyledNavbar = styled(Navbar)`
-  background-color: #05445e;
+  background-color: white;
+  height: auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
 
   .container {
     justify-content: center;
+
     a {
-      color: white;
+      text-decoration: none;
+      color: black;
+      font-weight: bolder;
     }
   }
 `;

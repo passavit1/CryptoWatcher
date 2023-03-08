@@ -9,12 +9,13 @@ const TrendingCoinCard = styled.div`
   background-color: #fff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 0.5rem 0;
-  margin: 20px;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
   text-align: center;
+  width: 70%;
 
   @media (min-width: 650px) {
     justify-content: space-around;
@@ -59,7 +60,7 @@ const TrendingCoinCard = styled.div`
 `;
 
 const TrendingCoinButton = styled.button`
-  width: 80%;
+  width: 50%;
   height: 50px;
   background-color: #4caf50;
   color: white;

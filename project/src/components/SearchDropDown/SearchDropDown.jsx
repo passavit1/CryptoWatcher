@@ -63,8 +63,18 @@ const StyledDivInline = styled.div`
         @media (min-width: 1000px) {
           padding-right: 11%;
         }
-        @media (min-width: 1000px) {
+        @media (min-width: 1200px) {
           padding-right: 13%;
+        }
+        @media (min-width: 1500px) {
+          padding-right: 15%;
+          padding-top: 1%;
+          scale: 1.1;
+        }
+        @media (min-width: 1800px) {
+          padding-right: 14%;
+          padding-top: 1%;
+          scale: 1.2;
         }
       }
     }

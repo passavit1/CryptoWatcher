@@ -23,6 +23,9 @@ const StyledDiv = styled.div`
     display: flex;
     justify-content: center;
     margin-bottom: 3%;
+    padding-top:3%;
+
+
 
     label {
       width: 45%;

@@ -6,10 +6,12 @@ const StyledNews = styled.div`
   position: relative;
   height: auto;
   padding: 1rem 2rem;
-  margin-bottom: 0.5rem;
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
   background-size: cover;
   background-position: center;
+  width: 90%;
+  margin: 0 auto 0.5rem;
+  border-radius: 16px;
 
   &::before {
     content: "";
@@ -19,6 +21,7 @@ const StyledNews = styled.div`
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 16px;
   }
 
   h4,

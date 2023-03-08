@@ -1,3 +1,5 @@
 body {
-  background-color: #f5fcfd;
+  background-color: white;
+  transition-duration: 0.3s;
+  background-image: url("https://workhu.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fbg.e1979074.png&w=1920&q=75");
 }

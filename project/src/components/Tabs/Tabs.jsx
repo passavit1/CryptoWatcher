@@ -87,12 +87,19 @@ const StyledDivider = styled(Divider)`
 
 // input and result area
 const StyledDivWhenMedium = styled.div`
-  background-color: #f2f2f2;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 95%;
+  margin: 0 auto;
+
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: space-around;
-    margin-top: -2%;
+    margin-top: -5%;
+    padding-bottom: 2%;
+
+    @media (min-width: 1200px) {
+      margin-top: -4%;
+    }
 
     .kQEKDm {
       width: 45%;
