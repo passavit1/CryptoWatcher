@@ -20,27 +20,38 @@ import { Divider } from "antd";
 // Tabs Color
 const StyledTabs = styled(Tabs)`
   margin-top: 5px;
-  background-color: white;
+  background-color: transparent;
   padding: 1%;
-  gap: 1%;
+  gap: 0.1%;
   white-space: nowrap;
+  width: 90%;
+  margin: 0 5%;
 
-  li {
-    background-color: transparent;
-    border-radius: 1rem;
-    width: 20%;
-    border: transparent;
-    outline: transparent;
+  .nav-item {
+    background-color: traansparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    &:hover {
+    .nav-link {
       background-color: purple;
-      border: transparent;
+      width: 90%;
+      height: 90%;
+      border-radius: 20px;
     }
+
+    .nav-link:hover {
+      background-color: aqua;
+    }
+  }
+
+  .nav-item:hover {
+    background-color: transparent;
   }
 
   .nav-link.active {
     background-color: #f5fcfd;
-    background-color: green;
+    background-color: blue;
     color: #f7082e;
     border-radius: 1rem;
     border: transparent;
@@ -48,7 +59,8 @@ const StyledTabs = styled(Tabs)`
     &:hover {
       color: #f7082e;
       background-color: yellow;
-      border-radius: 1rem;
+      border-radius: 20rem;
+      border: transparent;
     }
   }
 
