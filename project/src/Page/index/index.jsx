@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Header, TABS } from "../../components/index";
+import { Header, TABS, FooterComponent } from "../../components/index";
 import { NavCoins } from "../../Parts/index";
 import { Row, Container } from "react-bootstrap";
 import styled from "styled-components";
@@ -58,6 +58,7 @@ function IndexPage() {
       <StyledFloatButton className="BackTop">
         <FloatButton.BackTop />
       </StyledFloatButton>
+      <FooterComponent />
     </>
   );
 }

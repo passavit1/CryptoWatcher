@@ -9,6 +9,7 @@ import InputNUM from "./InputNumber/InputNumber.jsx";
 import DropDownTabs from "./DropdownTabs/DropdownTabs.jsx";
 import TABLE from "./Table/Table.jsx";
 import CircleBar from "./Circlebar/circlebar.jsx";
+import FooterComponent from "./Footer/Footer.jsx";
 
 export {
   CardBST,
@@ -22,4 +23,5 @@ export {
   DropDownTabs,
   TABLE,
   CircleBar,
+  FooterComponent,
 };
