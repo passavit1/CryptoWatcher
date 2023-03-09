@@ -3,6 +3,7 @@ import { Header, TABS } from "../../components/index";
 import { NavCoins } from "../../Parts/index";
 import { Row, Container } from "react-bootstrap";
 import styled from "styled-components";
+import { FloatButton } from "antd";
 
 const StyledRowNavCoin = styled(Row)`
   display: grid;
@@ -11,6 +12,10 @@ const StyledRowNavCoin = styled(Row)`
     ${({ coincount }) => `${100 / coincount}%`}
   );
   justify-content: center;
+`;
+
+const StyledFloatButton = styled.div`
+  background-color: red;
 `;
 
 function IndexPage() {
@@ -50,6 +55,9 @@ function IndexPage() {
         </StyledRowNavCoin>
       </Container>
       <TABS getNavCoin={getNavCoin} />
+      <StyledFloatButton className="BackTop">
+        <FloatButton.BackTop />
+      </StyledFloatButton>
     </>
   );
 }

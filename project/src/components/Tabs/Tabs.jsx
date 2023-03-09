@@ -28,20 +28,25 @@ const StyledTabs = styled(Tabs)`
   margin: 0 5%;
 
   .nav-item {
-    background-color: traansparent;
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: 600;
 
     .nav-link {
-      background-color: purple;
+      background-color: transparent;
       width: 90%;
       height: 90%;
       border-radius: 20px;
+      color: black;
+      transition-duration: 0.4s;
     }
 
     .nav-link:hover {
-      background-color: aqua;
+      background-color: #9f46e5;
+      color: white;
+      transition-duration: 0.3s;
     }
   }
 
@@ -50,15 +55,15 @@ const StyledTabs = styled(Tabs)`
   }
 
   .nav-link.active {
-    background-color: #f5fcfd;
-    background-color: blue;
-    color: #f7082e;
+    background-color: #4f46e5;
+    color: white;
     border-radius: 1rem;
     border: transparent;
+    transition-duration: 0.3s;
 
     &:hover {
-      color: #f7082e;
-      background-color: yellow;
+      transition-duration: 0.3s;
+      background-color: #9f46e5;
       border-radius: 20rem;
       border: transparent;
     }
@@ -72,7 +77,7 @@ const StyledTabs = styled(Tabs)`
 // Color Divided User Information
 const StyledInfoDivider = styled(Divider)`
   span {
-    color: #e43a27;
+    color: black;
   }
 `;
 

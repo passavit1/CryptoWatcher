@@ -88,6 +88,10 @@ const StyledDivInline = styled.div`
         display: flex;
         justify-content: center;
 
+        button {
+          background-color: #4f46e5;
+          border: 0 solid #e5e7eb;
+        }
         z-index: 2;
 
         button:first-child {

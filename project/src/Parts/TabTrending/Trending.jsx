@@ -62,13 +62,18 @@ const TrendingCoinCard = styled.div`
 const TrendingCoinButton = styled.button`
   width: 50%;
   height: 50px;
-  background-color: #4caf50;
+  background-color: #4f46e5;
   color: white;
   border-radius: 10px;
   border: none;
   outline: none;
   margin-top: 5px;
   cursor: pointer;
+
+  &:hover {
+    background-color: #9f46e5;
+    transition-duration: 0.5s;
+  }
 `;
 
 const Trending = ({

@@ -12,7 +12,7 @@ const StyledNavbar = styled(Navbar)`
 
     a {
       text-decoration: none;
-      color: black;
+      color: #4f46e5;
       font-weight: bolder;
     }
   }

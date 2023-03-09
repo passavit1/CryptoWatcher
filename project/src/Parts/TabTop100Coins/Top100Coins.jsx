@@ -22,7 +22,7 @@ const HeaderNav = styled.div`
     z-index: 1;
     width: 90%;
     margin: 0 5% 5px 5%;
-    color: red;
+    color: #4f46e5;
     position: sticky;
 
     > div:first-child {
@@ -37,7 +37,7 @@ const HeaderNav = styled.div`
 
       @media (min-width: 820px) {
         font-size: 1.1rem;
-        color: green;
+        color: #4f46e5;
       }
     }
 
@@ -51,7 +51,7 @@ const HeaderNav = styled.div`
 
       @media (min-width: 820px) {
         font-size: 1rem;
-        color: green;
+        color: #4f46e5;
       }
 
       > div {
@@ -95,7 +95,8 @@ const StyledDiv = styled.div`
   overflow: hidden;
 
   :hover {
-    background-color: #e0ffff;
+    background-color: #f2e6fb;
+    transition-duration: 0.1s;
   }
 
   > div:first-child {
