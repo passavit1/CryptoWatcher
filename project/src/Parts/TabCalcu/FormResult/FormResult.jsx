@@ -143,7 +143,9 @@ const FormResult = ({
         <StyledDiv>
           <TEXT>Margin Use : </TEXT>
           <TEXT className="MarginText">
-            {MarginUse !== 0 && BalanceValue !== 0
+            {BalanceValue == 0
+              ? 0 + " "
+              : MarginUse !== 0 && BalanceValue !== 0
               ? ((MarginUse / BalanceValue) * 100).toFixed(2) + " "
               : ""}
             %

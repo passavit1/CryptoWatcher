@@ -75,7 +75,7 @@ const FooterComponent = () => {
           <GithubFilled />
         </a>
       </div>
-      Ant Design ©2018 Created by Ant UED
+      ©2023 Created by Passavit Maicharoen
     </StyledFooter>
   );
 };
