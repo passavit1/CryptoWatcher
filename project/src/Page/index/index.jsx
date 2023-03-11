@@ -39,7 +39,6 @@ function IndexPage() {
     return () => clearTimeout(timer);
   }, [NavCoin]);
 
-  console.log(NavCoin);
   return (
     <>
       <Header />

@@ -22,7 +22,7 @@ const Header = () => {
   return (
     <StyledNavbar expand="md">
       <Container>
-        <Navbar.Brand href="#home">CRYPTO CALCU</Navbar.Brand>
+        <Navbar.Brand href="#home">CRYPTO WATCHER</Navbar.Brand>
       </Container>
     </StyledNavbar>
   );

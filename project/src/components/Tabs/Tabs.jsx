@@ -242,7 +242,7 @@ function TABS({ getNavCoin }) {
 
   //Handle Value in Balance Field
 
-  const [BalanceValue, setBalanceValue] = useState("");
+  const [BalanceValue, setBalanceValue] = useState(0);
 
   const handleValueBalance = (Balance) => {
     if (Balance !== 0) {

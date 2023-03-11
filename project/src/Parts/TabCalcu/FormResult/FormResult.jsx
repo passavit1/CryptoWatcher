@@ -43,9 +43,9 @@ const FormResult = ({
 }) => {
   const [currentPrice, setCurrentPrice] = useState(null);
   const [MarginUse, setMarginUse] = useState("");
-  const [CalculateProfit, setCalculateProfit] = useState("");
-  const [CalculateLoss, setCalculateLoss] = useState("");
-  const [Reward, setReward] = useState("XXX");
+  const [CalculateProfit, setCalculateProfit] = useState(0);
+  const [CalculateLoss, setCalculateLoss] = useState(0);
+  const [Reward, setReward] = useState(0);
 
   const { entryPrice, quantity, stopPrice, takeProfit, risk, reward } =
     inputValues;
@@ -142,10 +142,11 @@ const FormResult = ({
         </StyledDiv>
         <StyledDiv>
           <TEXT>Margin Use : </TEXT>
-          <TEXT className="MarginText">
-            {BalanceValue == 0
-              ? 0 + " "
-              : MarginUse !== 0 && BalanceValue !== 0
+          <TEXT
+            className="MarginText"
+            style={BalanceValue === 0 ? { display: "none" } : {}}
+          >
+            {MarginUse !== 0 && BalanceValue !== 0
               ? ((MarginUse / BalanceValue) * 100).toFixed(2) + " "
               : ""}
             %
@@ -154,17 +155,29 @@ const FormResult = ({
         </StyledDiv>
         <StyledDiv>
           <TEXT>Take Profit : </TEXT>
-          <TEXT style={{ color }}>{CalculateProfit}</TEXT>
+          {CalculateProfit !== 0 ? (
+            <TEXT style={{ color }}>{CalculateProfit}</TEXT>
+          ) : null}
           <TEXT>{takeProfit}</TEXT>
         </StyledDiv>
         <StyledDiv>
           <TEXT>Stop Price :</TEXT>
-          <TEXT style={{ color: cutlossColor }}>{CalculateLoss}</TEXT>
+          {CalculateLoss !== 0 ? (
+            <TEXT style={{ color: cutlossColor }}>{CalculateLoss}</TEXT>
+          ) : null}
           <TEXT>{stopPrice}</TEXT>
         </StyledDiv>
         <StyledDiv>
           <TEXT>Risk : Reward </TEXT>
-          <TEXT> 1 : {Reward}</TEXT>
+          <TEXT
+            style={
+              CalculateProfit === 0 && CalculateLoss === 0
+                ? { display: "none" }
+                : {}
+            }
+          >
+            1 : {Reward}
+          </TEXT>
         </StyledDiv>
       </div>
     </>
