@@ -129,7 +129,11 @@ const FormResult = ({
   // Calculate Risk per Reward
 
   useEffect(() => {
-    setReward((CalculateProfit / Math.abs(CalculateLoss)).toFixed(1));
+    if (CalculateProfit > 0 && CalculateLoss > 0) {
+      setReward((CalculateProfit / Math.abs(CalculateLoss)).toFixed(1));
+    } else {
+      setReward(0);
+    }
   }, [CalculateProfit, CalculateLoss]);
 
   return (
