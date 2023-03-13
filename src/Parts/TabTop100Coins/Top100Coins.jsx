@@ -95,7 +95,7 @@ const StyledDiv = styled.div`
   overflow: hidden;
 
   :hover {
-    background-color: #f2e6fb;
+    background-color: #f8fdff;
     transition-duration: 0.1s;
   }
 

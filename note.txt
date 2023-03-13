@@ -1,3 +1,21 @@
 #4f46e5
 
-#9f46e5
+#fcfeff
+
+
+watch list start with 760px , 800px ,  1000px , 1200px;
+padding-left start with : 760px , 800px , 1000px , 1200px;
+
+
+
+done 
+1.เปลี่ยนสี hover เป็นสีฟ้าอ่อน 
+6.Fixed Nan 
+7. buttom buy sell แก้ border
+4.dropdown ย้ายไปตรงกลาง
+5.Card กับ button แยกจากกัน 
+2.ห้าม Add ซ้ำ 
+3.Card ทำเป็นแนวนอนอย่างเดียว Limit 4 ใบ ถ้ากดเกินแจ้ง alert
+
+
+8.แก้ Path เป็น crypto watcher 

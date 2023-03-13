@@ -35,6 +35,7 @@ const StyledTabs = styled(Tabs)`
     font-weight: 600;
 
     .nav-link {
+      border: transparent;
       background-color: transparent;
       width: 90%;
       height: 90%;
@@ -44,8 +45,8 @@ const StyledTabs = styled(Tabs)`
     }
 
     .nav-link:hover {
-      background-color: #9f46e5;
-      color: white;
+      background-color: #edf8fd;
+      color: black;
       transition-duration: 0.3s;
     }
   }
@@ -63,7 +64,7 @@ const StyledTabs = styled(Tabs)`
 
     &:hover {
       transition-duration: 0.3s;
-      background-color: #9f46e5;
+      background-color: #edf8fd;
       border-radius: 20rem;
       border: transparent;
     }
@@ -116,7 +117,7 @@ const StyledDivWhenMedium = styled.div`
 
     .DivContainer {
       width: 45%;
-      margin-top: 5%;
+      margin-top: 1%;
 
       .WXyGi {
         height: 2.5rem;

@@ -21,48 +21,60 @@ const StyledCard = styled.div`
     width: 90%;
     display: flex;
     align-items: baseline;
-    gap: ${({ coinListLength }) =>
-      coinListLength < 3 ? "20px" : coinListLength >= 4 ? "0" : "10px"};
+    gap: ${({ coinListLength }) => {
+      switch (coinListLength) {
+        case 1:
+          return "50px";
+        case 2:
+          return "40px";
+        case 3:
+          return "20px";
+        default:
+          return "10px";
+      }
+    }};
     white-space: nowrap;
-    flex-direction: ${({ coinListLength }) =>
-      coinListLength >= 4 ? "column" : "row"};
 
     @media (min-width: 1000px) {
-      gap: ${({ coinListLength }) =>
-        coinListLength < 3 ? "40px" : coinListLength >= 5 ? "0" : "20px"};
-
-      flex-direction: ${({ coinListLength }) =>
-        coinListLength >= 5 ? "column" : "row"};
+      gap: ${({ coinListLength }) => {
+        switch (coinListLength) {
+          case 1:
+            return "50px";
+          case 2:
+            return "40px";
+          case 3:
+            return "30px";
+          default:
+            return "5px";
+        }
+      }};
     }
 
     @media (min-width: 1200px) {
-      gap: ${({ coinListLength }) =>
-        coinListLength < 3
-          ? "50px"
-          : coinListLength >= 5
-          ? "0"
-          : coinListLength >= 4
-          ? "30px"
-          : "45px"};
-
-      flex-direction: ${({ coinListLength }) =>
-        coinListLength >= 5 ? "column" : "row"};
+      gap: ${({ coinListLength }) => {
+        switch (coinListLength) {
+          case 1:
+            return "70px";
+          case 2:
+            return "70px";
+          case 3:
+            return "50px";
+          default:
+            return "35px";
+        }
+      }};
     }
 
     padding-left: ${({ coinListLength }) => {
       switch (coinListLength) {
         case 1:
-          return "40%";
+          return "33%";
         case 2:
-          return "20%";
+          return "18%";
         case 3:
           return "5%";
-        case 4:
-          return "20%";
-        case 5:
-          return "15%";
         default:
-          return "10%";
+          return "5%";
       }
     }};
 
@@ -70,17 +82,13 @@ const StyledCard = styled.div`
       padding-left: ${({ coinListLength }) => {
         switch (coinListLength) {
           case 1:
-            return "40%";
+            return "35%";
           case 2:
-            return "20%";
+            return "18%";
           case 3:
             return "5%";
-          case 4:
-            return "15%";
-          case 5:
-            return "15%";
           default:
-            return "10%";
+            return "5%";
         }
       }};
     }
@@ -89,17 +97,13 @@ const StyledCard = styled.div`
       padding-left: ${({ coinListLength }) => {
         switch (coinListLength) {
           case 1:
-            return "40%";
+            return "35%";
           case 2:
-            return "25%";
+            return "20%";
           case 3:
-            return "15%";
-          case 4:
-            return "5%";
-          case 5:
             return "10%";
           default:
-            return "10%";
+            return "8%";
         }
       }};
     }
@@ -108,9 +112,9 @@ const StyledCard = styled.div`
       padding-left: ${({ coinListLength }) => {
         switch (coinListLength) {
           case 1:
-            return "35%";
+            return "36%";
           case 2:
-            return "25%";
+            return "20%";
           case 3:
             return "10%";
           case 4:
@@ -124,21 +128,39 @@ const StyledCard = styled.div`
     }
 
     .Symbol {
-      font-size: 1rem;
+      font-size: ${({ coinListLength }) =>
+        coinListLength >= 4 ? "0.8rem" : "1rem"};
       font-weight: bold;
       color: black;
+
+      @media (min-width: 1000px) {
+        font-size: ${({ coinListLength }) =>
+          coinListLength >= 4 ? "0.9rem" : "1rem"};
+      }
     }
 
     .Price {
-      font-size: 1rem;
+      font-size: ${({ coinListLength }) =>
+        coinListLength >= 4 ? "0.8rem" : "1rem"};
       font-weight: bold;
       color: black;
+
+      @media (min-width: 1000px) {
+        font-size: ${({ coinListLength }) =>
+          coinListLength >= 4 ? "0.9rem" : "1rem"};
+      }
     }
 
     .Percent-Change {
-      font-size: 0.9rem;
+      font-size: ${({ coinListLength }) =>
+        coinListLength >= 4 ? "0.7rem" : "0.9rem"};
       font-weight: bold;
       color: black;
+
+      @media (min-width: 1000px) {
+        font-size: ${({ coinListLength }) =>
+          coinListLength >= 4 ? "0.8rem" : "0.9rem"};
+      }
     }
   }
 
@@ -174,9 +196,15 @@ const NavCoins = ({ NavCoin, getCoinCount }) => {
   };
 
   useEffect(() => {
-    if (NavCoin && coinList.length < 6) {
-      setCoinList([...coinList, NavCoin]);
-      getCoinCount(coinList.length + 1);
+    if (NavCoin) {
+      if (coinList.includes(NavCoin)) {
+        alert(`${NavCoin} is already in Watchlist.`);
+      } else if (coinList.length >= 4) {
+        alert(`Your Watchlist cannot have more than 4 coins.`);
+      } else {
+        setCoinList([...coinList, NavCoin]);
+        getCoinCount(coinList.length + 1);
+      }
     }
   }, [NavCoin]);
 

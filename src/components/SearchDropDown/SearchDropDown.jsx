@@ -126,6 +126,11 @@ const StyledDivInline = styled.div`
           justify-content: flex-start;
           margin-left: 80px;
         }
+
+        div:nth-child(3) {
+          transform: translate3d(0px, 37.5px, 0px) !important;
+          width: 60%;
+        }
       }
 
       .ButtonIcon {
@@ -242,7 +247,7 @@ const StyledSearchBox = styled(FormControl)`
   z-index: 1;
   background-color: #fff;
   padding: 0.5rem;
-  border-radius: 0.25rem;
+  // border-radius: 0.25rem;
   margin-bottom: 0.5rem;
 `;
 

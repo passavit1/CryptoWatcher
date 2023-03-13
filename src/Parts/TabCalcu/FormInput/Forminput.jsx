@@ -3,20 +3,7 @@ import { BuySellButton } from "../../index";
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-  // sc-gikAfH kSeWjg
-
-
-  margin-top: 5%;
-
-  @media (min-width: 578px) {
-    margin-top: 8%;
-  }
-  @media (min-width: 650px) {
-    margin-top: 7%;
-  }
-  @media (min-width: 768px) {
-    margin-top: 5%;
-  }
+  margin-top: 1%;
 
   .ant-radio-group {
     width: 100%;
@@ -25,15 +12,21 @@ const StyledDiv = styled.div`
     margin-bottom: 3%;
     padding-top:3%;
 
+    .ant-radio-button-wrapper-checked:before{
+      background-color:transparent;
+    }
+
 
 
     label {
       width: 45%;
       text-align: center;
+      background-color:transparent;
 
       &.ant-radio-button-wrapper-checked {
         color: white;
         background-color: red;
+        border-color: red;
       }
     }
 
@@ -41,6 +34,7 @@ const StyledDiv = styled.div`
         &.ant-radio-button-wrapper-checked {
         color: white;
         background-color: green;
+        border-color: green;
     }
   }
   

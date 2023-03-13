@@ -7,18 +7,24 @@ const StyledDiv = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 12%;
+  margin-bottom: 2%;
   height: 40px;
 
   @media (min-width: 576px) {
     margin-top: 9%;
+    margin-bottom: 2%;
   }
 
   @media (min-width: 768px) {
     margin-top: 6%;
-    margin-bottom: 2%;
+    margin-bottom: 7%;
   }
   @media (min-width: 1000px) {
     margin-top: 5%;
+  }
+  @media (min-width: 1200px) {
+    margin-top: 5%;
+    margin-bottom: 6%;
   }
 
   Button {
@@ -30,7 +36,7 @@ const StyledDiv = styled.div`
   }
 
   Button:hover {
-    background-color: #9f46e5;
+    background-color: #726aea;
     color: white;
     transition-duration: 0.5s;
   }
