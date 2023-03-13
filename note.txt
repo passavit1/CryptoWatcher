@@ -19,3 +19,16 @@ done
 
 
 8.แก้ Path เป็น crypto watcher 
+
+
+
+
+buy side 
+
+profit = (takeProfit - entryPrice) * (quantity / entryPrice)
+loss = (stopPrice - entryPrice) * (quantity / entryPrice)
+
+sell side 
+
+profit = (entryPrice - takeProfit) * (quantity / entryPrice)
+loss = (entryPrice - stopPrice) * (quantity / entryPrice)
