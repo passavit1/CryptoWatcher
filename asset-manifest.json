@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/CryptoWatcher/static/css/main.a2661c50.css",
-    "main.js": "/CryptoWatcher/static/js/main.14c1a6a7.js",
+    "main.js": "/CryptoWatcher/static/js/main.16447300.js",
     "index.html": "/CryptoWatcher/index.html",
     "main.a2661c50.css.map": "/CryptoWatcher/static/css/main.a2661c50.css.map",
-    "main.14c1a6a7.js.map": "/CryptoWatcher/static/js/main.14c1a6a7.js.map"
+    "main.16447300.js.map": "/CryptoWatcher/static/js/main.16447300.js.map"
   },
   "entrypoints": [
     "static/css/main.a2661c50.css",
-    "static/js/main.14c1a6a7.js"
+    "static/js/main.16447300.js"
   ]
 }
