@@ -94,34 +94,37 @@ const FormResult = ({
 
   useEffect(() => {
     if (SelectTypeValue === "buy") {
-      if (takeProfit === "") return;
-      else {
-        setCalculateProfit(
-          ((takeProfit - entryPrice) * (quantity / entryPrice)).toFixed(2)
-        );
-        setCalculateLoss(
-          ((stopPrice - entryPrice) * (quantity / entryPrice)).toFixed(2)
-        );
+      if (!takeProfit || !entryPrice || !quantity) {
+        setCalculateProfit(0);
+        setCalculateLoss(0);
+        return;
       }
+      const profit = (
+        (takeProfit - entryPrice) *
+        (quantity / entryPrice)
+      ).toFixed(2);
+      const loss = ((stopPrice - entryPrice) * (quantity / entryPrice)).toFixed(
+        2
+      );
+      setCalculateProfit(isNaN(profit) ? 0 : profit);
+      setCalculateLoss(isNaN(loss) ? 0 : loss);
     } else {
-      if (stopPrice === "") return;
-      else {
-        setCalculateProfit(
-          ((entryPrice - takeProfit) * (quantity / entryPrice)).toFixed(2)
-        );
-        setCalculateLoss(
-          ((entryPrice - stopPrice) * (quantity / entryPrice)).toFixed(2)
-        );
+      if (!stopPrice || !entryPrice || !quantity) {
+        setCalculateProfit(0);
+        setCalculateLoss(0);
+        return;
       }
+      const profit = (
+        (entryPrice - takeProfit) *
+        (quantity / entryPrice)
+      ).toFixed(2);
+      const loss = ((entryPrice - stopPrice) * (quantity / entryPrice)).toFixed(
+        2
+      );
+      setCalculateProfit(isNaN(profit) ? 0 : profit);
+      setCalculateLoss(isNaN(loss) ? 0 : loss);
     }
-  }, [
-    takeProfit,
-    entryPrice,
-    quantity,
-    SelectTypeValue,
-    currentPrice,
-    stopPrice,
-  ]);
+  }, [SelectTypeValue, entryPrice, quantity, takeProfit, stopPrice]);
 
   // Calculate Risk per Reward
 
